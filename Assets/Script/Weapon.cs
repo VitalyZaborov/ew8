@@ -44,17 +44,19 @@ public class Weapon : MonoBehaviour {
 			if (_shooting == value || (value && _clip == 0))
 				return;
 			_shooting = value;
-			Debug.Log("Shooting: " + _shooting);
-			if (!_shooting){
+			if (_shooting) {
+				if (ready) {
+					shotAt = Time.time - shotTime;
+				}
+			} else {
 				_burst = 0;
 			}
 		}
 	}
 
-	public bool ready {
+	protected bool ready {
 		get {
-			float dt = Time.time - shotAt;
-			return dt > shotTime;
+			return (Time.time - shotAt) > shotTime;
 		}
 	}
 
@@ -101,19 +103,19 @@ public class Weapon : MonoBehaviour {
 	void Update () {
 		_justShot = false;
 		if (_shooting) {
-			float dt = Time.time - shotAt;
-			while (dt > shotTime && doFire()) {
-				dt -= shotTime;
+			while (ready && _clip > 0) {
+				doFire();
 			}
 			if (_clip == 0)
 				shooting = false;
-		}
-		if(!_shooting && _recoil > 0){
-			_recoil = Mathf.Max (0, _recoil - Time.deltaTime * recoilReduce);
+		} else {
+			if(_recoil > 0){
+				_recoil = Mathf.Max (0, _recoil - Time.deltaTime * recoilReduce);
+			}
 		}
 	}
 
-	private bool doFire(){
+	private void doFire(){
 		shotAt = Time.time;
 		GameObject o = Instantiate (projectile, spawn.position, transform.rotation * Quaternion.Euler(0, Random.Range(-_recoil, _recoil), 0));
 		Projectile prj = o.GetComponent<Projectile> ();
@@ -122,6 +124,5 @@ public class Weapon : MonoBehaviour {
 		_burst++;
 		_clip--;
 		_justShot = true;
-		return _clip > 0;
 	}
 }

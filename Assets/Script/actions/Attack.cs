@@ -23,7 +23,7 @@ public class Attack : Action{
 	}*/
 	override public Action performPrepareAction(GameObject trg){
 		Action act;
-		if(!weapon.ready){
+		if(weapon.clip == 0){
 			act = new Reload();
 			act.init(caster);
 			return makePrepareAction(act,trg,trg);

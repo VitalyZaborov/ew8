@@ -337,6 +337,7 @@
     <Compile Include="Assets\Script\Projectile.cs" />
     <Compile Include="Assets\Script\RotateHuman.cs" />
     <Compile Include="Assets\Script\Soldier.cs" />
+    <Compile Include="Assets\Script\ui\HUD.cs" />
     <Compile Include="Assets\Script\Unit.cs" />
     <Compile Include="Assets\Script\Weapon.cs" />
   </ItemGroup>

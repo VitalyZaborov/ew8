@@ -39,7 +39,7 @@ public class Shoot : Action{
 		Health th = target.GetComponent<Health> ();
 		Unit cu = caster.GetComponent<Unit> ();
 		Unit tu = target.GetComponent<Unit> ();
-		Debug.Log("[Shoot]canPerform:" + (th.value > 0) +"|"+ ((cu.team & tu.team) == 0) + "|" + (weapon != null) + "|" + (weapon.clip > 0) +"|"+ (weapon.recoil <= accuracy));
+	//	Debug.Log("[Shoot]canPerform:" + (th.value > 0) +"|"+ ((cu.team & tu.team) == 0) + "|" + (weapon != null) + "|" + (weapon.clip > 0) +"|"+ (weapon.recoil <= accuracy));
 		return (th.value > 0) && ((cu.team & tu.team) == 0) && (weapon != null) && (weapon.clip > 0) && (weapon.recoil <= accuracy) && base.canPerform(target);	//Мертвых не бить! Своих тоже не бить
 	}
 	override public void update(float dt) {
@@ -53,6 +53,7 @@ public class Shoot : Action{
 		}
 
 		// Stop shooting on empty clip, exceed recoil or burst size
+
 		if (weapon.justShot && (weapon.clip == 0 || weapon.recoil > accuracy || weapon.burst > shots)) {
 			complete();
 			return;
