@@ -2,6 +2,11 @@ using System.Collections.Generic;
 public class AI{
 
 	public static Dictionary<int, AINode[]> ai = new Dictionary<int, AINode[]>{
+		{0, new AINode[]{
+			new AINode(){
+				action = cnxt => new PlayerControl()
+			}
+		}},
 		{1, new AINode[]{
 			new AINode(){
 				action = cnxt => new Rest()

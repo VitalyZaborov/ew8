@@ -15,7 +15,7 @@ public class Reload : Action{
 		animator.SetBool("reloading", true);
 	}
 	override public bool canPerform(GameObject target){
-		return weapon.ammo > 0;
+		return weapon.ammo > 0 && weapon.clip < weapon.maxClip;
 	}
 	override public void onAnimation(int param = 0){
 		AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);

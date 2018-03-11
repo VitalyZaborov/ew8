@@ -19,9 +19,7 @@ public class Brain : MonoBehaviour{
 
 	Brain(){
 	}
-	void Start(){
-		setAI (AI.ai [pattern]);
-	}
+
 	void OnDisable(){
 		if (curr_action != null) {
 			curr_action.intercept ();
@@ -36,8 +34,11 @@ public class Brain : MonoBehaviour{
 			think();
 		}
 	}
-	public void setAI(AINode[] ai_vec){
-		aiArray = ai_vec;
+	public void setAI(int pattern){
+		aiArray = AI.ai[pattern];
+		if(curr_action != null && curr_action.intercept()) {
+			curr_action = null;
+		}
 	}
 	public Action currentAction{
 		get {
@@ -67,10 +68,9 @@ public class Brain : MonoBehaviour{
 				return;
 			}
 		}	
-		if(prev_action != null && prev_action.master != null && performAction(prev_action.master,prev_action.master.getTarget())){
-			return;
+		if(prev_action != null && prev_action.master != null){
+			performAction(prev_action.master, prev_action.master.getTarget());
 		}
-		think();
 	}
 	//	Orders
 	public void addOrder(Action a,GameObject t = null){

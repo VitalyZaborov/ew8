@@ -40,9 +40,8 @@ public class Unit : MonoBehaviour{
 		{
 			_playerControllable = value;
 			MoveHuman mh = gameObject.GetComponent<MoveHuman>();
-			RotateHuman rh = gameObject.GetComponent<RotateHuman>();
-			mh.enabled = rh.enabled = _playerControllable;
-			brain.enabled = !(frozen || _playerControllable);
+			mh.enabled = _playerControllable;
+			brain.setAI(_playerControllable ? 0 : brain.pattern);
 		}
 	}
 
@@ -52,7 +51,7 @@ public class Unit : MonoBehaviour{
 		}
 		set{
 			frozen = value;
-			brain.enabled = !(frozen || _playerControllable);
+			brain.enabled = !frozen;
 		}
 	}
 

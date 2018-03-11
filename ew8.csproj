@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
     <UnityVersion>2017.3.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -301,6 +303,7 @@
     <Compile Include="Assets\Script\actions\Follow.cs" />
     <Compile Include="Assets\Script\actions\Reload.cs" />
     <Compile Include="Assets\Script\actions\Rest.cs" />
+    <Compile Include="Assets\Script\actions\PlayerControl.cs" />
     <Compile Include="Assets\Script\actions\Shoot.cs" />
     <Compile Include="Assets\Script\actions\Stay.cs" />
     <Compile Include="Assets\Script\AI.cs" />

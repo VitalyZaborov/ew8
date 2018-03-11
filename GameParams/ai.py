@@ -5,6 +5,13 @@ t = 'TARGET'
 p = 'PROBABILITY'
 
 AI = {
+	# 0 is the player AI
+	0: [
+		{
+			a: 'PlayerControl',
+		},
+	],
+
 	1: [
 		{
 			a: 'Rest',
