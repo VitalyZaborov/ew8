@@ -14,9 +14,8 @@ public class Projectile : MonoBehaviour {
 		movement = transform.rotation * Vector3.forward * speed;
 	}
 
-	// Update is called once per frame
 	void Update () {
-		transform.position = transform.position + movement;
+		transform.position = transform.position + movement * Time.deltaTime;
 	}
 
 	void OnTriggerEnter (Collider other) {

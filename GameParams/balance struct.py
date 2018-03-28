@@ -1,9 +1,10 @@
+import openpyxl
 
 INPUT = './Balance.xlsm'
-OUTPUT = '../Assets/Script/AI.cs'
+OUTPUT = '../Assets/Script/GameParams.cs'
 
 
-def getData(cell, field, type, sheet):
+def getData(cell, field, sheet):
 	value = cell.value
 	if value is None:
 		return None
@@ -33,11 +34,29 @@ def getRow(row):
 		fields.append(str(cell.value))
 	return fields
 
+def getStruct(structName, fields, types):
+	result = '\n\n	public struct ' + structName + '{'
+	for field, type in zip(fields, types):
+		result += '\n		public ' + type + ' ' + field + ';'
+	result += '\n	}'
+	return result
+
+def getParam(row, structName, fields, types):
+	values = []
+	key = None
+	for i, field in enumerate(fields):
+		value = getData(worksheet.cell(row=row, column=i + 1), field, structName)
+		if i == 0:
+			key = value
+		values.append('\n			' + field + ' = ' + str(value));
+
+	return '\n		{' + str(key) + ', new ' + structName + '{' + ','.join(values) + '\n		}}'
+
 
 output = open(OUTPUT, 'w')
 workbook = openpyxl.load_workbook(filename=INPUT, data_only=True)
 
-output.write('public class GameParams{')
+output.write('using System.Collections;\nusing System.Collections.Generic;\n\npublic class GameParams{')
 
 for worksheet in workbook.worksheets:
 	if worksheet.title.startswith('_'):
@@ -47,35 +66,18 @@ for worksheet in workbook.worksheets:
 	types = getRow(worksheet.rows[1])
 	structName = worksheet.title[0].upper() + worksheet.title[1:]
 
-	# if worksheet != workbook.worksheets[0]:
-	#	output.write('\n\n')
+	output.write(getStruct(structName, fields, types))
 
-	output.write('\n\n	public struct ' + structName + '{')
+	typeDef = 'Dictionary<' + types[0] + ', ' + structName + '>'
+	output.write('\n\n	public static ' + typeDef + ' ' + worksheet.title + ' = new ' + typeDef + '{')
 
-	for field, type in zip(fields, types):
-		output.write('\n		public ' + type + ' ' + field + ';')
-
-	output.write('\n	}')
-
-	output.write('\n	public static ' + structName + '[] ' + worksheet.title + ' = new ' + structName + '[]{')
-
+	params = []
 	i = 3
 	while worksheet.cell(row=i, column=2).value is not None:
-		if i != 3:
-			output.write(',')
-
-		output.write('\n		new ' + structName + '{')
-		for j, field in enumerate(fields):
-			data = getData(worksheet.cell(row=i, column=j + 1), field, type, worksheet.title)
-			if data is not None:
-				if j != 0:
-					output.write(',')
-				output.write('\n			' + field + '= ' + data)
-
-		output.write('\n		}')
+		params.append(getParam(i, structName, fields, types))
 		i += 1
 
-	output.write('\n	};')
+	output.write(','.join(params) + '\n	};')
 
 output.write('\n}')
 output.close()
