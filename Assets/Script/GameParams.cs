@@ -17,6 +17,7 @@ public class GameParams{
 		public float recoilMax;
 		public float recoilReduce;
 		public int burst;
+		public float range;
 	}
 
 	public static Dictionary<string, GunParam> gunParam = new Dictionary<string, GunParam>{
@@ -33,7 +34,8 @@ public class GameParams{
 			recoil = 3,
 			recoilMax = 15,
 			recoilReduce = 10,
-			burst = 0
+			burst = 0,
+			range = 10
 		}},
 		{"AKM", new GunParam{
 			name = "AKM",
@@ -48,7 +50,8 @@ public class GameParams{
 			recoil = 3,
 			recoilMax = 25,
 			recoilReduce = 8,
-			burst = 0
+			burst = 0,
+			range = 10
 		}},
 		{"M16A3", new GunParam{
 			name = "M16A3",
@@ -63,7 +66,8 @@ public class GameParams{
 			recoil = 2,
 			recoilMax = 20,
 			recoilReduce = 12,
-			burst = 3
+			burst = 3,
+			range = 10
 		}}
 	};
 }

@@ -5,13 +5,23 @@ using UnityEngine;
 public class HUD : MonoBehaviour {
 
 	public GameObject target;
-	public UnityEngine.UI.Text clip;
+/*	public UnityEngine.UI.Text clip;
 	public UnityEngine.UI.Text ammo;
-	
+	public Progressbar health_bar;
+
+	private Weapon weapon;
+	private Health health;*/
+
+	private void Start() {
+	/*	weapon = target.GetComponent<Weapon>();
+		health = target.GetComponent<Health>();*/
+	}
+
 	// Update is called once per frame
-	void Update () {
-		Weapon weapon = target.GetComponent<Weapon>();
-		clip.text = weapon.clip.ToString();
+	void Update () {	
+	/*	clip.text = weapon.clip.ToString();
 		ammo.text = weapon.ammo.ToString();
+
+		health_bar.value = health.value / health.max;*/
 	}
 }

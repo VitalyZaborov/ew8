@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
-	public float fireRate = 1;	// RPS
-	public GameObject projectile;
-	public int maxClip = 10;
-	public int maxAmmo = 100;
-	public float maxRecoil = 5;
-	public float recoilStep = 1;
-	public float recoilReduce = 5;
-	public float range = 10;
-	public int _burst = 0;
+	public string gunID;
 	public Transform spawn;
+	public GameObject projectile;
 
+	private GameParams.GunParam param;
 	private int _clip;
 	private int _ammo;
+	private int _burst;
 	private float _recoil;
 	private float shotAt;
 	private float shotTime;
@@ -26,9 +21,9 @@ public class Weapon : MonoBehaviour {
 	public bool reload(){
 		if (_ammo == 0)
 			return false;
-		if (_ammo > maxClip) {
-			_clip = maxClip;
-			_ammo -= maxClip;
+		if (_ammo > param.clip) {
+			_clip = param.clip;
+			_ammo -= param.clip;
 		} else {
 			_clip = _ammo;
 			_ammo = 0;
@@ -72,11 +67,21 @@ public class Weapon : MonoBehaviour {
 		}
 	}
 
-	public int ammo
-	{
-		get
-		{
+	public int maxClip {
+		get {
+			return param.clip;
+		}
+	}
+
+	public int ammo {
+		get {
 			return _ammo;
+		}
+	}
+
+	public int maxAmmo {
+		get {
+			return param.ammo;
 		}
 	}
 
@@ -86,17 +91,30 @@ public class Weapon : MonoBehaviour {
 		}
 	}
 
+	public float maxRecoil {
+		get {
+			return param.recoilMax;
+		}
+	}
+
 	public bool justShot {
 		get {
 			return _justShot;
 		}
 	}
 
+	public float range {
+		get {
+			return param.range;
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
-		_clip = maxClip;
-		_ammo = maxAmmo;
-		shotTime = 1 / fireRate;
+		param = GameParams.gunParam[gunID];
+		_clip = param.clip;
+		_ammo = param.ammo;
+		shotTime = 60f / param.firerate;
 	}
 	
 	// Update is called once per frame
@@ -106,11 +124,11 @@ public class Weapon : MonoBehaviour {
 			while (ready && _clip > 0) {
 				doFire();
 			}
-			if (_clip == 0)
+			if (_clip == 0 || (param.burst > 0 && _burst >= param.burst))
 				shooting = false;
 		} else {
 			if(_recoil > 0){
-				_recoil = Mathf.Max (0, _recoil - Time.deltaTime * recoilReduce);
+				_recoil = Mathf.Max (0, _recoil - Time.deltaTime * param.recoilReduce);
 			}
 		}
 	}
@@ -119,8 +137,8 @@ public class Weapon : MonoBehaviour {
 		shotAt = Time.time;
 		GameObject o = Instantiate (projectile, spawn.position, transform.rotation * Quaternion.Euler(0, Random.Range(-_recoil, _recoil), 0));
 		Projectile prj = o.GetComponent<Projectile> ();
-		prj.init (gameObject);
-		_recoil = Mathf.Min(_recoil + recoilStep, maxRecoil);
+		prj.init (gameObject, param.velocity);
+		_recoil = Mathf.Min(_recoil + param.recoil, param.recoilMax);
 		_burst++;
 		_clip--;
 		_justShot = true;

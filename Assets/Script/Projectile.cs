@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-	public float speed;
-
 	private GameObject owner;
 	private Vector3 movement;
 
-	public void init (GameObject owner) {
+	public void init (GameObject owner, float velocity) {
 		this.owner = owner;
-		movement = transform.rotation * Vector3.forward * speed;
+		movement = transform.rotation * Vector3.forward * velocity;
 	}
 
 	void Update () {
