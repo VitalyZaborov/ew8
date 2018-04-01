@@ -6,14 +6,20 @@ public class Projectile : MonoBehaviour {
 
 	private GameObject owner;
 	private Vector3 movement;
+	private float distance = 0;
+	private float velocity = 0;
+	private GameParams.GunParam gp;
 
 	public void init (GameObject owner, float velocity) {
 		this.owner = owner;
+		this.velocity = velocity;
 		movement = transform.rotation * Vector3.forward * velocity;
+		gp = owner.GetComponent<Weapon>().gunParam;
 	}
 
 	void Update () {
 		transform.position = transform.position + movement * Time.deltaTime;
+		distance += velocity * Time.deltaTime;
 	}
 
 	void OnTriggerEnter (Collider other) {
@@ -23,7 +29,7 @@ public class Projectile : MonoBehaviour {
 
 		Health health = o.GetComponent<Health> ();
 		if (health != null) {
-			health.receiveDamage (0);
+			health.receiveDamage (Weapon.getDamage(gp, distance));
 		}
 
 		Destroy (gameObject);

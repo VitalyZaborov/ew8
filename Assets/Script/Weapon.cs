@@ -18,6 +18,12 @@ public class Weapon : MonoBehaviour {
 	private bool _shooting;
 	private bool _justShot;
 
+	public static int getDamage(GameParams.GunParam param, float dist = 0) {
+		float delta = (dist - param.distMin) / (param.distMax - param.distMin);
+		delta = 1 - Mathf.Clamp(delta, 0, 1);
+		return (int)Mathf.Round(param.dmgMin + delta * (param.dmgMax - param.dmgMin));
+	}
+
 	public bool reload(){
 		if (_ammo == 0)
 			return false;
@@ -106,6 +112,12 @@ public class Weapon : MonoBehaviour {
 	public float range {
 		get {
 			return param.range;
+		}
+	}
+
+	public GameParams.GunParam gunParam {
+		get {
+			return param;
 		}
 	}
 
