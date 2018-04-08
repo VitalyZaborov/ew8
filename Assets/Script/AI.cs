@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 public class AI{
 
 	public static Dictionary<int, AINode[]> ai = new Dictionary<int, AINode[]>{
@@ -16,9 +17,14 @@ public class AI{
 				action = cnxt => new Reload()
 			},
 			new AINode(){
-				target = Condition.getConditions("enemy,hp>50%,nearest"),
+				target = Condition.getConditions("enemy,nearest"),
 				character = Condition.getConditions("self,recoil<5"),
+				extra = delegate(Brain.ActionContext cnxt) {cnxt.memory.write("enemyPos", cnxt.target.transform.position);},
 				action = cnxt => new Shoot(){accuracy = 5}
+			},
+			new AINode(){
+				extra = delegate(Brain.ActionContext cnxt) {cnxt.memory.write("enemyPos", null);},
+				action = cnxt => new GoTo(cnxt.memory.read<Vector3>("enemyPos"))
 			}
 		}}
 	};

@@ -14,6 +14,6 @@ public class Healthbar : HUDElement {
 	}
 
 	private void Update() {
-		bar.value = health.value / health.max;
+		bar.value = health.value / (float)health.max;
 	}
 }

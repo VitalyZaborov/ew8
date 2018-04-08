@@ -21,6 +21,9 @@ public class Follow : Action{
 		base.perform(trg);
 		update (0);
 	}
+	override public bool canPerform(GameObject target) {
+		return target != null && nma.speed > 0;
+	}
 	override public void onAnimation(int param = 0){
 		complete();	//Thinks every second when moves
 	}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Soldier : MonoBehaviour {
 
-	public bool isReloading;
+	public int skin;
 	private Animator animator;
 
 	void Start () {

@@ -2,15 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Brain : MonoBehaviour{
+public class Brain : MonoBehaviour {
 
-	protected class Order{
+	protected class Order {
 		public Action action;
 		public GameObject target;
 		public Condition[] conditions;
 	}
 
+	public class Memory {
+		private Dictionary<string, object> dictionary = new Dictionary<string, object>();
+		public void write(string id, object data) {
+			dictionary[id] = data;
+		}
+		public T read<T>(string id) {
+			object value;
+			return dictionary.TryGetValue(id, out value) ? (T)value : default(T);
+		}
+		public object read(string id) {
+			object value;
+			return dictionary.TryGetValue(id, out value) ? value : null;
+		}
+	}
+
+	public struct ActionContext {
+		public GameObject caster;
+		public GameObject target;
+		public GameObject player;
+		public Memory memory;
+	}
+
 	public int pattern = 0;
+	public Memory memory = new Memory();
 
 	private AINode[] aiArray;
 	protected Action curr_action;
@@ -28,7 +51,7 @@ public class Brain : MonoBehaviour{
 	}
 	void Update(){
 		if(curr_action != null){
-			Debug.Log("Brain update action " + curr_action.ToString());
+		//	Debug.Log("Brain update action " + curr_action.ToString());
 			curr_action.update(Time.deltaTime);
 		}else{
 			think();
@@ -92,21 +115,21 @@ public class Brain : MonoBehaviour{
 	protected void think(){
 		Unit unit = gameObject.GetComponent<Unit> ();
 		List<GameObject> targets = unit.visibleUnits;
-		Debug.Log("Brain think:" + targets.Count.ToString());
 		Action action;
-		ActionContext cnxt = new ActionContext(){caster = gameObject};
+		ActionContext cnxt = new ActionContext() {caster = gameObject, memory = memory };
 		for(int i = 0;i < aiArray.Length;i++){
 			AINode ai_node = aiArray[i];
 			if(ai_node.probability==100 || Random.value * 100 <= ai_node.probability){
 				action = ai_node.action(cnxt);
 				action.init(gameObject);
 				GameObject character = ai_node.character != null ? getTarget(ai_node.character, gameObject, ai_node.target != null ? null : action, targets) : (canDo(gameObject, action) ? gameObject : null);
-				Debug.Log("-- check action " + action.ToString());
-				Debug.Log("-- check character " + (character ? character.ToString() : "none"));
 				if (character != null){
 					GameObject target = ai_node.target != null ? getTarget(ai_node.target, gameObject, action, targets) : character;
-					Debug.Log("-- check target" + (target ? target.ToString() : "none"));
 					if (target != null && performAction(action,target)){
+						if(ai_node.extra != null) {
+							cnxt.target = target;
+							ai_node.extra(cnxt);
+						}
 						return;
 					}
 				}
@@ -130,11 +153,9 @@ public class Brain : MonoBehaviour{
 		} else {
 			pool = new List<GameObject>(targets);
 		}
-		Debug.Log("getTarget" + pool.Count.ToString() + ":" + conditions.ToString());
 		for (int i = 0; i < conditions.Length; i++) {
 			Condition condition = conditions[i];
 			condition.apply(owner, null, pool);
-			Debug.Log("-- applied " + condition.ToString() + ":" + pool.Count.ToString());
 		}
 		return pool.Count != 0 ? pool[0] : null;
 	}

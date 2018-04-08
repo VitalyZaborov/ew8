@@ -16,7 +16,8 @@ public class Action{
 	protected GameObject target;
 	protected int defaultLevel = 1;
 	protected Animator animator;
-	
+	protected Brain brain;
+
 	public string id;	//Присваивается в getAction
 	public int lv;
 
@@ -53,6 +54,7 @@ public class Action{
 	public virtual void init(GameObject cst, object param = null){
 		caster = cst;
 		animator = caster.GetComponent<Animator> ();
+		brain = caster.GetComponent<Brain> ();
 		Caster casterComponent = caster.GetComponent<Caster> ();
 		lv = defaultLevel != 0 ? defaultLevel : casterComponent != null && casterComponent.skills != null && casterComponent.skills[id] != 0 ? casterComponent.skills[id] : 0;
 	}
@@ -92,7 +94,6 @@ public class Action{
 		}*/
 	}
 	protected virtual void complete(){
-		Brain brain = caster.GetComponent<Brain> ();
 		brain.onActionComplete();
 	}
 	//virtual

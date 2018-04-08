@@ -62,7 +62,9 @@ public class Shoot : Action{
 		// Spotting check
 		if(Time.time - sightCheckAt > SIGHT_CHECK_PERIOD) {
 			sightCheckAt = Time.time;
-			if (!cu.canSee(target)){
+			if (cu.canSee(target)){
+				brain.memory.write("enemyPos", target.transform.position);
+			} else {
 				complete();
 				return;
 			}

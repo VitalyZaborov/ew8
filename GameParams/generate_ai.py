@@ -2,6 +2,7 @@ from ai import a as ACTION
 from ai import c as CONDITION
 from ai import t as TARGET
 from ai import p as PROBABILITY
+from ai import e as EXTRA
 from ai import AI
 
 OUTPUT = '../Assets/Script/AI.cs'
@@ -22,6 +23,7 @@ def getPreset(preset):
 		condition = node.get(CONDITION)
 		target = node.get(TARGET)
 		probability = node.get(PROBABILITY)
+		extra = node.get(EXTRA)
 
 		string = '\n			new AINode(){'
 		if target is not None:
@@ -30,6 +32,8 @@ def getPreset(preset):
 			string += '\n				probability = ' + str(probability) + ','
 		if condition is not None:
 			string += '\n				character = Condition.getConditions("' + condition + '"),'
+		if extra is not None:
+			string += '\n				extra = delegate(Brain.ActionContext cnxt) {' + extra + '},'
 		string += '\n				action = ' + getAction(action)
 		string += '\n			}'
 
@@ -48,6 +52,7 @@ def getAction(action):
 
 output = open(OUTPUT, 'w')
 output.write('using System.Collections.Generic;\n')
+output.write('using UnityEngine;\n')
 output.write('public class AI{')
 output.write('\n\n	public static Dictionary<int, AINode[]> ai = new Dictionary<int, AINode[]>{')
 output.write(','.join(getAI(AI)))

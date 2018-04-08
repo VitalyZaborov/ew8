@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class GameArea : MonoBehaviour{
-	public const float VISION_RANGE = 10;
+	public const float VISION_RANGE = 30;
 	private List<GameObject> units;
 
 	GameArea(){

@@ -7,15 +7,23 @@ public class Health : MonoBehaviour {
 	public uint value;
 	public uint max;
 
-	public event Delegate.ComponentEvent evKilled;
+	//	public event Delegate.ComponentEvent evKilled = new Delegate.ComponentEvent();
 
-	public void receiveDamage (int dmg) {
-		if (value == 0)
+	public void receiveDamage(int dmg) {
+		if (dmg == 0 || !isAlive)
 			return;
-		value = (uint)Mathf.Max (0, value - dmg);
+		value = (uint)Mathf.Max(0, value - dmg);
 		if (value == 0) {
-			evKilled (gameObject);
+			//	Destroy(gameObject);
+			gameObject.SetActive(false);
+			//	evKilled (gameObject);
 		}
+	}
+
+	public void recover(int delta) {
+		if (delta <= 0 || value == max)
+			return;
+		value = (uint)Mathf.Min(max, value + delta);
 	}
 
 	public bool isAlive{

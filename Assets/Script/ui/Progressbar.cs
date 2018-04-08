@@ -7,6 +7,7 @@ public class Progressbar : MonoBehaviour {
 	public Image bar;
 	private float currentValue = 1;
 
+	[SerializeField]
 	public float value {
 		get {
 			return currentValue;
@@ -17,7 +18,7 @@ public class Progressbar : MonoBehaviour {
 				return;
 			currentValue = value;
 			if (bar != null)
-				bar.fillAmount = value / 100f;
+				bar.fillAmount = value;
 		}
 	}
 }

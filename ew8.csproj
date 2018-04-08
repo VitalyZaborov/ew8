@@ -299,6 +299,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\actions\Attack.cs" />
     <Compile Include="Assets\Script\actions\Follow.cs" />
+    <Compile Include="Assets\Script\actions\GoTo.cs" />
     <Compile Include="Assets\Script\actions\PlayerControl.cs" />
     <Compile Include="Assets\Script\actions\Reload.cs" />
     <Compile Include="Assets\Script\actions\Rest.cs" />
@@ -306,7 +307,6 @@
     <Compile Include="Assets\Script\actions\Stay.cs" />
     <Compile Include="Assets\Script\AI.cs" />
     <Compile Include="Assets\Script\ai\Action.cs" />
-    <Compile Include="Assets\Script\ai\ActionContext.cs" />
     <Compile Include="Assets\Script\ai\ActionNode.cs" />
     <Compile Include="Assets\Script\ai\AINode.cs" />
     <Compile Include="Assets\Script\ai\Brain.cs" />
@@ -335,6 +335,7 @@
     <Compile Include="Assets\Script\GameArea.cs" />
     <Compile Include="Assets\Script\GameParams.cs" />
     <Compile Include="Assets\Script\Health.cs" />
+    <Compile Include="Assets\Script\Medkit.cs" />
     <Compile Include="Assets\Script\MoveHuman.cs" />
     <Compile Include="Assets\Script\Projectile.cs" />
     <Compile Include="Assets\Script\RotateHuman.cs" />
@@ -347,6 +348,7 @@
     <Compile Include="Assets\Script\ui\HUDElement.cs" />
     <Compile Include="Assets\Script\ui\Progressbar.cs" />
     <Compile Include="Assets\Script\Unit.cs" />
+    <Compile Include="Assets\Script\util\SamePosition.cs" />
     <Compile Include="Assets\Script\Weapon.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

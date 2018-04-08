@@ -25,49 +25,49 @@ public class GameParams{
 			name = "UMP",
 			dmgMax = 28,
 			dmgMin = 12,
-			distMax = 4,
-			distMin = 8,
+			distMax = 12,
+			distMin = 24,
 			firerate = 450,
-			velocity = 4,
+			velocity = 8,
 			clip = 25,
 			ammo = 100,
 			recoil = 3,
 			recoilMax = 15,
 			recoilReduce = 10,
 			burst = 0,
-			range = 10
+			range = 100
 		}},
 		{"AKM", new GunParam{
 			name = "AKM",
 			dmgMax = 25,
 			dmgMin = 19,
-			distMax = 2,
-			distMin = 10,
+			distMax = 6,
+			distMin = 30,
 			firerate = 600,
-			velocity = 6,
+			velocity = 12,
 			clip = 30,
 			ammo = 90,
 			recoil = 3,
 			recoilMax = 25,
 			recoilReduce = 8,
 			burst = 0,
-			range = 10
+			range = 100
 		}},
 		{"M16A3", new GunParam{
 			name = "M16A3",
 			dmgMax = 23,
 			dmgMin = 17,
-			distMax = 6,
-			distMin = 10,
+			distMax = 18,
+			distMin = 30,
 			firerate = 800,
-			velocity = 7,
+			velocity = 14,
 			clip = 30,
 			ammo = 90,
 			recoil = 2,
 			recoilMax = 20,
 			recoilReduce = 12,
 			burst = 3,
-			range = 10
+			range = 100
 		}}
 	};
 }
