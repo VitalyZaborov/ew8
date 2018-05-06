@@ -4,7 +4,22 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
-	public string gunID;
+	[System.Serializable]
+	public class WeaponData {
+		public string id;
+		public int clip;
+		public int ammo;
+
+		public WeaponData() {
+			
+		}
+		public GameParams.GunParam param {
+			get {
+				return id != "" ? GameParams.gunParam[id] : null;
+			}
+		}
+	}
+	private string gunID;
 	public Transform spawn;
 	public GameObject projectile;
 
@@ -24,12 +39,26 @@ public class Weapon : MonoBehaviour {
 		return (int)Mathf.Round(param.dmgMin + delta * (param.dmgMax - param.dmgMin));
 	}
 
+	public WeaponData weapon {
+		get {
+			return new WeaponData { id = gunID, clip = _clip, ammo = _ammo };
+		}
+		set {
+			gunID = value.id;
+			param = GameParams.gunParam[gunID];
+			_clip = value.clip;
+			_ammo = value.ammo;
+			_burst = 0;
+			shotTime = 60f / param.firerate;
+		}
+	}
+
 	public bool reload(){
-		if (_ammo == 0)
+		if (_ammo == 0 || param.clip == _clip)
 			return false;
 		if (_ammo > param.clip) {
+			_ammo -= param.clip - _clip;
 			_clip = param.clip;
-			_ammo -= param.clip;
 		} else {
 			_clip = _ammo;
 			_ammo = 0;
@@ -45,12 +74,8 @@ public class Weapon : MonoBehaviour {
 			if (_shooting == value || (value && _clip == 0))
 				return;
 			_shooting = value;
-			if (_shooting) {
-				if (ready) {
-					shotAt = Time.time - shotTime;
-				}
-			} else {
-				_burst = 0;
+			if (_shooting && ready) {
+				shotAt = Time.time - shotTime;
 			}
 		}
 	}
@@ -63,7 +88,7 @@ public class Weapon : MonoBehaviour {
 
 	public int burst {
 		get {
-			return _burst;
+			return _shooting ? _burst : 0;
 		}
 	}
 
@@ -122,21 +147,17 @@ public class Weapon : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-		param = GameParams.gunParam[gunID];
-		_clip = param.clip;
-		_ammo = param.ammo;
-		shotTime = 60f / param.firerate;
+	void Start() {
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		_justShot = false;
-		if (_shooting) {
+		if (_shooting || (param.burst > 0 && _burst % param.burst != 0)) {
 			while (ready && _clip > 0) {
 				doFire();
 			}
-			if (_clip == 0 || (param.burst > 0 && _burst >= param.burst))
+			if (_clip == 0)
 				shooting = false;
 		} else {
 			if(_recoil > 0){
@@ -154,5 +175,8 @@ public class Weapon : MonoBehaviour {
 		_burst++;
 		_clip--;
 		_justShot = true;
+		if (param.burst > 0 && _burst % param.burst == 0) {
+			shotAt += param.burstDelay;
+		}
 	}
 }

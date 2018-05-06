@@ -4,7 +4,7 @@ INPUT = './Balance.xlsm'
 OUTPUT = '../Assets/Script/GameParams.cs'
 
 
-def getData(cell, field, sheet):
+def getData(cell, field, sheet, type):
 	value = cell.value
 	if value is None:
 		return None
@@ -23,7 +23,7 @@ def getData(cell, field, sheet):
 		return 'new DamageModifier(' + str(value) + ')'
 	if isinstance(value, str):
 		return '"' + value + '"'
-	return str(value)
+	return str(value) + ('f' if type == 'float' else '')
 
 
 def getRow(row):
@@ -35,7 +35,7 @@ def getRow(row):
 	return fields
 
 def getStruct(structName, fields, types):
-	result = '\n\n	public struct ' + structName + '{'
+	result = '\n\n	public class ' + structName + '{'
 	for field, type in zip(fields, types):
 		result += '\n		public ' + type + ' ' + field + ';'
 	result += '\n	}'
@@ -45,7 +45,7 @@ def getParam(row, structName, fields, types):
 	values = []
 	key = None
 	for i, field in enumerate(fields):
-		value = getData(worksheet.cell(row=row, column=i + 1), field, structName)
+		value = getData(worksheet.cell(row=row, column=i + 1), field, structName, types[i])
 		if i == 0:
 			key = value
 		values.append('\n			' + field + ' = ' + str(value));

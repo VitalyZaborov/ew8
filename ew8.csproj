@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
     <UnityVersion>2017.3.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -305,6 +307,8 @@
     <Compile Include="Assets\Script\actions\Rest.cs" />
     <Compile Include="Assets\Script\actions\Shoot.cs" />
     <Compile Include="Assets\Script\actions\Stay.cs" />
+    <Compile Include="Assets\Script\actions\SwitchEmptyWeapon.cs" />
+    <Compile Include="Assets\Script\actions\SwitchWeapon.cs" />
     <Compile Include="Assets\Script\AI.cs" />
     <Compile Include="Assets\Script\ai\Action.cs" />
     <Compile Include="Assets\Script\ai\ActionNode.cs" />
@@ -337,6 +341,7 @@
     <Compile Include="Assets\Script\Health.cs" />
     <Compile Include="Assets\Script\Medkit.cs" />
     <Compile Include="Assets\Script\MoveHuman.cs" />
+    <Compile Include="Assets\Script\Pickup.cs" />
     <Compile Include="Assets\Script\Projectile.cs" />
     <Compile Include="Assets\Script\RotateHuman.cs" />
     <Compile Include="Assets\Script\Soldier.cs" />
@@ -350,6 +355,7 @@
     <Compile Include="Assets\Script\Unit.cs" />
     <Compile Include="Assets\Script\util\SamePosition.cs" />
     <Compile Include="Assets\Script\Weapon.cs" />
+    <Compile Include="Assets\Script\WeaponPickup.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -5,24 +5,13 @@ using UnityEngine;
 public class PlayerControl : Action{
 	
 	private Weapon weapon;
-	private Brain brain;
-	private Plane hPlane;
 
 	override public void init(GameObject cst,object param = null){
 		base.init(cst, param);
 		weapon = caster.GetComponent<Weapon> ();
-		brain = caster.GetComponent<Brain> ();
-		hPlane = new Plane(Vector3.up, Vector3.zero);
 	}
 
 	override public void update(float dt) {
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		float distance = 0;
-		if (hPlane.Raycast(ray, out distance)) {
-			Vector3 worldPos = ray.GetPoint(distance);
-			caster.transform.LookAt(worldPos);
-		}
-
 		if (Input.GetButtonDown("Fire1")) {
 			weapon.shooting = true;
 		}
@@ -35,6 +24,31 @@ public class PlayerControl : Action{
 			Action action = new Reload();
 			action.init(caster);
 			if(action.canPerform(null))
+				brain.addOrder(action);
+		}
+
+		if (Input.GetButtonDown("Drop")) {
+			Soldier soldier = caster.GetComponent<Soldier>();
+			soldier.dropWeapon();
+			Action action = new SwitchEmptyWeapon();
+			action.init(caster);
+			if (action.canPerform(null))
+				brain.addOrder(action);
+		}
+		
+		float axisScroll = Input.GetAxis("Mouse ScrollWheel");
+		if (axisScroll > 0) {
+			Soldier soldier = caster.GetComponent<Soldier>();
+			Action action = new SwitchWeapon(soldier.getNextWeaponIndex());
+			action.init(caster);
+			if (action.canPerform(null))
+				brain.addOrder(action);
+		}
+		if (axisScroll > 0) {
+			Soldier soldier = caster.GetComponent<Soldier>();
+			Action action = new SwitchWeapon(soldier.getPrevWeaponIndex());
+			action.init(caster);
+			if (action.canPerform(null))
 				brain.addOrder(action);
 		}
 	}

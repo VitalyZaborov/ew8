@@ -271,7 +271,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18531bb721cf4741bb59b8ea056decb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isReloading: 0
+  weaponPickup: {fileID: 1237513307191880, guid: c50f001be0826f442b8b66b0660816aa,
+    type: 2}
+  skin: 0
+  weapons: []
+  weaponsArray: []
 --- !u!114 &114546115303061342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -283,16 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ba170a8abc7674ca2a36614d83b3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 8
-  projectile: {fileID: 1588915834067474, guid: e562dc86003690346935a05e95e82f16, type: 2}
-  maxClip: 25
-  maxAmmo: 100
-  maxRecoil: 20
-  recoilStep: 2
-  recoilReduce: 40
-  range: 10
-  _burst: 0
   spawn: {fileID: 4410181253608940}
+  projectile: {fileID: 1588915834067474, guid: e562dc86003690346935a05e95e82f16, type: 2}
 --- !u!114 &114586098285804828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,7 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f812fccba28ef484ea7c90f1cf1d4b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   backSpeedMod: 1
 --- !u!114 &114748028978912976
 MonoBehaviour:
@@ -373,7 +368,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!212 &212055259936621288
