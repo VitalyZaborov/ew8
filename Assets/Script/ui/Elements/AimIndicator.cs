@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecoilIndicator : HUDElement {
+public class AimIndicator : HUDElement {
 
 	public RectTransform imageTransform;
 	private WeaponHandling handling;
@@ -13,7 +13,7 @@ public class RecoilIndicator : HUDElement {
 	}
 
 	private void Update() {
-		float recoilScale = 0.5f + handling.recoil * 0.05f;
-		imageTransform.localScale = new Vector3(recoilScale, recoilScale, recoilScale);
+		float scale = 1.0f - handling.aim;
+		imageTransform.localScale = new Vector3(scale, scale, scale);
 	}
 }

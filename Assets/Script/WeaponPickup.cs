@@ -8,13 +8,11 @@ public class WeaponPickup : Pickup {
 	public Weapon.WeaponData wdata;
 	public SpriteRenderer spriteRenderer;
 
-	private GameObject droppedBy;
 	private static Sprite[] sprites;
 
-	public void setWeapon(Weapon.WeaponData wd, GameObject o = null) {
+	public void setWeapon(Weapon.WeaponData wd) {
 		Debug.Assert(wd != null && wd.param != null, "[WeaponPickup] Attempt to set a null weapon to pickup.");
 		wdata = wd;
-		droppedBy = o;
 		
 		spriteRenderer.sprite = sprites[wdata.param.sprite];
 	}
@@ -30,11 +28,6 @@ public class WeaponPickup : Pickup {
 		if (rb.velocity != Vector3.zero)
 			return false;
 		Soldier soldier = o.GetComponent<Soldier>();
-		return droppedBy != o && soldier != null && soldier.takeWeapon(wdata);
-	}
-	void OnTriggerExit(Collider other) {
-		if (droppedBy == other.gameObject) {
-			droppedBy = null;
-		}
+		return soldier != null && soldier.takeWeapon(wdata);
 	}
 }

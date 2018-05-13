@@ -4,27 +4,44 @@ using UnityEngine;
 
 public class PlayerControl : Action{
 	
-	private Weapon weapon;
+	private Weapon primary;
+	private SecondaryWeapon secondary;
 
 	override public void init(GameObject cst,object param = null){
 		base.init(cst, param);
-		weapon = caster.GetComponent<Weapon> ();
+		primary = caster.GetComponent<Weapon> ();
+		secondary = caster.GetComponent<SecondaryWeapon> ();
 	}
 
 	override public void update(float dt) {
 		if (Input.GetButtonDown("Fire1")) {
-			weapon.shooting = true;
+			if (primary.clip > 0) {
+				primary.shooting = true;
+			} else {
+				reload();
+			}
+
 		}
 
 		if (Input.GetButtonUp("Fire1")) {
-			weapon.shooting = false;
+			primary.shooting = false;
+		}
+		if (Input.GetButtonDown("Fire2") && secondary.enabled) {
+			if(secondary.clip > 0) {
+				secondary.shooting = true;
+			} else {
+				reload();
+			}
+			Debug.Log("Fire2 "+ secondary.clip.ToString() + " " + secondary.shooting.ToString());
+			
+		}
+
+		if (Input.GetButtonUp("Fire2") && secondary.enabled) {
+			secondary.shooting = false;
 		}
 
 		if (Input.GetButtonDown("Reload")) {
-			Action action = new Reload();
-			action.init(caster);
-			if(action.canPerform(null))
-				brain.addOrder(action);
+			reload();
 		}
 
 		if (Input.GetButtonDown("Drop")) {
@@ -54,5 +71,11 @@ public class PlayerControl : Action{
 	}
 	public override bool intercept() {
 		return true;
+	}
+	private void reload() {
+		Action action = new Reload();
+		action.init(caster);
+		if (action.canPerform(null))
+			brain.addOrder(action);
 	}
 }

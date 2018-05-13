@@ -5,6 +5,7 @@ public class GameParams{
 
 	public class GunParam{
 		public string name;
+		public string caliber;
 		public int category;
 		public int sprite;
 		public int dmgMax;
@@ -21,11 +22,49 @@ public class GameParams{
 		public int burst;
 		public float burstDelay;
 		public float range;
+		public string prj;
+		public float crit;
+		public float aim;
+		public float aimFallWalk;
+		public float aimFallTurn;
+		public float angle;
+		public int pellets;
+
+		public GunParam clone(){
+			return new GunParam(){
+				name = name,
+				caliber = caliber,
+				category = category,
+				sprite = sprite,
+				dmgMax = dmgMax,
+				dmgMin = dmgMin,
+				distMax = distMax,
+				distMin = distMin,
+				firerate = firerate,
+				velocity = velocity,
+				clip = clip,
+				ammo = ammo,
+				recoil = recoil,
+				recoilMax = recoilMax,
+				recoilReduce = recoilReduce,
+				burst = burst,
+				burstDelay = burstDelay,
+				range = range,
+				prj = prj,
+				crit = crit,
+				aim = aim,
+				aimFallWalk = aimFallWalk,
+				aimFallTurn = aimFallTurn,
+				angle = angle,
+				pellets = pellets
+			};
+		}
 	}
 
 	public static Dictionary<string, GunParam> gunParam = new Dictionary<string, GunParam>{
 		{"AKM", new GunParam{
 			name = "AKM",
+			caliber = "7.62x39",
 			category = 0,
 			sprite = 0,
 			dmgMax = 25,
@@ -41,10 +80,18 @@ public class GameParams{
 			recoilReduce = 16f,
 			burst = 0,
 			burstDelay = 0f,
-			range = 100f
+			range = 100f,
+			prj = "Bullet",
+			crit = 2f,
+			aim = 1f,
+			aimFallWalk = 1f,
+			aimFallTurn = 1f,
+			angle = 0f,
+			pellets = 1
 		}},
 		{"M16A3", new GunParam{
 			name = "M16A3",
+			caliber = ".223",
 			category = 0,
 			sprite = 1,
 			dmgMax = 23,
@@ -60,10 +107,18 @@ public class GameParams{
 			recoilReduce = 20f,
 			burst = 3,
 			burstDelay = 0.2f,
-			range = 100f
+			range = 100f,
+			prj = "Bullet",
+			crit = 2f,
+			aim = 1f,
+			aimFallWalk = 1f,
+			aimFallTurn = 1f,
+			angle = 0f,
+			pellets = 1
 		}},
 		{"UMP", new GunParam{
 			name = "UMP",
+			caliber = ".45 ACP",
 			category = 0,
 			sprite = 2,
 			dmgMax = 28,
@@ -79,7 +134,68 @@ public class GameParams{
 			recoilReduce = 25f,
 			burst = 0,
 			burstDelay = 0f,
-			range = 100f
+			range = 100f,
+			prj = "Bullet",
+			crit = 2f,
+			aim = 0.8f,
+			aimFallWalk = 1f,
+			aimFallTurn = 1f,
+			angle = 0f,
+			pellets = 1
+		}},
+		{"M203", new GunParam{
+			name = "M203",
+			caliber = "40 mm",
+			category = -1,
+			sprite = -1,
+			dmgMax = 100,
+			dmgMin = 50,
+			distMax = 0.5f,
+			distMin = 2f,
+			firerate = 60,
+			velocity = 4f,
+			clip = 1,
+			ammo = 4,
+			recoil = 10f,
+			recoilMax = 20f,
+			recoilReduce = 20f,
+			burst = 0,
+			burstDelay = 0f,
+			range = 100f,
+			prj = "HE40",
+			crit = 1f,
+			aim = 1f,
+			aimFallWalk = 1f,
+			aimFallTurn = 1f,
+			angle = 0f,
+			pellets = 1
+		}},
+		{"M870", new GunParam{
+			name = "M870",
+			caliber = ".12",
+			category = 0,
+			sprite = 2,
+			dmgMax = 20,
+			dmgMin = 10,
+			distMax = 5f,
+			distMin = 12f,
+			firerate = 80,
+			velocity = 7f,
+			clip = 6,
+			ammo = 24,
+			recoil = 5f,
+			recoilMax = 15f,
+			recoilReduce = 15f,
+			burst = 0,
+			burstDelay = 0f,
+			range = 100f,
+			prj = "Bullet",
+			crit = 1.5f,
+			aim = 1f,
+			aimFallWalk = 1f,
+			aimFallTurn = 1f,
+			angle = 10f,
+			pellets = 5
 		}}
 	};
 }

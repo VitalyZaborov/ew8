@@ -38,6 +38,11 @@ def getStruct(structName, fields, types):
 	result = '\n\n	public class ' + structName + '{'
 	for field, type in zip(fields, types):
 		result += '\n		public ' + type + ' ' + field + ';'
+	result += '\n\n		public ' + structName + ' clone(){'
+	result += '\n			return new ' + structName + '(){'
+	rows = ['\n				' + field + ' = ' + field for field in fields]
+	result += ','.join(rows)
+	result += '\n			};\n		}'
 	result += '\n	}'
 	return result
 

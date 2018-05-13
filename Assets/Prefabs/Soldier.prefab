@@ -61,6 +61,8 @@ GameObject:
   - component: {fileID: 114546115303061342}
   - component: {fileID: 114793434274818882}
   - component: {fileID: 114748028978912976}
+  - component: {fileID: 114552848326717590}
+  - component: {fileID: 114504646330817038}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Player
@@ -152,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082034759540866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 17.25793, y: 30.488281, z: 4.833396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4627759966657176}
@@ -274,8 +276,22 @@ MonoBehaviour:
   weaponPickup: {fileID: 1237513307191880, guid: c50f001be0826f442b8b66b0660816aa,
     type: 2}
   skin: 0
-  weapons: []
-  weaponsArray: []
+  weapons:
+  - id: AKM
+    clip: -1
+    ammo: -1
+    attachments: []
+--- !u!114 &114504646330817038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1082034759540866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3352d6e3c0ce5604fb22d98101ecd482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114546115303061342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,7 +304,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn: {fileID: 4410181253608940}
-  projectile: {fileID: 1588915834067474, guid: e562dc86003690346935a05e95e82f16, type: 2}
+--- !u!114 &114552848326717590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1082034759540866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fd2aaa5eb4ca54fb34f51debbcdd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 4410181253608940}
 --- !u!114 &114586098285804828
 MonoBehaviour:
   m_ObjectHideFlags: 1

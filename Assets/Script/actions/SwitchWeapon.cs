@@ -23,7 +23,7 @@ public class SwitchWeapon : Action {
 		animator.SetBool("switching", true);
 	}
 	override public bool canPerform(GameObject target) {
-		return soldier.weaponIndex != switch_to && soldier.weaponsArray[switch_to] != null;
+		return soldier.weaponIndex != switch_to && soldier.weapons[switch_to] != null;
 	}
 	override public void onAnimation(int param = 0) {
 		complete();

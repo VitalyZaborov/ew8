@@ -7,20 +7,20 @@ public class Soldier : MonoBehaviour {
 	private const float DROP_FORCE = 100.0f;
 	public GameObject weaponPickup;
 	public int skin;
-	public string[] weapons;
-	public Weapon.WeaponData[] weaponsArray;
+	public Weapon.WeaponData[] weapons;
 	private int wIndex = -1;
 	private Animator animator;
-	private Weapon weapon;
+	private Weapon primary;
+	private SecondaryWeapon secondary;
 
 	void Start () {
 		animator = GetComponent<Animator> ();
-		weapon = GetComponent<Weapon> ();
-		weaponsArray = new Weapon.WeaponData[weapons.Length];
-		for(int i = 0; i < weapons.Length; i++) {
-			string gunID = weapons[i];
-			GameParams.GunParam param = GameParams.gunParam[gunID];
-			weaponsArray[i] = new Weapon.WeaponData { id = gunID, clip = param.clip, ammo = param.ammo };
+		primary = GetComponent<Weapon> ();
+		secondary = GetComponent<SecondaryWeapon> ();
+		for (int i = 0; i < weapons.Length; i++) {
+			Weapon.WeaponData wdata = weapons[i];
+			wdata.init();
+			wdata.applyAtachments();
 		}
 		weaponIndex = 0;
 	}
@@ -31,23 +31,23 @@ public class Soldier : MonoBehaviour {
 	}
 
 	public bool takeWeapon(Weapon.WeaponData wdata) {
-		if (weaponsArray[wdata.param.category] != null)
+		if (weapons[wdata.param.category] != null)
 			return false;
-		weaponsArray[wdata.param.category] = wdata;
+		weapons[wdata.param.category] = wdata;
 		return true;
 	}
 	public bool dropWeapon(int index = -1) {
 		if (index == -1)
 			index = wIndex;
 		// Can't drop weapon he dont have and the last weapon in the list
-		if(weaponsArray[index] == null || index == weaponsArray.Length - 1)
+		if(weapons[index] == null || index == weapons.Length - 1)
 			return false;
 		GameObject o = Instantiate(weaponPickup, transform.position, transform.rotation);
 		WeaponPickup pickup = o.GetComponent<WeaponPickup>();
 		Rigidbody rb = o.GetComponent<Rigidbody>();
-		pickup.setWeapon(weaponsArray[index], gameObject);
+		pickup.setWeapon(weapons[index]);
 		rb.AddRelativeForce(transform.rotation * Vector3.forward * DROP_FORCE);
-		weaponsArray[index] = null;
+		weapons[index] = null;
 		return true;
 	}
 	public int weaponIndex {
@@ -58,14 +58,16 @@ public class Soldier : MonoBehaviour {
 			if (value == wIndex)
 				return;
 			wIndex = value;
-			weapon.weapon = weaponsArray[wIndex];
+			Weapon.WeaponData wdata = weapons[wIndex];
+			primary.weapon = wdata;
+			secondary.weapon = wdata.secondary;
 		}
 	}
 	public int getNextWeaponIndex() {
 		for (int i = wIndex + 1; i != wIndex; i++) {
-			if (i >= weaponsArray.Length)
+			if (i >= weapons.Length)
 				i = 0;
-			if (weaponsArray[i] != null)
+			if (weapons[i] != null)
 				return i;
 		}
 		return wIndex;
@@ -73,8 +75,8 @@ public class Soldier : MonoBehaviour {
 	public int getPrevWeaponIndex() {
 		for (int i = wIndex - 1; i != wIndex; i--) {
 			if (i < 0)
-				i = weaponsArray.Length - 1;
-			if (weaponsArray[i] != null)
+				i = weapons.Length - 1;
+			if (weapons[i] != null)
 				return i;
 		}
 		return wIndex;

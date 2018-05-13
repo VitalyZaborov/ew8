@@ -17,7 +17,7 @@ public class GameArea : MonoBehaviour{
 
 	public void addUnit(GameObject unit){
 		Debug.Assert (!units.Contains (unit));
-		Debug.Log("GameArea add " + unit.ToString() +" to " + units.Count.ToString());
+	//	Debug.Log("GameArea add " + unit.ToString() +" to " + units.Count.ToString());
 		Unit u = unit.GetComponent<Unit>();
 		u.playerControllable = unit.tag == "Player";
 		units.Add (unit);
@@ -25,7 +25,7 @@ public class GameArea : MonoBehaviour{
 
 	public void removeUnit(GameObject unit){
 		Debug.Assert (units.Contains (unit));
-		Debug.Log("GameArea remove " + unit.ToString() + " from " + units.Count.ToString());
+	//	Debug.Log("GameArea remove " + unit.ToString() + " from " + units.Count.ToString());
 		units.Remove (unit);
 	}
 
@@ -38,7 +38,6 @@ public class GameArea : MonoBehaviour{
 				result.Add(obj);
 			}
 		}
-		Debug.Log("GameArea get " + units.Count.ToString());
 		return result;
 	}
 }

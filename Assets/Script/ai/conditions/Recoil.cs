@@ -8,7 +8,7 @@ public class Recoil : NumericCondition{
 	}
 
 	override protected bool check(GameObject owner, GameObject player, GameObject unit){
-		Weapon weapon = unit.GetComponent<Weapon> ();
-		return weapon ? compare (percent ? weapon.recoil / weapon.maxRecoil * 100 : weapon.recoil) : false;
+		WeaponHandling handling = unit.GetComponent<WeaponHandling> ();
+		return handling ? compare (percent ? handling.recoil / handling.maxRecoil * 100 : handling.recoil) : false;
 	}
 }

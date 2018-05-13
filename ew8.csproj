@@ -335,6 +335,7 @@
     <Compile Include="Assets\Script\ai\conditions\StaticCondition.cs" />
     <Compile Include="Assets\Script\ai\conditions\TerminalCondition.cs" />
     <Compile Include="Assets\Script\ai\Vision.cs" />
+    <Compile Include="Assets\Script\Attachment.cs" />
     <Compile Include="Assets\Script\Delegate.cs" />
     <Compile Include="Assets\Script\GameArea.cs" />
     <Compile Include="Assets\Script\GameParams.cs" />
@@ -344,8 +345,10 @@
     <Compile Include="Assets\Script\Pickup.cs" />
     <Compile Include="Assets\Script\Projectile.cs" />
     <Compile Include="Assets\Script\RotateHuman.cs" />
+    <Compile Include="Assets\Script\SecondaryWeapon.cs" />
     <Compile Include="Assets\Script\Soldier.cs" />
     <Compile Include="Assets\Script\ui\Crosshair.cs" />
+    <Compile Include="Assets\Script\ui\Elements\AimIndicator.cs" />
     <Compile Include="Assets\Script\ui\Elements\AmmoCounter.cs" />
     <Compile Include="Assets\Script\ui\Elements\Healthbar.cs" />
     <Compile Include="Assets\Script\ui\Elements\RecoilIndicator.cs" />
@@ -353,8 +356,10 @@
     <Compile Include="Assets\Script\ui\HUDElement.cs" />
     <Compile Include="Assets\Script\ui\Progressbar.cs" />
     <Compile Include="Assets\Script\Unit.cs" />
+    <Compile Include="Assets\Script\util\Lifetime.cs" />
     <Compile Include="Assets\Script\util\SamePosition.cs" />
     <Compile Include="Assets\Script\Weapon.cs" />
+    <Compile Include="Assets\Script\WeaponHandling.cs" />
     <Compile Include="Assets\Script\WeaponPickup.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

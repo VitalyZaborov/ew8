@@ -4,64 +4,98 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
+	private const float AIM_LOSE_PER_DEGREE = 0.01f;
+	private const float AIM_LOSE_PER_DISTANCE = 1f;
+
 	[System.Serializable]
 	public class WeaponData {
-		public string id;
-		public int clip;
-		public int ammo;
+		public string id = "";
+		public int clip = -1;
+		public int ammo = -1;
+		public GameParams.GunParam param;
+		public WeaponData secondary;
+		public string[] attachments;
 
 		public WeaponData() {
-			
 		}
-		public GameParams.GunParam param {
-			get {
-				return id != "" ? GameParams.gunParam[id] : null;
+		public WeaponData(string id) {
+			this.id = id;
+			init();
+		}
+		public void init() {
+			param = GameParams.gunParam[id].clone();
+			if (clip < 0) {
+				clip = param.clip;
+			}
+			if (ammo < 0) {
+				ammo = param.ammo;
+			}
+		}
+
+		public void applyAtachments() {
+			foreach (string attachmentID in attachments) {
+				Attachment attachment = Attachment.get(attachmentID);
+				attachment.add(this);
+			}
+		}
+
+		public void removeAtachments() {
+			foreach (string attachmentID in attachments) {
+				Attachment attachment = Attachment.get(attachmentID);
+				attachment.remove(this);
 			}
 		}
 	}
-	private string gunID;
 	public Transform spawn;
-	public GameObject projectile;
 
-	private GameParams.GunParam param;
-	private int _clip;
-	private int _ammo;
 	private int _burst;
-	private float _recoil;
+	private GameObject projectile;
+	private WeaponData wdata;
 	private float shotAt;
 	private float shotTime;
 	private bool _shooting;
 	private bool _justShot;
+	private WeaponHandling handling;
 
-	public static int getDamage(GameParams.GunParam param, float dist = 0) {
+	public static int getDamage(GameParams.GunParam param, float crit = 0, float dist = 0) {
 		float delta = (dist - param.distMin) / (param.distMax - param.distMin);
 		delta = 1 - Mathf.Clamp(delta, 0, 1);
-		return (int)Mathf.Round(param.dmgMin + delta * (param.dmgMax - param.dmgMin));
+		float total = param.dmgMin + delta * (param.dmgMax - param.dmgMin);
+		if (Random.value <= crit)
+			total *= param.crit;
+		return (int)Mathf.Round(total);
 	}
 
-	public WeaponData weapon {
+	virtual public WeaponData weapon {
 		get {
-			return new WeaponData { id = gunID, clip = _clip, ammo = _ammo };
+			return wdata;
 		}
 		set {
-			gunID = value.id;
-			param = GameParams.gunParam[gunID];
-			_clip = value.clip;
-			_ammo = value.ammo;
+			wdata = value;
 			_burst = 0;
-			shotTime = 60f / param.firerate;
+			enabled = wdata != null;
+			if (enabled) {
+				shotTime = 60f / wdata.param.firerate;
+				projectile = Resources.Load<GameObject>("projectiles/" + wdata.param.prj);
+				handling.reset();
+			} else {
+				projectile = null;
+
+			}
 		}
 	}
 
 	public bool reload(){
-		if (_ammo == 0 || param.clip == _clip)
+		if (wdata == null)
 			return false;
-		if (_ammo > param.clip) {
-			_ammo -= param.clip - _clip;
-			_clip = param.clip;
+		if (wdata.ammo == 0 || wdata.param.clip == wdata.clip)
+			return false;
+		if (wdata.ammo > wdata.param.clip) {
+			wdata.ammo -= wdata.param.clip - wdata.clip;
+			wdata.clip = wdata.param.clip;
 		} else {
-			_clip = _ammo;
-			_ammo = 0;
+			wdata.clip = wdata.ammo;
+			wdata.ammo = 0;
 		}
 		return true;
 	}
@@ -71,10 +105,10 @@ public class Weapon : MonoBehaviour {
 			return _shooting;
 		}
 		set {
-			if (_shooting == value || (value && _clip == 0))
+			if (_shooting == value || (value && wdata.clip == 0))
 				return;
 			_shooting = value;
-			if (_shooting && ready) {
+			if (_shooting) {
 				shotAt = Time.time - shotTime;
 			}
 		}
@@ -94,37 +128,25 @@ public class Weapon : MonoBehaviour {
 
 	public int clip {
 		get {
-			return _clip;
+			return wdata != null ? wdata.clip : 0;
 		}
 	}
 
 	public int maxClip {
 		get {
-			return param.clip;
+			return wdata != null ? wdata.param.clip : 0;
 		}
 	}
 
 	public int ammo {
 		get {
-			return _ammo;
+			return wdata != null ? wdata.ammo : 0;
 		}
 	}
 
 	public int maxAmmo {
 		get {
-			return param.ammo;
-		}
-	}
-
-	public float recoil {
-		get {
-			return _recoil;
-		}
-	}
-
-	public float maxRecoil {
-		get {
-			return param.recoilMax;
+			return wdata != null ?  wdata.param.ammo : 0;
 		}
 	}
 
@@ -136,47 +158,54 @@ public class Weapon : MonoBehaviour {
 
 	public float range {
 		get {
-			return param.range;
+			return wdata != null ? wdata.param.range : 0;
 		}
 	}
 
-	public GameParams.GunParam gunParam {
+	public bool firing {
 		get {
-			return param;
+			return _shooting || (wdata.param.burst > 0 && _burst % wdata.param.burst != 0);
 		}
 	}
 
-	// Use this for initialization
-	void Start() {
+	private void Start() {
+		handling = GetComponent<WeaponHandling>();
 	}
 
-	// Update is called once per frame
-	void Update () {
+	protected void Update () {
 		_justShot = false;
-		if (_shooting || (param.burst > 0 && _burst % param.burst != 0)) {
-			while (ready && _clip > 0) {
+		if (firing) {
+			while (ready && wdata.clip > 0) {
 				doFire();
 			}
-			if (_clip == 0)
+			if (wdata.clip == 0)
 				shooting = false;
-		} else {
-			if(_recoil > 0){
-				_recoil = Mathf.Max (0, _recoil - Time.deltaTime * param.recoilReduce);
-			}
 		}
 	}
 
 	private void doFire(){
 		shotAt = Time.time;
-		GameObject o = Instantiate (projectile, spawn.position, transform.rotation * Quaternion.Euler(0, Random.Range(-_recoil, _recoil), 0));
-		Projectile prj = o.GetComponent<Projectile> ();
-		prj.init (gameObject, param.velocity);
-		_recoil = Mathf.Min(_recoil + param.recoil, param.recoilMax);
-		_burst++;
-		_clip--;
-		_justShot = true;
-		if (param.burst > 0 && _burst % param.burst == 0) {
-			shotAt += param.burstDelay;
+		float recoilAngle = Random.Range(-handling.recoil, handling.recoil);
+		if(wdata.param.pellets > 1) {
+			for (int i = 0; i < wdata.param.pellets; i++) {
+				spawnProjectile(wdata.param.angle * i / (wdata.param.pellets - 1) + recoilAngle);
+			}
+		} else {
+			spawnProjectile(recoilAngle);
 		}
+
+		handling.addRecoil(wdata.param.recoil);
+		_burst++;
+		wdata.clip--;
+		_justShot = true;
+		if (wdata.param.burst > 0 && _burst % wdata.param.burst == 0) {
+			shotAt += wdata.param.burstDelay;
+		}
+	}
+
+	private void spawnProjectile(float angle) {
+		GameObject o = Instantiate(projectile, spawn.position, transform.rotation * Quaternion.Euler(0, angle, 0));
+		Projectile prj = o.GetComponent<Projectile>();
+		prj.init(gameObject, wdata, handling.aim);
 	}
 }
