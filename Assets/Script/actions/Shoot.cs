@@ -7,14 +7,12 @@ public class Shoot : Action{
 
 	private float sightCheckAt = 0;
 	private Weapon weapon;
-	private WeaponHandling handling;
 	public float accuracy = float.MaxValue;
 	public int shots = int.MaxValue;
 
 	override public void init(GameObject cst,object param = null){
 		base.init(cst, param);
 		weapon = caster.GetComponent<Weapon> ();
-		handling = caster.GetComponent<WeaponHandling> ();
 	}
 	override public float range {
 		get{ return weapon.range; }
@@ -42,7 +40,7 @@ public class Shoot : Action{
 		Unit cu = caster.GetComponent<Unit> ();
 		Unit tu = target.GetComponent<Unit> ();
 	//	Debug.Log("[Shoot]canPerform:" + (th.value > 0) +"|"+ ((cu.team & tu.team) == 0) + "|" + (weapon != null) + "|" + (weapon.clip > 0) +"|"+ (weapon.recoil <= accuracy));
-		return (th.value > 0) && ((cu.team & tu.team) == 0) && (weapon != null) && (weapon.clip > 0) && (handling.recoil <= accuracy) && base.canPerform(target);	//Мертвых не бить! Своих тоже не бить
+		return (th.value > 0) && ((cu.team & tu.team) == 0) && (weapon != null) && (weapon.clip > 0) && (weapon.recoil <= accuracy) && base.canPerform(target);	//Мертвых не бить! Своих тоже не бить
 	}
 	override public void update(float dt) {
 
@@ -56,7 +54,7 @@ public class Shoot : Action{
 
 		// Stop shooting on empty clip, exceed recoil or burst size
 
-		if (weapon.justShot && (weapon.clip == 0 || handling.recoil > accuracy || weapon.burst > shots)) {
+		if (weapon.justShot && (weapon.clip == 0 || weapon.recoil > accuracy || weapon.burst > shots)) {
 			complete();
 			return;
 		}

@@ -10,13 +10,11 @@ public class Soldier : MonoBehaviour {
 	public Weapon.WeaponData[] weapons;
 	private int wIndex = -1;
 	private Animator animator;
-	private Weapon primary;
-	private SecondaryWeapon secondary;
+	private Weapon weapon;
 
 	void Start () {
 		animator = GetComponent<Animator> ();
-		primary = GetComponent<Weapon> ();
-		secondary = GetComponent<SecondaryWeapon> ();
+		weapon = GetComponent<Weapon> ();
 		for (int i = 0; i < weapons.Length; i++) {
 			Weapon.WeaponData wdata = weapons[i];
 			wdata.init();
@@ -59,8 +57,7 @@ public class Soldier : MonoBehaviour {
 				return;
 			wIndex = value;
 			Weapon.WeaponData wdata = weapons[wIndex];
-			primary.weapon = wdata;
-			secondary.weapon = wdata.secondary;
+			weapon.weapon = wdata;
 		}
 	}
 	public int getNextWeaponIndex() {

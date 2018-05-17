@@ -13,7 +13,6 @@ public class Weapon : MonoBehaviour {
 		public int clip = -1;
 		public int ammo = -1;
 		public GameParams.GunParam param;
-		public WeaponData secondary;
 		public string[] attachments;
 
 		public WeaponData() {
@@ -55,7 +54,10 @@ public class Weapon : MonoBehaviour {
 	private float shotTime;
 	private bool _shooting;
 	private bool _justShot;
-	private WeaponHandling handling;
+	private float _recoil;
+	private float _aim;
+	private Quaternion prevRotation;
+	private Vector3 prevPosition;
 
 	public static int getDamage(GameParams.GunParam param, float crit = 0, float dist = 0) {
 		float delta = (dist - param.distMin) / (param.distMax - param.distMin);
@@ -150,6 +152,18 @@ public class Weapon : MonoBehaviour {
 		}
 	}
 
+	public float recoil {
+		get {
+			return _recoil;
+		}
+	}
+
+	public float maxRecoil {
+		get {
+			return param.recoilMax;
+		}
+	}
+
 	public bool justShot {
 		get {
 			return _justShot;
@@ -168,8 +182,8 @@ public class Weapon : MonoBehaviour {
 		}
 	}
 
-	private void Start() {
-		handling = GetComponent<WeaponHandling>();
+	// Use this for initialization
+	void Start() {
 	}
 
 	protected void Update () {
@@ -180,12 +194,16 @@ public class Weapon : MonoBehaviour {
 			}
 			if (wdata.clip == 0)
 				shooting = false;
+		} else {
+			if(_recoil > 0){
+				_recoil = Mathf.Max (0, _recoil - Time.deltaTime * param.recoilReduce);
+			}
 		}
 	}
 
 	private void doFire(){
 		shotAt = Time.time;
-		float recoilAngle = Random.Range(-handling.recoil, handling.recoil);
+		float recoilAngle = Random.Range(-_recoil, _recoil);
 		if(wdata.param.pellets > 1) {
 			for (int i = 0; i < wdata.param.pellets; i++) {
 				spawnProjectile(wdata.param.angle * i / (wdata.param.pellets - 1) + recoilAngle);
@@ -194,7 +212,7 @@ public class Weapon : MonoBehaviour {
 			spawnProjectile(recoilAngle);
 		}
 
-		handling.addRecoil(wdata.param.recoil);
+		_recoil = Mathf.Min(_recoil + value, wdata.param.recoilMax);
 		_burst++;
 		wdata.clip--;
 		_justShot = true;

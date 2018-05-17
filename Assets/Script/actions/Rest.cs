@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Rest : Stay{
-	private WeaponHandling handling;
+	private Weapon weapon;
 	public float accuracy = 0;
 
 	override public void init(GameObject cst,object param = null){
 		base.init(cst, param);
-		handling = caster.GetComponent<WeaponHandling> ();
+		weapon = caster.GetComponent<Weapon> ();
 	}
 	override public bool canPerform(GameObject target){
-		return handling != null && handling.recoil > accuracy && base.canPerform(target);
+		return weapon != null && weapon.recoil > accuracy && base.canPerform(target);
 	}
 	override public void update(float dt){
-		if (handling.recoil <= accuracy){
+		if (weapon.recoil <= accuracy){
 			complete();
 		}
 	}
