@@ -354,8 +354,10 @@
     <Compile Include="Assets\Script\ui\Elements\RecoilIndicator.cs" />
     <Compile Include="Assets\Script\ui\HUD.cs" />
     <Compile Include="Assets\Script\ui\HUDElement.cs" />
+    <Compile Include="Assets\Script\ui\LevelLoader.cs" />
     <Compile Include="Assets\Script\ui\Progressbar.cs" />
     <Compile Include="Assets\Script\Unit.cs" />
+    <Compile Include="Assets\Script\util\Exit.cs" />
     <Compile Include="Assets\Script\util\Lifetime.cs" />
     <Compile Include="Assets\Script\util\SamePosition.cs" />
     <Compile Include="Assets\Script\Weapon.cs" />
