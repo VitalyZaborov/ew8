@@ -23,7 +23,7 @@ public class AI{
 				action = cnxt => new Shoot(){accuracy = 5}
 			},
 			new AINode(){
-				extra = delegate(Brain.ActionContext cnxt) {cnxt.memory.write("enemyPos", null);},
+				extra = delegate(Brain.ActionContext cnxt) {cnxt.memory.erase("enemyPos");},
 				action = cnxt => new GoTo(cnxt.memory.read<Vector3>("enemyPos"))
 			}
 		}}

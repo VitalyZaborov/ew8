@@ -48,6 +48,11 @@ public class Soldier : MonoBehaviour {
 		weapons[index] = null;
 		return true;
 	}
+	public Weapon.WeaponData currentWeapon {
+		get {
+			return weapons[wIndex];
+		}
+	}
 	public int weaponIndex {
 		get {
 			return wIndex;
@@ -59,6 +64,14 @@ public class Soldier : MonoBehaviour {
 			Weapon.WeaponData wdata = weapons[wIndex];
 			weapon.weapon = wdata;
 		}
+	}
+	public bool switchSecondary() {
+		Weapon.WeaponData wdata = weapons[wIndex];
+		if (wdata == null || wdata.secondary == null) {
+			return false;
+		}
+		weapon.weapon = weapon.weapon == wdata ? wdata.secondary : wdata;
+		return true;
 	}
 	public int getNextWeaponIndex() {
 		for (int i = wIndex + 1; i != wIndex; i++) {

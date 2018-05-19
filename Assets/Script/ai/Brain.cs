@@ -15,9 +15,12 @@ public class Brain : MonoBehaviour {
 		public void write(string id, object data) {
 			dictionary[id] = data;
 		}
+		public void erase(string id) {
+			dictionary.Remove(id);
+		}
 		public T read<T>(string id) {
 			object value;
-			return dictionary.TryGetValue(id, out value) ? (T)value : default(T);
+			return dictionary.TryGetValue(id, out value) && value != null ? (T)value : default(T);
 		}
 		public object read(string id) {
 			object value;

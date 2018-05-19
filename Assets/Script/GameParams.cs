@@ -4,8 +4,9 @@ using System.Collections.Generic;
 public class GameParams{
 
 	public class GunParam{
-		public string name;
+		public string id;
 		public string caliber;
+		public string name;
 		public int category;
 		public int sprite;
 		public int dmgMax;
@@ -32,8 +33,9 @@ public class GameParams{
 
 		public GunParam clone(){
 			return new GunParam(){
-				name = name,
+				id = id,
 				caliber = caliber,
+				name = name,
 				category = category,
 				sprite = sprite,
 				dmgMax = dmgMax,
@@ -63,8 +65,9 @@ public class GameParams{
 
 	public static Dictionary<string, GunParam> gunParam = new Dictionary<string, GunParam>{
 		{"AKM", new GunParam{
-			name = "AKM",
+			id = "AKM",
 			caliber = "7.62x39",
+			name = "AKM",
 			category = 0,
 			sprite = 0,
 			dmgMax = 25,
@@ -90,8 +93,9 @@ public class GameParams{
 			pellets = 1
 		}},
 		{"M16A3", new GunParam{
-			name = "M16A3",
+			id = "M16A3",
 			caliber = ".223",
+			name = "M16A3",
 			category = 0,
 			sprite = 1,
 			dmgMax = 23,
@@ -117,8 +121,9 @@ public class GameParams{
 			pellets = 1
 		}},
 		{"UMP", new GunParam{
-			name = "UMP",
+			id = "UMP",
 			caliber = ".45 ACP",
+			name = "H&K UMP",
 			category = 0,
 			sprite = 2,
 			dmgMax = 28,
@@ -144,8 +149,9 @@ public class GameParams{
 			pellets = 1
 		}},
 		{"M203", new GunParam{
-			name = "M203",
+			id = "M203",
 			caliber = "40 mm",
+			name = "M203",
 			category = -1,
 			sprite = -1,
 			dmgMax = 100,
@@ -171,8 +177,9 @@ public class GameParams{
 			pellets = 1
 		}},
 		{"M870", new GunParam{
-			name = "M870",
+			id = "M870",
 			caliber = ".12",
+			name = "M870",
 			category = 0,
 			sprite = 2,
 			dmgMax = 20,

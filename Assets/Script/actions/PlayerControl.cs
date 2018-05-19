@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerControl : Action{
 	
 	private Weapon weapon;
+	private Soldier soldier;
 
 	override public void init(GameObject cst,object param = null){
 		base.init(cst, param);
 		weapon = caster.GetComponent<Weapon> ();
+		soldier = caster.GetComponent<Soldier>();
 	}
 
 	override public void update(float dt) {
@@ -28,7 +30,6 @@ public class PlayerControl : Action{
 		}
 
 		if (Input.GetButtonDown("Drop")) {
-			Soldier soldier = caster.GetComponent<Soldier>();
 			soldier.dropWeapon();
 			Action action = new SwitchEmptyWeapon();
 			action.init(caster);
@@ -37,19 +38,27 @@ public class PlayerControl : Action{
 		}
 		
 		float axisScroll = Input.GetAxis("Mouse ScrollWheel");
-		if (axisScroll > 0) {
-			Soldier soldier = caster.GetComponent<Soldier>();
-			Action action = new SwitchWeapon(soldier.getNextWeaponIndex());
-			action.init(caster);
-			if (action.canPerform(null))
-				brain.addOrder(action);
+		if (axisScroll < 0) {
+			if(weapon.weapon != null && weapon.weapon.secondary != null) {
+				soldier.switchSecondary();
+			} else {
+				Action action = new SwitchWeapon(soldier.getNextWeaponIndex());
+				action.init(caster);
+				if (action.canPerform(null))
+					brain.addOrder(action);
+			}
+			
 		}
-		if (axisScroll > 0) {
-			Soldier soldier = caster.GetComponent<Soldier>();
-			Action action = new SwitchWeapon(soldier.getPrevWeaponIndex());
-			action.init(caster);
-			if (action.canPerform(null))
-				brain.addOrder(action);
+		else if (axisScroll > 0) {
+			if (weapon.weapon != null && weapon.weapon == soldier.currentWeapon.secondary) {
+				soldier.switchSecondary();
+			} else {
+				Action action = new SwitchWeapon(soldier.getPrevWeaponIndex());
+				action.init(caster);
+				if (action.canPerform(null))
+					brain.addOrder(action);
+			}
+				
 		}
 	}
 	public override bool intercept() {

@@ -30,7 +30,7 @@ AI = {
 		},
 		{
 			a: 'GoTo(cnxt.memory.read<Vector3>("enemyPos"))',
-			e: 'cnxt.memory.write("enemyPos", null);',
+			e: 'cnxt.memory.erase("enemyPos");',
 		},
 	],
 }
