@@ -5,15 +5,15 @@ using UnityEngine;
 public class RecoilIndicator : HUDElement {
 
 	public RectTransform imageTransform;
-	private WeaponHandling handling;
+	private Weapon weapon;
 
 	override protected void Start() {
 		base.Start();
-		handling = target.GetComponent<WeaponHandling>();
+		weapon = target.GetComponent<Weapon>();
 	}
 
 	private void Update() {
-		float recoilScale = 0.5f + handling.recoil * 0.05f;
+		float recoilScale = 0.5f + weapon.recoil * 0.05f;
 		imageTransform.localScale = new Vector3(recoilScale, recoilScale, recoilScale);
 	}
 }

@@ -14,6 +14,7 @@ public class Weapon : MonoBehaviour {
 		public int ammo = -1;
 		public GameParams.GunParam param;
 		public string[] attachments;
+		public Weapon.WeaponData secondary;
 
 		public WeaponData() {
 		}
@@ -79,7 +80,9 @@ public class Weapon : MonoBehaviour {
 			if (enabled) {
 				shotTime = 60f / wdata.param.firerate;
 				projectile = Resources.Load<GameObject>("projectiles/" + wdata.param.prj);
-				handling.reset();
+				_aim = 0;
+			//	_recoil = 0;
+				prevRotation = transform.rotation;
 			} else {
 				projectile = null;
 
@@ -160,7 +163,13 @@ public class Weapon : MonoBehaviour {
 
 	public float maxRecoil {
 		get {
-			return param.recoilMax;
+			return wdata.param.recoilMax;
+		}
+	}
+
+	public float aim {
+		get {
+			return _aim;
 		}
 	}
 
@@ -187,6 +196,13 @@ public class Weapon : MonoBehaviour {
 	}
 
 	protected void Update () {
+		_aim -= Quaternion.Angle(transform.rotation, prevRotation) * wdata.param.aimFallTurn * AIM_LOSE_PER_DEGREE;
+		_aim -= Vector3.Distance(transform.position, prevPosition) * wdata.param.aimFallWalk * AIM_LOSE_PER_DISTANCE;
+		_aim += Time.deltaTime / wdata.param.aim;
+		_aim = Mathf.Clamp(_aim, 0, 1);
+		prevPosition = transform.position;
+		prevRotation = transform.rotation;
+
 		_justShot = false;
 		if (firing) {
 			while (ready && wdata.clip > 0) {
@@ -196,7 +212,7 @@ public class Weapon : MonoBehaviour {
 				shooting = false;
 		} else {
 			if(_recoil > 0){
-				_recoil = Mathf.Max (0, _recoil - Time.deltaTime * param.recoilReduce);
+				_recoil = Mathf.Max (0, _recoil - Time.deltaTime * wdata.param.recoilReduce);
 			}
 		}
 	}
@@ -212,7 +228,7 @@ public class Weapon : MonoBehaviour {
 			spawnProjectile(recoilAngle);
 		}
 
-		_recoil = Mathf.Min(_recoil + value, wdata.param.recoilMax);
+		_recoil = Mathf.Min(_recoil + wdata.param.recoil, wdata.param.recoilMax);
 		_burst++;
 		wdata.clip--;
 		_justShot = true;
@@ -224,6 +240,6 @@ public class Weapon : MonoBehaviour {
 	private void spawnProjectile(float angle) {
 		GameObject o = Instantiate(projectile, spawn.position, transform.rotation * Quaternion.Euler(0, angle, 0));
 		Projectile prj = o.GetComponent<Projectile>();
-		prj.init(gameObject, wdata, handling.aim);
+		prj.init(gameObject, wdata, _aim);
 	}
 }

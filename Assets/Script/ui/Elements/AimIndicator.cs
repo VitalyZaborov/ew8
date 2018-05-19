@@ -5,15 +5,15 @@ using UnityEngine;
 public class AimIndicator : HUDElement {
 
 	public RectTransform imageTransform;
-	private WeaponHandling handling;
+	private Weapon weapon;
 
 	override protected void Start() {
 		base.Start();
-		handling = target.GetComponent<WeaponHandling>();
+		weapon = target.GetComponent<Weapon>();
 	}
 
 	private void Update() {
-		float scale = 1.0f - handling.aim;
+		float scale = 1.0f - weapon.aim;
 		imageTransform.localScale = new Vector3(scale, scale, scale);
 	}
 }
