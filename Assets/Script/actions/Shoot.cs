@@ -7,12 +7,14 @@ public class Shoot : Action{
 
 	private float sightCheckAt = 0;
 	private Weapon weapon;
+	private Unit unit;
 	public float accuracy = float.MaxValue;
 	public int shots = int.MaxValue;
 
 	override public void init(GameObject cst,object param = null){
 		base.init(cst, param);
 		weapon = caster.GetComponent<Weapon> ();
+		unit = caster.GetComponentInParent<Unit>();
 	}
 	override public float range {
 		get{ return weapon.range; }
@@ -37,17 +39,17 @@ public class Shoot : Action{
 	}*/
 	override public bool canPerform(GameObject target){
 		Health th = target.GetComponent<Health> ();
-		Unit cu = caster.GetComponent<Unit> ();
-		Unit tu = target.GetComponent<Unit> ();
-	//	Debug.Log("[Shoot]canPerform:" + (th.value > 0) +"|"+ ((cu.team & tu.team) == 0) + "|" + (weapon != null) + "|" + (weapon.clip > 0) +"|"+ (weapon.recoil <= accuracy));
-		return (th.value > 0) && ((cu.team & tu.team) == 0) && (weapon != null) && (weapon.clip > 0) && (weapon.recoil <= accuracy) && base.canPerform(target);	//Мертвых не бить! Своих тоже не бить
+		Unit tu = target.GetComponentInParent<Unit> ();
+		Rotator rotator = caster.GetComponent<Rotator>();
+	//	Debug.Log("[Shoot]canPerform:" + (th.value > 0) +"|"+ ((unit.team & tu.team) == 0) + "|" + (weapon != null) + "|" + (weapon.clip > 0) +"|"+ (weapon.recoil <= accuracy));
+		return (th.value > 0) && rotator != null && rotator.canTurnTo(target.transform.position) && ((unit.team & tu.team) == 0) && (weapon != null) && (weapon.clip > 0) && (weapon.recoil <= accuracy) && base.canPerform(target);	//Мертвых не бить! Своих тоже не бить
 	}
 	override public void update(float dt) {
-
-		Unit cu = caster.GetComponent<Unit> ();
+		Unit cu = caster.GetComponentInParent<Unit> ();
+		Rotator rotator = caster.GetComponent<Rotator>();
 
 		// Try to aim
-		if (!cu.turn(target.transform.position)) {
+		if (!rotator.turn(target.transform.position)) {
 			weapon.shooting = false;
 			return;
 		}
@@ -75,7 +77,7 @@ public class Shoot : Action{
 		}
 	}
 	protected override void complete() {
-		base.complete();
 		weapon.shooting = false;
+		base.complete();
 	}
 }

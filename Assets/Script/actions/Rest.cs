@@ -18,6 +18,4 @@ public class Rest : Stay{
 			complete();
 		}
 	}
-	override public void onAnimation(int param = 0) {
-	}
 }

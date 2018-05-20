@@ -41,7 +41,6 @@ public class Unit : MonoBehaviour{
 			_playerControllable = value;
 			MoveHuman mh = gameObject.GetComponent<MoveHuman>();
 			mh.enabled = _playerControllable;
-			brain.setAI(_playerControllable ? 0 : brain.pattern);
 		}
 	}
 
@@ -59,28 +58,6 @@ public class Unit : MonoBehaviour{
 		get{
 			return ga.getVisibleUnits(gameObject);
 		}
-	}
-
-	public bool turn(Vector3 position) {
-		NavMeshAgent nma = GetComponent<NavMeshAgent>();
-		Quaternion targetRotation = Quaternion.LookRotation(position - transform.position);
-		float step = nma.angularSpeed * Time.deltaTime;
-		transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, step);
-		return Quaternion.Angle(transform.rotation, targetRotation) < 0.1;
-		/*	float angle = Vector3.Angle(transform.position, position);
-			if (angle == 0)
-				return true;
-			NavMeshAgent nma = GetComponent<NavMeshAgent>();
-			Debug.Log("Turn: " + angle.ToString() + transform.position.ToString() + " -> " + position.ToString());
-			angle = Mathf.Min(angle, Time.deltaTime * nma.angularSpeed);
-			transform.Rotate(Vector3.up, angle);*/
-		/*	bool updatePosition = nma.updatePosition;
-			bool updateRotation = nma.updateRotation;
-			nma.updatePosition = false;
-			nma.updateRotation = true;
-			nma.SetDestination (position);
-			nma.updatePosition = updatePosition;
-			nma.updateRotation = updateRotation;*/
 	}
 
 	public bool canSee(GameObject unit) {

@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 114546115303061342}
   - component: {fileID: 114793434274818882}
   - component: {fileID: 114748028978912976}
+  - component: {fileID: 114920217635407884}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Player
@@ -314,7 +315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a958c1a0df3bc9a42bfe7acf87e42137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pattern: 1
+  pattern: common
+  unit: {fileID: 114793434274818882}
 --- !u!114 &114765503327651762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,6 +342,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
+--- !u!114 &114920217635407884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1082034759540866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f3965eb9a65d34ba468b371979d7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 180
 --- !u!135 &135920070502590782
 SphereCollider:
   m_ObjectHideFlags: 1

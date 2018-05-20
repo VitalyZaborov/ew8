@@ -21,13 +21,13 @@ public class GoTo : Action {
 		update(0);
 	}
 	override public bool canPerform(GameObject target) {
-		return position.sqrMagnitude != 0 && nma.speed > 0;
+		return position.sqrMagnitude != 0 && position != caster.transform.position && nma.speed > 0;
 	}
 	override public void onAnimation(int param = 0) {
 		complete(); //Thinks every second when moves
 	}
 	override public void update(float dt) {
-		caster.GetComponent<Unit>().turn(position);
+		caster.GetComponent<Rotator>().turn(position);
 		float range = follow_range != 0 ? follow_range : nma.speed * dt;
 		if (range != 0) {
 			if (Vector3.Distance(position, caster.transform.position) <= range) {

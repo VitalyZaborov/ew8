@@ -31,12 +31,14 @@ public class Brain : MonoBehaviour {
 	public struct ActionContext {
 		public GameObject caster;
 		public GameObject target;
+		public GameObject character;
 		public GameObject player;
 		public Memory memory;
 	}
 
-	public int pattern = 0;
+	public string pattern = "common";
 	public Memory memory = new Memory();
+	public Unit unit;
 
 	private AINode[] aiArray;
 	protected Action curr_action;
@@ -52,15 +54,19 @@ public class Brain : MonoBehaviour {
 			curr_action = null;
 		}
 	}
-	void Update(){
+	private void Start() {
+		setAI(pattern);
+	}
+	private void Update(){
 		if(curr_action != null){
-		//	Debug.Log("Brain update action " + curr_action.ToString());
+		//	Debug.Log("Brain update action " + pattern + "|" + curr_action.ToString());
 			curr_action.update(Time.deltaTime);
 		}else{
 			think();
 		}
 	}
-	public void setAI(int pattern){
+	public void setAI(string pattern){
+		this.pattern = pattern;
 		aiArray = AI.ai[pattern];
 		if(curr_action != null && curr_action.intercept()) {
 			curr_action = null;
@@ -85,6 +91,7 @@ public class Brain : MonoBehaviour {
 		return false;
 	}
 	public void onActionComplete(){
+	//	Debug.Log("onActionComplete" + curr_action);
 		Action prev_action = curr_action;
 		curr_action = null;	//Чтобы избежать конфликта с непрерываемыми действиями, вроде падения
 	//	history.push(prev_action.id);	// Push completed action id to history here
@@ -116,7 +123,7 @@ public class Brain : MonoBehaviour {
 	}
 	//	Staff
 	protected void think(){
-		Unit unit = gameObject.GetComponent<Unit> ();
+	//	Debug.Log("Brain think " + pattern);
 		List<GameObject> targets = unit.visibleUnits;
 		Action action;
 		ActionContext cnxt = new ActionContext() {caster = gameObject, memory = memory };
@@ -126,11 +133,13 @@ public class Brain : MonoBehaviour {
 				action = ai_node.action(cnxt);
 				action.init(gameObject);
 				GameObject character = ai_node.character != null ? getTarget(ai_node.character, gameObject, ai_node.target != null ? null : action, targets) : (canDo(gameObject, action) ? gameObject : null);
+			//	Debug.Log("-- " + character);
 				if (character != null){
 					GameObject target = ai_node.target != null ? getTarget(ai_node.target, gameObject, action, targets) : character;
 					if (target != null && performAction(action,target)){
 						if(ai_node.extra != null) {
 							cnxt.target = target;
+							cnxt.character = character;
 							ai_node.extra(cnxt);
 						}
 						return;

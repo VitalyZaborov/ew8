@@ -203,6 +203,34 @@ public class GameParams{
 			aimFallTurn = 1f,
 			angle = 10f,
 			pellets = 5
+		}},
+		{"M1914", new GunParam{
+			id = "M1914",
+			caliber = ".30-06",
+			name = "Browning .30",
+			category = 0,
+			sprite = 0,
+			dmgMax = 33,
+			dmgMin = 20,
+			distMax = 5f,
+			distMin = 20f,
+			firerate = 450,
+			velocity = 13f,
+			clip = 500,
+			ammo = 2000,
+			recoil = 2f,
+			recoilMax = 10f,
+			recoilReduce = 20f,
+			burst = 0,
+			burstDelay = 0f,
+			range = 100f,
+			prj = "Bullet",
+			crit = 2f,
+			aim = 1f,
+			aimFallWalk = 1f,
+			aimFallTurn = 1f,
+			angle = 0f,
+			pellets = 1
 		}}
 	};
 }

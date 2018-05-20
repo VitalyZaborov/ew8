@@ -10,9 +10,9 @@ OUTPUT = '../Assets/Script/AI.cs'
 
 def getAI(ai):
 	result = []
-	for index, preset in iter(ai.items()):
+	for name, preset in iter(ai.items()):
 		result.append(
-			'\n		{' + str(index) + ', new AINode[]{' + ','.join(getPreset(preset)) + '\n		}}')
+			'\n		{"' + name + '", new AINode[]{' + ','.join(getPreset(preset)) + '\n		}}')
 	return result
 
 
@@ -54,7 +54,7 @@ output = open(OUTPUT, 'w')
 output.write('using System.Collections.Generic;\n')
 output.write('using UnityEngine;\n')
 output.write('public class AI{')
-output.write('\n\n	public static Dictionary<int, AINode[]> ai = new Dictionary<int, AINode[]>{')
+output.write('\n\n	public static Dictionary<string, AINode[]> ai = new Dictionary<string, AINode[]>{')
 output.write(','.join(getAI(AI)))
 output.write('\n	};')
 output.write('\n}')

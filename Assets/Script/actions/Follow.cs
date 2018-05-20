@@ -28,17 +28,19 @@ public class Follow : Action{
 		complete();	//Thinks every second when moves
 	}
 	override public void update(float dt){
-		caster.GetComponent<Unit>().turn(target.transform.position);
+		caster.GetComponent<Rotator>().turn(target.transform.position);
 		float range = follow_range != 0 ? follow_range : nma.speed * dt;
 		if(range != 0){
-			if(Vector3.Distance(target.transform.position, caster.transform.position) <= (range + caster.GetComponent<SphereCollider>().radius + target.GetComponent<SphereCollider>().radius)){
+			if(Vector3.Distance(target.transform.position, caster.transform.position) <= (range + caster.GetComponent<UnityEngine.AI.NavMeshAgent>().radius + target.GetComponent<UnityEngine.AI.NavMeshAgent>().radius)){
 				if(always_follow){
-					animator.Play("stay");	//Стояние на месте - это тоже преследование
+					if (animator != null)
+						animator.Play("stay");	//Стояние на месте - это тоже преследование
 				}else{
 					complete();
 				}
 			}else{
-				animator.Play("run");
+				if(animator != null)
+					animator.Play("run");
 				nma.destination = target.transform.position;
 			}
 		}
