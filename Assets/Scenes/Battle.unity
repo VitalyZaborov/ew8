@@ -531,6 +531,7 @@ GameObject:
   - component: {fileID: 459784458}
   - component: {fileID: 459784457}
   - component: {fileID: 459784456}
+  - component: {fileID: 459784460}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -614,6 +615,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &459784460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 459784455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002eed9771c94ec48be2b221cefc9ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWindow: 
 --- !u!1001 &650205942
 Prefab:
   m_ObjectHideFlags: 0
@@ -974,7 +987,7 @@ Prefab:
     - target: {fileID: 224778864924639094, guid: f84bae586344fcd41ad03c3ea3ed3bfb,
         type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224778864924639094, guid: f84bae586344fcd41ad03c3ea3ed3bfb,
         type: 2}
@@ -1031,6 +1044,10 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1851333830}
+    - target: {fileID: 1256453797167828, guid: f84bae586344fcd41ad03c3ea3ed3bfb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f84bae586344fcd41ad03c3ea3ed3bfb, type: 2}
   m_IsPrefabParent: 0
