@@ -8,8 +8,7 @@ public class Projectile : MonoBehaviour {
 	public GameObject hitEffect;
 
 	private GameObject owner;
-	private Vector3 movement;
-	private float distance = 0;
+	private Vector3 startPosition;
 	private float velocity = 0;
 	private float crit = 0;
 	private Weapon.WeaponData wdata;
@@ -18,16 +17,13 @@ public class Projectile : MonoBehaviour {
 		this.owner = owner;
 		this.wdata = wdata;
 		this.crit = crit;
-		velocity = wdata.param.velocity;
-		movement = transform.rotation * Vector3.forward * velocity;
-	}
-
-	private void Update() {
-		transform.position = transform.position + movement * Time.deltaTime;
-		distance += velocity * Time.deltaTime;
+		startPosition = transform.position;
+		Rigidbody rb = GetComponent<Rigidbody>();
+		rb.velocity = transform.rotation * Vector3.forward * wdata.param.velocity;
 	}
 
 	private void OnTriggerEnter(Collider other) {
+		
 		GameObject o = other.gameObject;
 		if (other.isTrigger || other.tag == "Boundary" || other.tag == "Projectile" || o == owner)
 			return;
@@ -53,7 +49,7 @@ public class Projectile : MonoBehaviour {
 		} else {
 			Health health = o != null ? o.GetComponent<Health>() : null;
 			if (health != null) {
-				health.receiveDamage(Weapon.getDamage(wdata.param, crit, distance));
+				health.receiveDamage(Weapon.getDamage(wdata.param, crit, (transform.position - startPosition).magnitude));
 			}
 		}
 		Destroy(gameObject);

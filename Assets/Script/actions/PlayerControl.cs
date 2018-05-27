@@ -36,7 +36,11 @@ public class PlayerControl : Action{
 			if (action.canPerform(null))
 				brain.addOrder(action);
 		}
-		
+
+		if (Input.GetButtonUp("Fire3") && weapon.weapon != null) {
+			soldier.switchSecondary();
+		}
+
 		float axisScroll = Input.GetAxis("Mouse ScrollWheel");
 		if (axisScroll < 0) {
 			if(weapon.weapon != null && weapon.weapon.secondary != null) {
@@ -53,7 +57,7 @@ public class PlayerControl : Action{
 			if (weapon.weapon != null && weapon.weapon == soldier.currentWeapon.secondary) {
 				soldier.switchSecondary();
 			} else {
-				Action action = new SwitchWeapon(soldier.getPrevWeaponIndex());
+				Action action = new SwitchWeapon(soldier.getPrevWeaponIndex(), true);
 				action.init(caster);
 				if (action.canPerform(null))
 					brain.addOrder(action);

@@ -5,9 +5,11 @@ using UnityEngine;
 public class SwitchWeapon : Action {
 	protected Soldier soldier;
 	protected int switch_to;
+	protected bool to_secondary;
 
-	public SwitchWeapon(int to) {
+	public SwitchWeapon(int to, bool to_secondary = false) {
 		switch_to = to;
+		this.to_secondary = to_secondary;
 	}
 	override public bool intercept() { return false; }
 	override public void init(GameObject cst, object param = null) {
@@ -32,5 +34,7 @@ public class SwitchWeapon : Action {
 		base.complete();
 		animator.SetBool("switching", false);
 		soldier.weaponIndex = switch_to;
+		if (to_secondary)
+			soldier.switchSecondary();
 	}
 }
