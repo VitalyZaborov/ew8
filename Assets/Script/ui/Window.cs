@@ -14,6 +14,8 @@ public class Window : MonoBehaviour {
 
 	virtual public void hide() {
 		manager = null;
+		enabled = false;
+		Destroy(gameObject);
 	}
 
 	public void close() {

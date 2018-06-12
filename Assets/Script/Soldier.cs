@@ -22,12 +22,21 @@ public class Soldier : MonoBehaviour {
 		}
 		weaponIndex = 0;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	//	animator.SetBool ("reloading", isReloading);
-	}
 
+	public void setWeapons(Weapon.WeaponData[] value) {
+		for (int i = 0; i < weapons.Length; i++) {
+			Weapon.WeaponData wdata = weapons[i];
+			wdata.removeAtachments();
+		}
+		weapons = value;
+		for (int i = 0; i < weapons.Length; i++) {
+			Weapon.WeaponData wdata = weapons[i];
+			wdata.init();
+			wdata.applyAtachments();
+		}
+		wIndex = -1;
+		weaponIndex = 0;
+	}
 	public bool takeWeapon(Weapon.WeaponData wdata) {
 		if (weapons[wdata.param.category] != null)
 			return false;

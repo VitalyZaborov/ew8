@@ -176,6 +176,34 @@ public class GameParams{
 			angle = 0f,
 			pellets = 1
 		}},
+		{"M870MCS", new GunParam{
+			id = "M870MCS",
+			caliber = ".12",
+			name = "M870 MCS",
+			category = -1,
+			sprite = -1,
+			dmgMax = 20,
+			dmgMin = 10,
+			distMax = 3f,
+			distMin = 9f,
+			firerate = 80,
+			velocity = 6f,
+			clip = 4,
+			ammo = 12,
+			recoil = 5f,
+			recoilMax = 15f,
+			recoilReduce = 15f,
+			burst = 0,
+			burstDelay = 0f,
+			range = 100f,
+			prj = "Bullet",
+			crit = 1.5f,
+			aim = 1f,
+			aimFallWalk = 1f,
+			aimFallTurn = 1f,
+			angle = 10f,
+			pellets = 5
+		}},
 		{"M870", new GunParam{
 			id = "M870",
 			caliber = ".12",
@@ -231,6 +259,48 @@ public class GameParams{
 			aimFallTurn = 1f,
 			angle = 0f,
 			pellets = 1
+		}}
+	};
+
+	public class AttachmentParam{
+		public string id;
+		public string name;
+		public string slot;
+
+		public AttachmentParam clone(){
+			return new AttachmentParam(){
+				id = id,
+				name = name,
+				slot = slot
+			};
+		}
+	}
+
+	public static Dictionary<string, AttachmentParam> attachmentParam = new Dictionary<string, AttachmentParam>{
+		{"M203", new AttachmentParam{
+			id = "M203",
+			name = "M203",
+			slot = "underslug"
+		}},
+		{"M870MCS", new AttachmentParam{
+			id = "M870MCS",
+			name = "M870",
+			slot = "underslug"
+		}},
+		{"RedDot", new AttachmentParam{
+			id = "RedDot",
+			name = "Red Dot",
+			slot = "scope"
+		}},
+		{"ACOG", new AttachmentParam{
+			id = "ACOG",
+			name = "ACOG",
+			slot = "scope"
+		}},
+		{"Optical8x", new AttachmentParam{
+			id = "Optical8x",
+			name = "8X Optical",
+			slot = "scope"
 		}}
 	};
 }

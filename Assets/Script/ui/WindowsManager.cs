@@ -13,7 +13,8 @@ public class WindowsManager : MonoBehaviour {
 	}
 
 	private void Start() {
-		if(startWindow != "") {
+		DontDestroyOnLoad(gameObject);
+		if (startWindow != "") {
 			open(startWindow);
 		}
 	}
