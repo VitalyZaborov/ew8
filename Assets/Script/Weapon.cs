@@ -48,6 +48,9 @@ public class Weapon : MonoBehaviour {
 	}
 	public Transform spawn;
 
+	public event Delegate.ComponentEvent evWeaponChanged;
+	public event Delegate.ComponentEvent evReloaded;
+
 	private int _burst;
 	private GameObject projectile;
 	private WeaponData wdata;
@@ -85,8 +88,9 @@ public class Weapon : MonoBehaviour {
 				prevRotation = transform.rotation;
 			} else {
 				projectile = null;
-
 			}
+			if(evWeaponChanged != null)
+				evWeaponChanged(gameObject);
 		}
 	}
 
@@ -102,6 +106,8 @@ public class Weapon : MonoBehaviour {
 			wdata.clip = wdata.ammo;
 			wdata.ammo = 0;
 		}
+		if (evReloaded != null)
+			evReloaded(gameObject);
 		return true;
 	}
 
@@ -240,6 +246,19 @@ public class Weapon : MonoBehaviour {
 	private void spawnProjectile(float angle) {
 		GameObject o = Instantiate(projectile, spawn.position, transform.rotation * Quaternion.Euler(0, angle, 0));
 		Projectile prj = o.GetComponent<Projectile>();
-		prj.init(gameObject, wdata, _aim);
+
+		prj.init(gameObject, getDamage(), wdata.param.velocity, _aim);
+	}
+
+	private Damage getDamage() {
+		return new Damage() {
+			value = wdata.param.dmgMax,
+			decrease = ((float)wdata.param.dmgMin) / ((float)wdata.param.dmgMax),
+			distMin = wdata.param.distMin,
+			distMax = wdata.param.distMax,
+			mod = wdata.param.mod,
+			crit_mod = wdata.param.crit,
+			attacker = gameObject
+		};
 	}
 }

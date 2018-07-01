@@ -30,6 +30,7 @@ public class GameParams{
 		public float aimFallTurn;
 		public float angle;
 		public int pellets;
+		public DamageModifier mod;
 
 		public GunParam clone(){
 			return new GunParam(){
@@ -58,7 +59,8 @@ public class GameParams{
 				aimFallWalk = aimFallWalk,
 				aimFallTurn = aimFallTurn,
 				angle = angle,
-				pellets = pellets
+				pellets = pellets,
+				mod = mod
 			};
 		}
 	}
@@ -90,7 +92,8 @@ public class GameParams{
 			aimFallWalk = 1f,
 			aimFallTurn = 1f,
 			angle = 0f,
-			pellets = 1
+			pellets = 1,
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
 		}},
 		{"M16A3", new GunParam{
 			id = "M16A3",
@@ -118,7 +121,8 @@ public class GameParams{
 			aimFallWalk = 1f,
 			aimFallTurn = 1f,
 			angle = 0f,
-			pellets = 1
+			pellets = 1,
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
 		}},
 		{"UMP", new GunParam{
 			id = "UMP",
@@ -146,7 +150,8 @@ public class GameParams{
 			aimFallWalk = 1f,
 			aimFallTurn = 1f,
 			angle = 0f,
-			pellets = 1
+			pellets = 1,
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
 		}},
 		{"M203", new GunParam{
 			id = "M203",
@@ -174,7 +179,8 @@ public class GameParams{
 			aimFallWalk = 1f,
 			aimFallTurn = 1f,
 			angle = 0f,
-			pellets = 1
+			pellets = 1,
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
 		}},
 		{"M870MCS", new GunParam{
 			id = "M870MCS",
@@ -202,7 +208,8 @@ public class GameParams{
 			aimFallWalk = 1f,
 			aimFallTurn = 1f,
 			angle = 10f,
-			pellets = 5
+			pellets = 5,
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
 		}},
 		{"M870", new GunParam{
 			id = "M870",
@@ -230,7 +237,8 @@ public class GameParams{
 			aimFallWalk = 1f,
 			aimFallTurn = 1f,
 			angle = 10f,
-			pellets = 5
+			pellets = 5,
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
 		}},
 		{"M1914", new GunParam{
 			id = "M1914",
@@ -258,7 +266,8 @@ public class GameParams{
 			aimFallWalk = 1f,
 			aimFallTurn = 1f,
 			angle = 0f,
-			pellets = 1
+			pellets = 1,
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
 		}}
 	};
 

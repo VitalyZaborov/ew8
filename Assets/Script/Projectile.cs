@@ -6,20 +6,25 @@ public class Projectile : MonoBehaviour {
 
 	public bool explosive = false;
 	public GameObject hitEffect;
+	public float crit = 0;
+	public GameObject owner;
 
-	private GameObject owner;
 	private Vector3 startPosition;
-	private float velocity = 0;
-	private float crit = 0;
-	private Weapon.WeaponData wdata;
+	private Damage damage;
 
-	public void init(GameObject owner, Weapon.WeaponData wdata, float crit = 0) {
+	public void init(GameObject owner, Damage damage, float velocity, float crit = 0) {
 		this.owner = owner;
-		this.wdata = wdata;
+		this.damage = damage;
 		this.crit = crit;
 		startPosition = transform.position;
 		Rigidbody rb = GetComponent<Rigidbody>();
-		rb.velocity = transform.rotation * Vector3.forward * wdata.param.velocity;
+		rb.velocity = transform.rotation * Vector3.forward * velocity;
+	}
+
+	public float distance {
+		get {
+			return (transform.position - startPosition).magnitude;
+		}
 	}
 
 	private void OnTriggerEnter(Collider other) {
@@ -27,29 +32,32 @@ public class Projectile : MonoBehaviour {
 		GameObject o = other.gameObject;
 		if (other.isTrigger || other.tag == "Boundary" || other.tag == "Projectile" || o == owner)
 			return;
-
 		hit(o);
 	}
 
 	private void hit(GameObject o) {
+		if(!Statuses.processProjectile(this, damage, owner, o))
+			return;
+
 		if (hitEffect != null) {
 			Instantiate(hitEffect, transform.position, transform.rotation);
 		}
-
+		
 		if (explosive) {
-			Collider[] objectsInRange = Physics.OverlapSphere(transform.position, wdata.param.distMax);
+			Collider[] objectsInRange = Physics.OverlapSphere(transform.position, damage.distMax);
 			foreach (Collider col in objectsInRange) {
 				GameObject target = col.gameObject;
 				Health health = target.GetComponent<Health>();
 				if (health != null) {
 					float proximity = (transform.position - target.transform.position).magnitude;
-					health.receiveDamage(Weapon.getDamage(wdata.param, crit, proximity));
+					damage.value = (int)(damage.value * damage.decrease * proximity);
+					health.receiveDamage(damage.getDamageValue(crit, proximity));
 				}
 			}
 		} else {
 			Health health = o != null ? o.GetComponent<Health>() : null;
 			if (health != null) {
-				health.receiveDamage(Weapon.getDamage(wdata.param, crit, (transform.position - startPosition).magnitude));
+				health.receiveDamage(damage.getDamageValue(crit, distance));
 			}
 		}
 		Destroy(gameObject);

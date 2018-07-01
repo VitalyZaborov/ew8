@@ -19,7 +19,7 @@ def getData(cell, field, sheet, type):
 			res += skill + ' = ' + level
 		res += '}'
 		return res
-	if field in ('mod', 'resist'):
+	if type == 'DamageModifier':
 		return 'new DamageModifier(' + str(value) + ')'
 	if isinstance(value, str):
 		return '"' + value + '"'

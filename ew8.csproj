@@ -296,13 +296,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.PackageManagerUI.Editor.csproj">
-      <Project>{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}</Project>
-      <Name>Unity.PackageManagerUI.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.StandardEvents.csproj">
       <Project>{6800202F-4402-D405-F8CB-03DC7BD78B92}</Project>
       <Name>UnityEditor.StandardEvents</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.PackageManagerUI.Editor.csproj">
+      <Project>{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}</Project>
+      <Name>Unity.PackageManagerUI.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -344,6 +344,8 @@
     <Compile Include="Assets\Script\ai\conditions\TerminalCondition.cs" />
     <Compile Include="Assets\Script\ai\Vision.cs" />
     <Compile Include="Assets\Script\Attachment.cs" />
+    <Compile Include="Assets\Script\Damage.cs" />
+    <Compile Include="Assets\Script\DamageModifier.cs" />
     <Compile Include="Assets\Script\Delegate.cs" />
     <Compile Include="Assets\Script\GameArea.cs" />
     <Compile Include="Assets\Script\GameParams.cs" />
@@ -355,6 +357,15 @@
     <Compile Include="Assets\Script\RotateHuman.cs" />
     <Compile Include="Assets\Script\Rotator.cs" />
     <Compile Include="Assets\Script\Soldier.cs" />
+    <Compile Include="Assets\Script\statuses\DurationStatus.cs" />
+    <Compile Include="Assets\Script\statuses\IAttackEffect.cs" />
+    <Compile Include="Assets\Script\statuses\IDefenseEffect.cs" />
+    <Compile Include="Assets\Script\statuses\IDurationEffect.cs" />
+    <Compile Include="Assets\Script\statuses\IHealEffect.cs" />
+    <Compile Include="Assets\Script\statuses\IHitEffect.cs" />
+    <Compile Include="Assets\Script\statuses\Reflect.cs" />
+    <Compile Include="Assets\Script\statuses\Status.cs" />
+    <Compile Include="Assets\Script\statuses\Statuses.cs" />
     <Compile Include="Assets\Script\struct\LevelData.cs" />
     <Compile Include="Assets\Script\ui\Crosshair.cs" />
     <Compile Include="Assets\Script\ui\CustomGunView.cs" />
