@@ -2,29 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoTo : Action {
-	private float follow_range;
+public class GoTo : MoveAction {
 	private Vector3 position;
-	private UnityEngine.AI.NavMeshAgent nma;
 
-	public GoTo(Vector3 pos, float fr = 0) {
-		follow_range = fr;
+	public GoTo(Vector3 pos, bool run = true, float follow_range = 0) : base(run, follow_range) {
 		position = pos;
 	}
-	override public bool intercept() { return true; }
-	override public void init(GameObject cst, object param = null) {
-		base.init(cst, param);
-		nma = caster.GetComponent<UnityEngine.AI.NavMeshAgent>();
-	}
-	override public void perform(GameObject trg) {
-		base.perform(trg);
-		update(0);
-	}
 	override public bool canPerform(GameObject target) {
-		return position.sqrMagnitude != 0 && position != caster.transform.position && nma.speed > 0;
-	}
-	override public void onAnimation(int param = 0) {
-		complete(); //Thinks every second when moves
+		return position.sqrMagnitude != 0 && position != caster.transform.position && base.canPerform(target);
 	}
 	override public void update(float dt) {
 		caster.GetComponent<Rotator>().turn(position);

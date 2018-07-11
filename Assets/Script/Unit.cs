@@ -5,9 +5,11 @@ using UnityEngine.AI;
 
 public class Unit : MonoBehaviour{
 	public uint team;
+	public float speed = 3.5f;
+	public float sprint = 1.3f;
+	public float backSpeedMod = 1;
 
 	private bool frozen = false;
-	private bool _playerControllable = false;
 	private Brain brain;
 	private GameArea ga;
 
@@ -18,7 +20,6 @@ public class Unit : MonoBehaviour{
 		//	health = GetComponent<Health> ();
 		brain = GetComponent<Brain> ();
 		freeze = false;
-		playerControllable = _playerControllable;
 	}
 
 	public void OnEnable (){
@@ -28,20 +29,6 @@ public class Unit : MonoBehaviour{
 
 	public void OnDisable (){
 		ga.removeUnit(gameObject);
-	}
-
-	public bool playerControllable
-	{   //Без сознания, герой замер, действие не происходит, но статусы действуют
-		get
-		{
-			return _playerControllable;
-		}
-		set
-		{
-			_playerControllable = value;
-			MoveHuman mh = gameObject.GetComponent<MoveHuman>();
-			mh.enabled = _playerControllable;
-		}
 	}
 
 	public bool freeze{	//Без сознания, герой замер, действие не происходит, но статусы действуют
@@ -77,6 +64,10 @@ public class Unit : MonoBehaviour{
 		
 	//	Debug.Log("Can't see:" + (hit.transform != null && hit.transform.gameObject == gameObject).ToString());
 		return false;
+	}
+
+	public float getSpeed(bool run = false) {
+		return run ? speed * sprint : speed;
 	}
 
 	//	==========================================================================================================

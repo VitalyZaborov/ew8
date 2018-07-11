@@ -31,6 +31,7 @@ public class GameParams{
 		public float angle;
 		public int pellets;
 		public DamageModifier mod;
+		public float reload;
 
 		public GunParam clone(){
 			return new GunParam(){
@@ -60,7 +61,8 @@ public class GameParams{
 				aimFallTurn = aimFallTurn,
 				angle = angle,
 				pellets = pellets,
-				mod = mod
+				mod = mod,
+				reload = reload
 			};
 		}
 	}
@@ -93,7 +95,8 @@ public class GameParams{
 			aimFallTurn = 1f,
 			angle = 0f,
 			pellets = 1,
-			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0),
+			reload = 0.7f
 		}},
 		{"M16A3", new GunParam{
 			id = "M16A3",
@@ -122,7 +125,8 @@ public class GameParams{
 			aimFallTurn = 1f,
 			angle = 0f,
 			pellets = 1,
-			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0),
+			reload = 0.6f
 		}},
 		{"UMP", new GunParam{
 			id = "UMP",
@@ -151,7 +155,8 @@ public class GameParams{
 			aimFallTurn = 1f,
 			angle = 0f,
 			pellets = 1,
-			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0),
+			reload = 0.4f
 		}},
 		{"M203", new GunParam{
 			id = "M203",
@@ -180,7 +185,8 @@ public class GameParams{
 			aimFallTurn = 1f,
 			angle = 0f,
 			pellets = 1,
-			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0),
+			reload = 0.5f
 		}},
 		{"M870MCS", new GunParam{
 			id = "M870MCS",
@@ -209,7 +215,8 @@ public class GameParams{
 			aimFallTurn = 1f,
 			angle = 10f,
 			pellets = 5,
-			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0),
+			reload = 0.6f
 		}},
 		{"M870", new GunParam{
 			id = "M870",
@@ -238,7 +245,8 @@ public class GameParams{
 			aimFallTurn = 1f,
 			angle = 10f,
 			pellets = 5,
-			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0),
+			reload = 0.6f
 		}},
 		{"M1914", new GunParam{
 			id = "M1914",
@@ -267,7 +275,8 @@ public class GameParams{
 			aimFallTurn = 1f,
 			angle = 0f,
 			pellets = 1,
-			mod = new DamageModifier(0,1,0,0,0,0,0,0,0)
+			mod = new DamageModifier(0,1,0,0,0,0,0,0,0),
+			reload = 1.3f
 		}}
 	};
 

@@ -310,6 +310,7 @@
     <Compile Include="Assets\Script\actions\Follow.cs" />
     <Compile Include="Assets\Script\actions\GoTo.cs" />
     <Compile Include="Assets\Script\actions\LookAt.cs" />
+    <Compile Include="Assets\Script\actions\MoveAction.cs" />
     <Compile Include="Assets\Script\actions\PlayerControl.cs" />
     <Compile Include="Assets\Script\actions\Reload.cs" />
     <Compile Include="Assets\Script\actions\Rest.cs" />
@@ -351,13 +352,13 @@
     <Compile Include="Assets\Script\GameParams.cs" />
     <Compile Include="Assets\Script\Health.cs" />
     <Compile Include="Assets\Script\Medkit.cs" />
-    <Compile Include="Assets\Script\MoveHuman.cs" />
     <Compile Include="Assets\Script\Pickup.cs" />
     <Compile Include="Assets\Script\Projectile.cs" />
     <Compile Include="Assets\Script\RotateHuman.cs" />
     <Compile Include="Assets\Script\Rotator.cs" />
     <Compile Include="Assets\Script\Soldier.cs" />
     <Compile Include="Assets\Script\statuses\DurationStatus.cs" />
+    <Compile Include="Assets\Script\statuses\HeroOperative.cs" />
     <Compile Include="Assets\Script\statuses\IAttackEffect.cs" />
     <Compile Include="Assets\Script\statuses\IDefenseEffect.cs" />
     <Compile Include="Assets\Script\statuses\IDurationEffect.cs" />

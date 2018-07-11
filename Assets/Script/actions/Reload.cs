@@ -12,7 +12,13 @@ public class Reload : Action{
 	}
 	override public void perform(GameObject trg){
 		base.perform(trg);
+		if(weapon.weapon.param.reload == 0) {
+			weapon.reload();
+			complete();
+			return;
+		}
 		animator.SetBool("reloading", true);
+		animator.speed = 1 / weapon.weapon.param.reload;
 	}
 	override public bool canPerform(GameObject target){
 		return weapon.ammo > 0 && weapon.clip < weapon.maxClip;

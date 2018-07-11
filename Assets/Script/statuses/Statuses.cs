@@ -1,6 +1,8 @@
 ﻿using System.Collections;
+using System.Reflection;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Statuses : MonoBehaviour {
 
@@ -8,10 +10,19 @@ public class Statuses : MonoBehaviour {
 	public List<IAttackEffect> attackEffects = new List<IAttackEffect>();
 	public List<IDefenseEffect> defenseEffects = new List<IDefenseEffect>();
 	public List<IHealEffect> healEffects = new List<IHealEffect>();
-	public List<IDurationEffect> durationEffects = new List<IDurationEffect>();
+	private List<IDurationEffect> durationEffects = new List<IDurationEffect>();
+	private Dictionary<string, Status> statuses = new Dictionary<string, Status>();
 
-	public Dictionary<string, Status> statuses = new Dictionary<string, Status>();
+	public string[] initial;
 
+	private void Start() {
+		foreach (string st in initial) {
+			Type t = Type.GetType(st);
+			Status status = Activator.CreateInstance(t) as Status;
+			Debug.Assert(status != null, "No such status: " + st);
+			add(status);
+		}
+	}
 	public void add(Status status) {
 		if (statuses.ContainsKey(status.id)) {
 			statuses[status.id].add(status);

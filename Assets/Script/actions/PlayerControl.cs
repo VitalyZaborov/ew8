@@ -6,19 +6,52 @@ public class PlayerControl : Action{
 	
 	private Weapon weapon;
 	private Soldier soldier;
+	private Unit unit;
+	private Rigidbody rb;
+	private Plane hPlane;
 
 	override public void init(GameObject cst,object param = null){
 		base.init(cst, param);
 		weapon = caster.GetComponent<Weapon> ();
 		soldier = caster.GetComponent<Soldier>();
+		rb = caster.GetComponent<Rigidbody>();
+		unit = caster.GetComponent<Unit>();
+		rb.freezeRotation = true;
+		hPlane = new Plane(Vector3.up, Vector3.zero);
 	}
 
 	override public void update(float dt) {
-		if (Input.GetButtonDown("Fire1")) {
+
+		// Movement
+
+		float axisX = Input.GetAxis("Horizontal");
+		float axisY = Input.GetAxis("Vertical");
+
+		Vector3 movement = new Vector3(axisX, 0, axisY);
+		float dotProduct = Vector3.Dot(movement, caster.transform.rotation * Vector3.forward);
+		
+		bool sprint = Input.GetButton("Sprint") && movement != Vector3.zero && dotProduct >= 0;
+		
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		float distance = 0;
+		if (hPlane.Raycast(ray, out distance)) {
+			Vector3 worldPos = ray.GetPoint(distance);
+			caster.transform.LookAt(worldPos);
+		}
+
+		float speed = unit.getSpeed(sprint);
+		movement *= dotProduct >= 0 ? speed : speed * unit.backSpeedMod;
+		rb.AddForce(movement, ForceMode.VelocityChange);
+
+		animator.SetBool("sprint", sprint);
+
+		// Shooting
+
+		if (!sprint && Input.GetButtonDown("Fire1")) {
 			weapon.shooting = true;
 		}
 
-		if (Input.GetButtonUp("Fire1")) {
+		if (sprint || Input.GetButtonUp("Fire1")) {
 			weapon.shooting = false;
 		}
 

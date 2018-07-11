@@ -19,7 +19,6 @@ public class GameArea : MonoBehaviour{
 		Debug.Assert (!units.Contains (unit));
 	//	Debug.Log("GameArea add " + unit.ToString() +" to " + units.Count.ToString());
 		Unit u = unit.GetComponent<Unit>();
-		u.playerControllable = unit.tag == "Player";
 		units.Add (unit);
 	}
 
