@@ -8,6 +8,7 @@ public class Unit : MonoBehaviour{
 	public float speed = 3.5f;
 	public float sprint = 1.3f;
 	public float backSpeedMod = 1;
+	public float visibilityRange = float.MaxValue;
 
 	private bool frozen = false;
 	private Brain brain;
@@ -47,18 +48,19 @@ public class Unit : MonoBehaviour{
 		}
 	}
 
-	public bool canSee(GameObject unit) {
-		if (unit == gameObject)
+	public bool canSee(GameObject other) {
+		if (other == gameObject)
 			return true;
 
-		float distance = Vector3.Distance(transform.position, unit.transform.position);
-		if (distance > GameArea.VISION_RANGE) {
+		Unit unit = other.GetComponent<Unit>();
+		float distance = Vector3.Distance(transform.position, other.transform.position);
+		if (distance > Mathf.Min(GameArea.VISION_RANGE, unit.visibilityRange)) {
 		//	Debug.Log("Can't see: too far " + distance.ToString());
 			return false;
 		}
 		//	Debug.DrawRay(transform.Find("MEyes").position, transform.Find("MEyes").transform.forward * ViewDistance);
 
-		if (!Physics.Raycast(transform.position, unit.transform.position - transform.position, distance, 1 << 8)) {
+		if (!Physics.Raycast(transform.position, other.transform.position - transform.position, distance, 1 << 8)) {
 			return true;
 		}
 		

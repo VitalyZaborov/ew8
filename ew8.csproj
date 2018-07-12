@@ -367,6 +367,7 @@
     <Compile Include="Assets\Script\statuses\Reflect.cs" />
     <Compile Include="Assets\Script\statuses\Status.cs" />
     <Compile Include="Assets\Script\statuses\Statuses.cs" />
+    <Compile Include="Assets\Script\statuses\Stealth.cs" />
     <Compile Include="Assets\Script\struct\LevelData.cs" />
     <Compile Include="Assets\Script\ui\Crosshair.cs" />
     <Compile Include="Assets\Script\ui\CustomGunView.cs" />

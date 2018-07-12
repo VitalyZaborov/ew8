@@ -42,10 +42,11 @@ public class Statuses : MonoBehaviour {
 			durationEffects.Add(status as IDurationEffect);
 	}
 
-	public void remove(Status status) {
-		if (!statuses.ContainsKey(status.id)) {
+	public void remove(string statusId) {
+		if (!statuses.ContainsKey(statusId)) {
 			return;
 		}
+		Status status = statuses[statusId];
 		status.remove();
 		statuses.Remove(status.id);
 		if (status is IHitEffect)
@@ -58,6 +59,10 @@ public class Statuses : MonoBehaviour {
 			healEffects.Remove(status as IHealEffect);
 		if (status is IDurationEffect)
 			durationEffects.Remove(status as IDurationEffect);
+	}
+
+	public bool has(string statusId) {
+		return statuses.ContainsKey(statusId);
 	}
 
 	// Update is called once per frame
