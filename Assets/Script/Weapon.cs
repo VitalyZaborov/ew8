@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
+	public enum Type {
+		PISTOL,
+		ASSAULT,
+		SMG,
+		SHOTGUN,
+		GRENADE_LAUNCHER,
+		MACHINEGUN
+	};
+
 	private const float AIM_LOSE_PER_DEGREE = 0.01f;
 	private const float AIM_LOSE_PER_DISTANCE = 1f;
 
@@ -48,7 +57,7 @@ public class Weapon : MonoBehaviour {
 	}
 	public Transform spawn;
 
-	public event Delegate.ComponentEvent evWeaponChanged;
+	public event Delegate.WeaponChangeEvent evWeaponChanged;
 	public event Delegate.ComponentEvent evReloaded;
 
 	private int _burst;
@@ -77,6 +86,7 @@ public class Weapon : MonoBehaviour {
 			return wdata;
 		}
 		set {
+			WeaponData previous = wdata;
 			wdata = value;
 			_burst = 0;
 			enabled = wdata != null;
@@ -90,7 +100,7 @@ public class Weapon : MonoBehaviour {
 				projectile = null;
 			}
 			if(evWeaponChanged != null)
-				evWeaponChanged(gameObject);
+				evWeaponChanged(gameObject, previous, wdata);
 		}
 	}
 

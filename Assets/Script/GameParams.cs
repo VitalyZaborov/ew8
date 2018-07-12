@@ -5,6 +5,7 @@ public class GameParams{
 
 	public class GunParam{
 		public string id;
+		public Weapon.Type type;
 		public string caliber;
 		public string name;
 		public int category;
@@ -36,6 +37,7 @@ public class GameParams{
 		public GunParam clone(){
 			return new GunParam(){
 				id = id,
+				type = type,
 				caliber = caliber,
 				name = name,
 				category = category,
@@ -70,6 +72,7 @@ public class GameParams{
 	public static Dictionary<string, GunParam> gunParam = new Dictionary<string, GunParam>{
 		{"AKM", new GunParam{
 			id = "AKM",
+			type = Weapon.Type.ASSAULT,
 			caliber = "7.62x39",
 			name = "AKM",
 			category = 0,
@@ -100,6 +103,7 @@ public class GameParams{
 		}},
 		{"M16A3", new GunParam{
 			id = "M16A3",
+			type = Weapon.Type.ASSAULT,
 			caliber = ".223",
 			name = "M16A3",
 			category = 0,
@@ -130,6 +134,7 @@ public class GameParams{
 		}},
 		{"UMP", new GunParam{
 			id = "UMP",
+			type = Weapon.Type.SMG,
 			caliber = ".45 ACP",
 			name = "H&K UMP",
 			category = 0,
@@ -160,6 +165,7 @@ public class GameParams{
 		}},
 		{"M203", new GunParam{
 			id = "M203",
+			type = Weapon.Type.GRENADE_LAUNCHER,
 			caliber = "40 mm",
 			name = "M203",
 			category = -1,
@@ -190,6 +196,7 @@ public class GameParams{
 		}},
 		{"M870MCS", new GunParam{
 			id = "M870MCS",
+			type = Weapon.Type.SHOTGUN,
 			caliber = ".12",
 			name = "M870 MCS",
 			category = -1,
@@ -220,6 +227,7 @@ public class GameParams{
 		}},
 		{"M870", new GunParam{
 			id = "M870",
+			type = Weapon.Type.SHOTGUN,
 			caliber = ".12",
 			name = "M870",
 			category = 0,
@@ -250,6 +258,7 @@ public class GameParams{
 		}},
 		{"M1914", new GunParam{
 			id = "M1914",
+			type = Weapon.Type.MACHINEGUN,
 			caliber = ".30-06",
 			name = "Browning .30",
 			category = 0,

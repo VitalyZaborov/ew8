@@ -1694,17 +1694,17 @@ Prefab:
     - target: {fileID: 114052028560645094, guid: abea0ec7816d589468f28bfb2a498390,
         type: 2}
       propertyPath: weapons.Array.data[1].id
-      value: M870
+      value: UMP
       objectReference: {fileID: 0}
     - target: {fileID: 114052028560645094, guid: abea0ec7816d589468f28bfb2a498390,
         type: 2}
       propertyPath: weapons.Array.data[1].clip
-      value: 7
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 114052028560645094, guid: abea0ec7816d589468f28bfb2a498390,
         type: 2}
       propertyPath: weapons.Array.data[1].ammo
-      value: 35
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 114052028560645094, guid: abea0ec7816d589468f28bfb2a498390,
         type: 2}
@@ -1732,7 +1732,7 @@ Prefab:
     - target: {fileID: 114869588350839920, guid: abea0ec7816d589468f28bfb2a498390,
         type: 2}
       propertyPath: initial.Array.data[0]
-      value: Reflect
+      value: HeroOperative
       objectReference: {fileID: 0}
     - target: {fileID: 4091269732913460, guid: abea0ec7816d589468f28bfb2a498390, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x

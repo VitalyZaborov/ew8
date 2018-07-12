@@ -2,7 +2,7 @@ import openpyxl
 
 INPUT = './Balance.xlsm'
 OUTPUT = '../Assets/Script/GameParams.cs'
-
+BASIC_TYPES = ('bool', 'int', 'uint', 'float', 'double', 'string', )
 
 def getData(cell, field, sheet, type):
 	value = cell.value
@@ -21,6 +21,8 @@ def getData(cell, field, sheet, type):
 		return res
 	if type == 'DamageModifier':
 		return 'new DamageModifier(' + str(value) + ')'
+	if type not in BASIC_TYPES:
+		return type + '.' + value
 	if isinstance(value, str):
 		return '"' + value + '"'
 	return str(value) + ('f' if type == 'float' else '')
