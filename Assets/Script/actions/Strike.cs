@@ -32,6 +32,9 @@ public class Strike : Action {
 	}
 
 	override public bool canPerform(GameObject target) {
+		if(target == null) {
+			return base.canPerform(target);	// Всегда можно просто ударить воздух
+		}
 		Health th = target.GetComponent<Health>();
 		Unit cu = caster.GetComponentInParent<Unit>();
 		Unit tu = target.GetComponentInParent<Unit>();
@@ -40,8 +43,10 @@ public class Strike : Action {
 	}
 
 	override public void update(float dt) {
-		Rotator rotator = caster.GetComponent<Rotator>();
-		rotator.turn(target.transform.position);
+		if(target != null) {
+			Rotator rotator = caster.GetComponent<Rotator>();
+			rotator.turn(target.transform.position);
+		}
 	}
 
 	override public void onAnimation(int param = 0) {

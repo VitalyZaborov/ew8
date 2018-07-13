@@ -77,19 +77,17 @@ public class PlayerControl : Action{
 			weapon.shooting = false;
 		}
 
-		if (Input.GetButtonDown("Reload")) {
-			Action action = new Reload();
-			action.init(caster);
-			if(action.canPerform(null))
-				addChildAction(action);
+		if (Input.GetButtonDown("Strike") && addChildAction(new Strike())) {
+			return;
 		}
 
-		if (Input.GetButtonDown("Drop")) {
+		if (Input.GetButtonDown("Reload") && addChildAction(new Reload())) {
+			return;
+		}
+
+		if (Input.GetButtonDown("Drop") && addChildAction(new SwitchEmptyWeapon())) {
 			soldier.dropWeapon();
-			Action action = new SwitchEmptyWeapon();
-			action.init(caster);
-			if (action.canPerform(null))
-				addChildAction(action);
+			return;
 		}
 
 		if (Input.GetButtonUp("Fire3") && weapon.weapon != null) {
@@ -101,10 +99,9 @@ public class PlayerControl : Action{
 			if(weapon.weapon != null && weapon.weapon.secondary != null) {
 				soldier.switchSecondary();
 			} else {
-				Action action = new SwitchWeapon(soldier.getNextWeaponIndex());
-				action.init(caster);
-				if (action.canPerform(null))
-					addChildAction(action);
+				if (addChildAction(new SwitchWeapon(soldier.getNextWeaponIndex()))) {
+					return;
+				}
 			}
 			
 		}
@@ -112,10 +109,9 @@ public class PlayerControl : Action{
 			if (weapon.weapon != null && weapon.weapon == soldier.currentWeapon.secondary) {
 				soldier.switchSecondary();
 			} else {
-				Action action = new SwitchWeapon(soldier.getPrevWeaponIndex(), true);
-				action.init(caster);
-				if (action.canPerform(null))
-					addChildAction(action);
+				if (addChildAction(new SwitchWeapon(soldier.getPrevWeaponIndex(), true))){
+					return;
+				}
 			}
 				
 		}
@@ -125,13 +121,15 @@ public class PlayerControl : Action{
 		return true;
 	}
 
-	private void addChildAction(Action action) {
+	private bool addChildAction(Action action) {
+		action.init(caster);
 		if (!action.canPerform(null)) {
-			return;
+			return false;
 		}
 		action.perform(null);
 		child = action;
 		child.evComplete += onActionComplete;
+		return true;
 	}
 
 	private void onActionComplete(Action action) {
