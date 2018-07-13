@@ -27,7 +27,6 @@ public class HeroOperative : Status, IHitEffect, IDurationEffect {
 		statuses = owner.GetComponent<Statuses>();
 
 		idleTime = Time.time;
-	//	prevPosition = owner.transform.position;
 
 		weapon.evWeaponChanged += onWeaponChanged;
 		onWeaponChanged(owner, null, weapon.weapon);

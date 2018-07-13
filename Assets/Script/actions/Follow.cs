@@ -18,13 +18,13 @@ public class Follow : MoveAction {
 			if(Vector3.Distance(target.transform.position, caster.transform.position) <= (range + caster.GetComponent<UnityEngine.AI.NavMeshAgent>().radius + target.GetComponent<UnityEngine.AI.NavMeshAgent>().radius)){
 				if(always_follow){
 					if (animator != null)
-						animator.Play("stay");	//Стояние на месте - это тоже преследование
-				}else{
+						animator.SetBool("sprint", false);
+				} else{
 					complete();
 				}
 			}else{
 				if(animator != null)
-					animator.Play("run");
+					animator.SetBool("sprint", run);
 				nma.destination = target.transform.position;
 			}
 		}

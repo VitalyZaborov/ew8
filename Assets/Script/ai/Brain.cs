@@ -86,12 +86,15 @@ public class Brain : MonoBehaviour {
 				action.perform(target);
 			}
 			curr_action = action;
+			curr_action.evComplete += onActionComplete;
 			return true;
 		}
 		return false;
 	}
-	public void onActionComplete(){
-	//	Debug.Log("onActionComplete" + curr_action);
+	private void onActionComplete(Action action){
+		Debug.Assert(action == curr_action, "Incorrect action completed! Current: " + curr_action.id + " completed: " + action.id);
+		curr_action.evComplete -= onActionComplete;
+		//	Debug.Log("onActionComplete" + curr_action);
 		Action prev_action = curr_action;
 		curr_action = null;	//Чтобы избежать конфликта с непрерываемыми действиями, вроде падения
 	//	history.push(prev_action.id);	// Push completed action id to history here

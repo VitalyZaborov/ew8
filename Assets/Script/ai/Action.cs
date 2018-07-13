@@ -17,6 +17,7 @@ public class Action{
 	protected int defaultLevel = 1;
 	protected Animator animator;
 	protected Brain brain;
+	public event Delegate.ActionComplete evComplete;
 
 	public string id;	//Присваивается в getAction
 	public int lv;
@@ -94,7 +95,8 @@ public class Action{
 		}*/
 	}
 	protected virtual void complete(){
-		brain.onActionComplete();
+		if (evComplete != null)
+			evComplete(this);
 	}
 	//virtual
 	public virtual bool canPerform(GameObject trg){

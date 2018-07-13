@@ -20,12 +20,12 @@ public class Rotator : MonoBehaviour {
 	public bool canTurnTo(Vector3 position) {
 		return angle >= 180 || Quaternion.Angle(transform.rotation, Quaternion.LookRotation(position - transform.position)) < angle;
 	}
-	public bool turn(Vector3 position) {
+	public bool turn(Vector3 position, float angle = 0.1f) {
 		
 		Quaternion targetRotation = Quaternion.LookRotation(position - transform.position);
 		float step = angularSpeed * Time.deltaTime;
 		transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, step);
-		return Quaternion.Angle(transform.rotation, targetRotation) < 0.1;
+		return Quaternion.Angle(transform.rotation, targetRotation) < angle;
 		/*	float angle = Vector3.Angle(transform.position, position);
 			if (angle == 0)
 				return true;
