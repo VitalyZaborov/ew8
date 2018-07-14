@@ -21,14 +21,14 @@ public class MoveAction : Action {
 	override public void perform(GameObject trg) {
 		base.perform(trg);
 		nma.speed = unit.getSpeed(run);
-		animator.SetBool("sprint", run);
+		animator.SetInteger(Unit.ANIMATION, (int)(run ? Unit.Animation.SPRINT : Unit.Animation.IDLE));
 		update(0);
 	}
 	override public bool canPerform(GameObject target) {
 		return unit.getSpeed() > 0;
 	}
 	override public void onAnimation(int param = 0) {
-		animator.SetBool("sprint", false);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.IDLE);
 		complete(); //Thinks every second when moves
 	}
 }

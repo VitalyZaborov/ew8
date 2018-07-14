@@ -17,7 +17,7 @@ public class Reload : Action{
 			complete();
 			return;
 		}
-		animator.SetBool("reloading", true);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.RELOAD);
 		animator.speed = 1 / weapon.weapon.param.reload;
 	}
 	override public bool canPerform(GameObject target){
@@ -33,6 +33,6 @@ public class Reload : Action{
 	protected override void complete()
 	{
 		base.complete();
-		animator.SetBool("reloading", false);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.IDLE);
 	}
 }

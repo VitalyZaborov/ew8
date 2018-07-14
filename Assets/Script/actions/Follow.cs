@@ -18,13 +18,13 @@ public class Follow : MoveAction {
 			if(Vector3.Distance(target.transform.position, caster.transform.position) <= (range + caster.GetComponent<UnityEngine.AI.NavMeshAgent>().radius + target.GetComponent<UnityEngine.AI.NavMeshAgent>().radius)){
 				if(always_follow){
 					if (animator != null)
-						animator.SetBool("sprint", false);
+						animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.IDLE);
 				} else{
 					complete();
 				}
 			}else{
 				if(animator != null)
-					animator.SetBool("sprint", run);
+					animator.SetInteger(Unit.ANIMATION, (int)(run ? Unit.Animation.SPRINT : Unit.Animation.IDLE));
 				nma.destination = target.transform.position;
 			}
 		}

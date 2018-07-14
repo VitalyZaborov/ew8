@@ -22,7 +22,7 @@ public class SwitchWeapon : Action {
 	}
 	override public void perform(GameObject trg) {
 		base.perform(trg);
-		animator.SetBool("switching", true);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.SWITCH);
 	}
 	override public bool canPerform(GameObject target) {
 		return soldier.weaponIndex != switch_to && soldier.weapons[switch_to] != null;
@@ -32,7 +32,7 @@ public class SwitchWeapon : Action {
 	}
 	override protected void complete() {
 		base.complete();
-		animator.SetBool("switching", false);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.IDLE);
 		soldier.weaponIndex = switch_to;
 		if (to_secondary)
 			soldier.switchSecondary();

@@ -59,7 +59,7 @@ public class HeroOperative : Status, IHitEffect, IDurationEffect {
 	}
 
 	public bool onHit(Projectile projectile, Damage damage, GameObject attacker, GameObject target) {
-		return animator.GetBool("sprint") && Random.value < DODGE_CHANCE;
+		return animator.GetInteger(Unit.ANIMATION) == (int)Unit.Animation.SPRINT && Random.value < DODGE_CHANCE;
 	}
 
 	private void onWeaponChanged(GameObject o, Weapon.WeaponData previous, Weapon.WeaponData current) {

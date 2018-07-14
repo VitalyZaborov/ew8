@@ -58,11 +58,16 @@ public class PlayerControl : Action{
 #endif
 		rb.AddForce(movement, ForceMode.VelocityChange);
 
-		animator.SetBool("sprint", sprint);
+		if (sprint) {
+			animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.SPRINT);
+		} else if(animator.GetInteger(Unit.ANIMATION) == (int)Unit.Animation.SPRINT) {
+			animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.IDLE);
+		}
+			
 
 		// Child action
 
-		if(child != null) {
+		if (child != null) {
 			child.update(dt);
 			return;
 		}

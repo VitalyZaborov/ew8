@@ -14,7 +14,7 @@ public class Attack : Action{
 	}
 	override public void perform(GameObject trg){
 		base.perform(trg);
-		animator.SetBool("shooting", true);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.SHOOT);
 		//	weapon.startAttack();
 	}
 	// Any damage boosts go here

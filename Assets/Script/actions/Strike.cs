@@ -28,7 +28,7 @@ public class Strike : Action {
 	}
 	override public void perform(GameObject trg) {
 		base.perform(trg);
-		animator.SetBool("strike", true);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.STRIKE);
 	}
 
 	override public bool canPerform(GameObject target) {
@@ -70,6 +70,6 @@ public class Strike : Action {
 
 	override protected void complete() {
 		base.complete();
-		animator.SetBool("strike", false);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.IDLE);
 	}
 }

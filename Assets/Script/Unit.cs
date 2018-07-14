@@ -4,6 +4,17 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Unit : MonoBehaviour{
+	public enum Animation {
+		IDLE,
+		SHOOT,
+		RELOAD,
+		SWITCH,
+		SPRINT,
+		STRIKE,
+		THROW
+	}
+	public static int ANIMATION = Animator.StringToHash("animation");
+
 	public uint team;
 	public float speed = 3.5f;
 	public float sprint = 1.3f;
