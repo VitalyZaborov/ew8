@@ -10,7 +10,9 @@ public class Weapon : MonoBehaviour {
 		SMG,
 		SHOTGUN,
 		GRENADE_LAUNCHER,
-		MACHINEGUN
+		MACHINEGUN,
+		GRENADE,
+		MELEE
 	};
 
 	private const float AIM_LOSE_PER_DEGREE = 0.01f;
@@ -53,6 +55,18 @@ public class Weapon : MonoBehaviour {
 				Attachment attachment = Attachment.get(attachmentID);
 				attachment.remove(this);
 			}
+		}
+
+		public Damage getDamage(GameObject gameObject = null) {
+			return new Damage() {
+				value = param.dmgMax,
+				decrease = ((float)param.dmgMin) / ((float)param.dmgMax),
+				distMin = param.distMin,
+				distMax = param.distMax,
+				mod = param.mod,
+				crit_mod = param.crit,
+				attacker = gameObject
+			};
 		}
 	}
 	public Transform spawn;
@@ -257,18 +271,6 @@ public class Weapon : MonoBehaviour {
 		GameObject o = Instantiate(projectile, spawn.position, transform.rotation * Quaternion.Euler(0, angle, 0));
 		Projectile prj = o.GetComponent<Projectile>();
 
-		prj.init(gameObject, getDamage(), wdata.param.velocity, _aim);
-	}
-
-	private Damage getDamage() {
-		return new Damage() {
-			value = wdata.param.dmgMax,
-			decrease = ((float)wdata.param.dmgMin) / ((float)wdata.param.dmgMax),
-			distMin = wdata.param.distMin,
-			distMax = wdata.param.distMax,
-			mod = wdata.param.mod,
-			crit_mod = wdata.param.crit,
-			attacker = gameObject
-		};
+		prj.init(gameObject, wdata.getDamage(gameObject), wdata.param.velocity, _aim);
 	}
 }

@@ -319,6 +319,7 @@
     <Compile Include="Assets\Script\actions\Strike.cs" />
     <Compile Include="Assets\Script\actions\SwitchEmptyWeapon.cs" />
     <Compile Include="Assets\Script\actions\SwitchWeapon.cs" />
+    <Compile Include="Assets\Script\actions\ThrowGrenade.cs" />
     <Compile Include="Assets\Script\actions\TurnTo.cs" />
     <Compile Include="Assets\Script\AI.cs" />
     <Compile Include="Assets\Script\ai\Action.cs" />

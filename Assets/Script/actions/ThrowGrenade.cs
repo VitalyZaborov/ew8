@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Strike : Action {
-	private static int animState = Animator.StringToHash("strike");
-	private const float RANGE = 2.0f;
-	private const float ANGLE = 30.0f;
-	private Weapon weapon;
+public class ThrowGrenade : Action {
+	private static int animState = Animator.StringToHash("throw");
+	private const float ANGLE = 5.0f;
+	private Weapon.WeaponData grenade;
 
 	override public void init(GameObject cst, object param = null) {
 		base.init(cst, param);
-		weapon = caster.GetComponent<Weapon>();
+		Soldier soldier = caster.GetComponent<Soldier>();
+		grenade = soldier.grenade;
 	}
 	override public float range {
-		get { return RANGE; }
+		get { return grenade.param.range; }
 	}
+	override public void perform(GameObject trg) {
+		base.perform(trg);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.THROW);
+	}
+
 	override public Action performPrepareAction(GameObject trg) {
 		Action act;
 		Rotator rotator = caster.GetComponent<Rotator>();
@@ -25,14 +30,13 @@ public class Strike : Action {
 		}
 		return base.performPrepareAction(trg);
 	}
-	override public void perform(GameObject trg) {
-		base.perform(trg);
-		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.STRIKE);
-	}
 
 	override public bool canPerform(GameObject target) {
-		if(target == null) {
-			return base.canPerform(target);	// Всегда можно просто ударить воздух
+		if(grenade.ammo == 0) {
+			return false;
+		}
+		if (target == null) {
+			return base.canPerform(target); // Всегда можно просто выкинуть гранату
 		}
 		Health th = target.GetComponent<Health>();
 		Unit cu = caster.GetComponentInParent<Unit>();
@@ -42,7 +46,7 @@ public class Strike : Action {
 	}
 
 	override public void update(float dt) {
-		if(target != null) {
+		if (target != null) {
 			Rotator rotator = caster.GetComponent<Rotator>();
 			rotator.turn(target.transform.position);
 		}
@@ -52,19 +56,13 @@ public class Strike : Action {
 		AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
 		if (animState != info.shortNameHash)
 			return;
-		if(param == 1) {
-			Soldier soldier = caster.GetComponent<Soldier>();
-			Weapon.WeaponData wdata = soldier.melee;
-			Collider[] hitColliders = Physics.OverlapSphere(caster.transform.position, RANGE*10, 1, QueryTriggerInteraction.Ignore);
-			foreach (Collider collider in hitColliders) {
-				GameObject other = collider.gameObject;
-				Unit unit = other.GetComponent<Unit>();
-				Health health = other.GetComponent<Health>();
-				if (unit != null && health != null && other != caster && Quaternion.Angle(caster.transform.rotation, Quaternion.LookRotation(other.transform.position - caster.transform.position)) <= ANGLE) {
-					Damage damage = wdata.getDamage(caster);
-					health.receiveDamage(damage.getDamageValue(0, 0));
-				}
-			}
+		if (param == 1) {
+			Weapon weapon = caster.GetComponent<Weapon>();
+			GameObject projectile = Resources.Load<GameObject>("projectiles/" + grenade.param.prj);
+			GameObject o = Object.Instantiate(projectile, weapon.spawn.position, caster.transform.rotation);
+			Projectile prj = o.GetComponent<Projectile>();
+
+			prj.init(caster, grenade.getDamage(caster), grenade.param.velocity, 0);
 		} else {
 			complete();
 		}

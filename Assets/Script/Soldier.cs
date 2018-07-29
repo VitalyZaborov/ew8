@@ -8,6 +8,8 @@ public class Soldier : MonoBehaviour {
 	public GameObject weaponPickup;
 	public int skin;
 	public Weapon.WeaponData[] weapons;
+	public Weapon.WeaponData grenade;
+	public Weapon.WeaponData melee;
 	private int wIndex = -1;
 	private Animator animator;
 	private Weapon weapon;
