@@ -15,5 +15,4 @@
 /.vs
 
 /Assets/Textures/*.png
-*.cs.meta
 GameParams/~$Balance.xlsm
