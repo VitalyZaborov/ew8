@@ -22,5 +22,6 @@ public class GoTo : MoveAction {
 				nma.destination = position;
 			}
 		}
+		base.update(dt);
 	}
 }

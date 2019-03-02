@@ -14,6 +14,8 @@ public class Unit : MonoBehaviour{
 		THROW
 	}
 	public static int ANIMATION = Animator.StringToHash("animation");
+	public static int FORWARD = Animator.StringToHash("forward");
+	public static int STRAFE = Animator.StringToHash("strafe");
 
 	public uint team;
 	public float speed = 3.5f;

@@ -28,5 +28,6 @@ public class Follow : MoveAction {
 				nma.destination = target.transform.position;
 			}
 		}
+		base.update(dt);
 	}
 }

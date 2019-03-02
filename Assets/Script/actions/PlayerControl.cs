@@ -42,6 +42,12 @@ public class PlayerControl : Action{
 		Vector3 movement = new Vector3(axisX, 0, axisY);
 		float dotProduct = Vector3.Dot(movement, caster.transform.rotation * Vector3.forward);
 
+		float forward = Vector3.Dot(movement, caster.transform.forward);
+		float strafe = Vector3.Dot(movement, caster.transform.right);
+
+		animator.SetFloat(Unit.FORWARD, forward);
+		animator.SetFloat(Unit.STRAFE, strafe);
+
 #if SPRINT_FOLLOWS_MOUSE
 		bool sprint = Input.GetButton("Sprint") && child == null;
 		float speed = unit.getSpeed(sprint);
