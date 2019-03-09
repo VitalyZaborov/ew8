@@ -14,3 +14,7 @@
 
 /Assets/Textures/*.png
 GameParams/~$Balance.xlsm
+/Assets/Resources/heroes/*.json
+/Assets/Resources/heroes/*.meta
+/Assets/Resources/heroes/*.png
+/Assets/Resources/heroes/*.mat
