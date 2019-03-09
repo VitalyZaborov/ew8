@@ -26,6 +26,18 @@ class Params(object):
 			self.scale.x = scaling['x']
 			self.scale.y = scaling['y']
 			self.rotation = radToDeg(rotation['z'])
+	@staticmethod
+	def clone(target):
+		if target is None:
+			return None
+		p = Params()
+		p.position.x = target.position.x
+		p.position.y = target.position.y
+		p.scale.x = target.scale.x
+		p.scale.y = target.scale.y
+		p.rotation = target.rotation
+		return p
+
 	def __repr__(self):
 		return '[pos: %s, %s rotation: %s scale: %s, %s]' % (self.position.x, self.position.y, self.rotation, self.scale.x, self.scale.y, )
 
@@ -44,12 +56,12 @@ class Animation(object):
 
 	def make(self, keyframes):
 		prevFrame = 0
-		prevPose = self.frames[prevFrame]
+		prevPose = Params.clone(self.frames[prevFrame])
 		if prevPose is not None:
 			self.poses.append(prevPose)
 		for frame in keyframes + (len(self.frames), ) if keyframes is not None else (len(self.frames), ):
 			frame -= 1
-			pose = self.frames[frame]
+			pose = Params.clone(self.frames[frame])
 			if prevPose is not None:
 				prevPose.duration = frame - prevFrame
 			if pose is not None:
@@ -183,15 +195,15 @@ def parseSkeleton(data):
 
 	drawOrder.reverse()
 
-	relativePositions = {}
+	relativeParams = {}
 	for boneName, params in bones.iteritems():
 		parent = SKELETON[boneName]
 		if parent is not None:
-			relativePositions[boneName] = globalToLocal(params.position, bones[parent])
+			relativeParams[boneName] = globalToLocal(params.position, bones[parent]), params.rotation - bones[parent].rotation
 
-	for boneName, position in relativePositions.iteritems():
+	for boneName, (position, rotation) in relativeParams.iteritems():
 		bones[boneName].position = position
-
+		bones[boneName].rotation = rotation
 
 	return bones, drawOrder
 
@@ -221,43 +233,36 @@ def parseAnimation(animationId, data, skeleton):
 		animation.make(KEYFRAMES.get(animationId[2:]))
 		animations[boneName] = animation
 
-	roots = []
 	for boneName, animation in animations.iteritems():
 		parent = SKELETON[boneName]
 		skeletonParams = skeleton.get(boneName)
 		if skeletonParams is None:
 			continue
-		if parent is None:
-			roots.append(boneName)
-			continue
 
-		pivot = skeletonParams.position
-		frames = animations[parent].frames
+		frames = animations[parent].frames if parent is not None else None
 
 		isMoveable = boneName in MOVABLE_BONES
 		frameIndex = 0
 		for params in animation.poses:
-			parentParams = frames[frameIndex]
-			params.rotation -= parentParams.rotation + skeletonParams.rotation
-			if isMoveable:
-				position = globalToLocal(params.position, parentParams)
-				params.position = position - pivot
+			params.rotation -= skeletonParams.rotation
+			if frames is not None:
+				parentParams = frames[frameIndex]
+				params.rotation -= parentParams.rotation
+				if isMoveable:
+					position = globalToLocal(params.position, parentParams)
+					params.position = position - skeletonParams.position
+				else:
+					params.position.x = params.position.y = 0
 			else:
-				params.position.x = params.position.y = 0
+				params.position -= skeletonParams.position
 
 			frameIndex += params.duration
-
-	for boneName in roots:
-		pivot = skeleton[boneName].position
-		animation = animations[boneName]
-		for params in animation.poses:
-			params.position -= pivot
 
 	return animations
 
 def convert(gender, weapon, textures):
 	skeletonId = gender + 'f' + weapon
-	print 'convert', skeletonId
+	print 'converting', skeletonId
 	# Skeleton
 	path = SOURCE_PATH + skeletonId + 's'
 	animFile = open(path + '/Animation.json', 'r')
@@ -265,7 +270,6 @@ def convert(gender, weapon, textures):
 	animFile.close()
 
 	skeleton, drawOrder = parseSkeleton(animData)
-	print 'skel:',skeleton
 	animations = {}
 
 	# Animations
@@ -343,6 +347,7 @@ def convert(gender, weapon, textures):
 			'animation': animation,
 		}
 		result.append(armature)
+	print '...done!'
 	return result
 
 def convertTextures():
