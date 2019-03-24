@@ -34,8 +34,7 @@ public class Attack : Action{
 		Health th = target.GetComponent<Health> ();
 		Unit cu = caster.GetComponentInParent<Unit> ();
 		Unit tu = target.GetComponentInParent<Unit> ();
-		Rotator rotator = caster.GetComponent<Rotator>();
-		return (th.value > 0) && rotator != null && rotator.canTurnTo(target.transform.position) && ((cu.team & tu.team) == 0) && base.canPerform(target);	//Мертвых не бить! Своих тоже не бить
+		return (th.value > 0) && ((cu.team & tu.team) == 0) && base.canPerform(target);	//Мертвых не бить! Своих тоже не бить
 	}
 /*	override public void onAnimation(int param = 0){
 		switch(param){
@@ -53,9 +52,6 @@ public class Attack : Action{
 		}
 	}*/
 	override public void update(float dt){
-		Rotator rotator = caster.GetComponent<Rotator> ();
-		if (rotator.turn (target.transform.position)) {
-			weapon.shooting = true;
-		}
+		caster.transform.LookAt(target.transform.position);
 	}
 }

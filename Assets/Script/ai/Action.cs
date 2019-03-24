@@ -10,11 +10,12 @@ public class Action{
 	public const uint ANYONE = 7;	//ANY_ENEMY & ANOTHER_ALLY & SELFCAST
 	public const uint ANYONE_ELSE = 6;	//ANY_ENEMY & ANOTHER_ALLY
 
+	protected const int DEFAULT_LEVEL = 1;
+	
 	private Action master_action;
 	
 	protected GameObject caster;
 	protected GameObject target;
-	protected int defaultLevel = 1;
 	protected Animator animator;
 	protected Brain brain;
 	public event Delegate.ActionComplete evComplete;
@@ -54,10 +55,10 @@ public class Action{
 	}
 	public virtual void init(GameObject cst, object param = null){
 		caster = cst;
-		animator = caster.GetComponent<Animator> ();
 		brain = caster.GetComponent<Brain> ();
+		animator = brain.animator;
 		Caster casterComponent = caster.GetComponent<Caster> ();
-		lv = defaultLevel != 0 ? defaultLevel : casterComponent != null && casterComponent.skills != null && casterComponent.skills[id] != 0 ? casterComponent.skills[id] : 0;
+		lv = DEFAULT_LEVEL != 0 ? DEFAULT_LEVEL : casterComponent != null && casterComponent.skills != null && casterComponent.skills[id] != 0 ? casterComponent.skills[id] : 0;
 	}
 	public virtual void update(float dt){
 	}
@@ -88,11 +89,11 @@ public class Action{
 	}
 	public virtual void perform(GameObject trg){
 		target = trg;
-	/*	Caster casterComponent = caster.GetComponent<Caster> ();
+		Caster casterComponent = caster.GetComponent<Caster> ();
 		if(casterComponent != null){
 			casterComponent.addCooldown(id, cooldown);
 			casterComponent.SP -= spCost;
-		}*/
+		}
 	}
 	protected virtual void complete(){
 		if (evComplete != null)
@@ -100,17 +101,30 @@ public class Action{
 	}
 	//virtual
 	public virtual bool canPerform(GameObject trg){
-		return true;
-	/*	if(!lv){return false;}	//Нулевой уровень - это отсутствие скилла у кастера
+		if (lv == 0){	//Нулевой уровень - это отсутствие скилла у кастера
+			return false;
+		}
+
 		if(targetType != ANYONE){
-			switch(true){
-				case (!trg) || (caster==trg): if(!(targetType & SELFCAST)){return false;}break;
-				case (caster.team & trg.team)!=0: if(!(targetType & ANOTHER_ALLY)){return false;}break;
-				case (caster.team & trg.team)==0: if(!(targetType & ANY_ENEMY)){return false;}break;
+			uint casterTeam = getTeam(caster);
+			uint targetTeam = getTeam(trg);
+			if(trg == null || caster==trg){
+				if((targetType & SELFCAST) == 0)
+					return false;
+			}else if ((casterTeam & targetTeam) != 0){
+				if ((targetType & ANOTHER_ALLY) == 0)
+					return false;
+			}else if((casterTeam & targetTeam) == 0){
+				if((targetType & ANY_ENEMY) == 0)
+					return false;
 			}
 		}
-		if(caster.cooldowns[id]){return false;}
-		return (caster.SP >= spCost);	//Sp cost check;*/
+		Caster casterComponent = caster.GetComponent<Caster> ();
+		if (casterComponent != null && (casterComponent.getCooldown(id) > 0 || casterComponent.SP < spCost)){
+			return false;
+		}
+
+		return true;
 	}
 	public virtual bool shouldPerform(GameObject trg){
 		return true;
@@ -132,5 +146,9 @@ public class Action{
 	}
 	protected string hlt(object str){	//HighlLight Text
 		return "<B>"+str.ToString()+"</B>";
+	}
+	protected uint getTeam(GameObject obj){
+		Unit unit = obj.GetComponent<Unit>();
+		return unit ? unit.team : 0;
 	}
 }

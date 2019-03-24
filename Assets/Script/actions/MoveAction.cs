@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class MoveAction : Action {
 	protected float follow_range;
-	protected bool run;
 	private Unit unit;
 	private Vector3 prevPosition;
 	protected UnityEngine.AI.NavMeshAgent nma;
 
-	public MoveAction(bool run = true, float fr = 0) {
+	public MoveAction(float fr = 0) {
 		follow_range = fr;
-		this.run = run;
 	}
 	override public bool intercept() { return true; }
 	override public void init(GameObject cst, object param = null) {
@@ -22,15 +20,15 @@ public class MoveAction : Action {
 	}
 	override public void perform(GameObject trg) {
 		base.perform(trg);
-		nma.speed = unit.getSpeed(run);
-		animator.SetInteger(Unit.ANIMATION, (int)(run ? Unit.Animation.SPRINT : Unit.Animation.IDLE));
+		nma.speed = unit.getSpeed();
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.RUN);
 		update(0);
 	}
 	override public bool canPerform(GameObject target) {
 		return unit.getSpeed() > 0;
 	}
 	override public void onAnimation(int param = 0) {
-		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.IDLE);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.STAY);
 		complete(); //Thinks every second when moves
 	}
 	override public void update(float dt) {

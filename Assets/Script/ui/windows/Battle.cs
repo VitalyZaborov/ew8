@@ -10,7 +10,5 @@ public class Battle : Window {
 		base.show(id, manager, windowData);
 		LevelData ld = (LevelData)windowData;
 		hud.target = GameObject.FindGameObjectWithTag("Player");
-		Soldier soldier = hud.target.GetComponent<Soldier>();
-		soldier.setWeapons(new Weapon.WeaponData[] { ld.wdata });
 	}
 }

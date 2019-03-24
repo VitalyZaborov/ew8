@@ -4,23 +4,27 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Unit : MonoBehaviour{
+	
 	public enum Animation {
-		IDLE,
+		STAY,
 		SHOOT,
-		RELOAD,
-		SWITCH,
-		SPRINT,
-		STRIKE,
-		THROW
+		CAST,
+		DAMAGE,
+		RUN,
+		ATTACK_1,
+		ATTACK_2,
+		ATTACK_3,
+		ATTACK_4,
+		ATTACK_5,
+		ATTACK_6
 	}
+	
 	public static int ANIMATION = Animator.StringToHash("animation");
 	public static int FORWARD = Animator.StringToHash("forward");
 	public static int STRAFE = Animator.StringToHash("strafe");
 
 	public uint team;
 	public float speed = 3.5f;
-	public float sprint = 1.3f;
-	public float backSpeedMod = 1;
 	public float visibilityRange = float.MaxValue;
 
 	private bool frozen = false;
@@ -81,8 +85,8 @@ public class Unit : MonoBehaviour{
 		return false;
 	}
 
-	public float getSpeed(bool run = false) {
-		return run ? speed * sprint : speed;
+	public float getSpeed() {
+		return speed;
 	}
 
 	//	==========================================================================================================

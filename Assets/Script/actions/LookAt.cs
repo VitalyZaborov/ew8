@@ -12,8 +12,7 @@ public class LookAt : Action {
 	}
 	override public void update(float dt) {
 		Unit cu = caster.GetComponentInParent<Unit>();
-		Rotator rotator = caster.GetComponent<Rotator>();
-		rotator.turn(target.transform.position);
+		caster.transform.LookAt(target.transform.position);
 
 		if (Time.time - sightCheckAt > SIGHT_CHECK_PERIOD) {
 			sightCheckAt = Time.time;
@@ -21,7 +20,6 @@ public class LookAt : Action {
 				brain.memory.write("enemyPos", target.transform.position);
 			} else {
 				complete();
-				return;
 			}
 		}
 	}

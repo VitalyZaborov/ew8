@@ -40,19 +40,11 @@ public class Shoot : Action{
 	override public bool canPerform(GameObject target){
 		Health th = target.GetComponent<Health> ();
 		Unit tu = target.GetComponentInParent<Unit> ();
-		Rotator rotator = caster.GetComponent<Rotator>();
 	//	Debug.Log("[Shoot]canPerform:" + (th.value > 0) +"|"+ ((unit.team & tu.team) == 0) + "|" + (weapon != null) + "|" + (weapon.clip > 0) +"|"+ (weapon.recoil <= accuracy));
-		return (th.value > 0) && rotator != null && rotator.canTurnTo(target.transform.position) && ((unit.team & tu.team) == 0) && (weapon != null) && (weapon.clip > 0) && (weapon.recoil <= accuracy) && base.canPerform(target);	//Мертвых не бить! Своих тоже не бить
+		return (th.value > 0) && ((unit.team & tu.team) == 0) && (weapon != null) && (weapon.clip > 0) && (weapon.recoil <= accuracy) && base.canPerform(target);	//Мертвых не бить! Своих тоже не бить
 	}
 	override public void update(float dt) {
 		Unit cu = caster.GetComponentInParent<Unit> ();
-		Rotator rotator = caster.GetComponent<Rotator>();
-
-		// Try to aim
-		if (!rotator.turn(target.transform.position)) {
-			weapon.shooting = false;
-			return;
-		}
 
 		// Stop shooting on empty clip, exceed recoil or burst size
 

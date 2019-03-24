@@ -39,6 +39,7 @@ public class Brain : MonoBehaviour {
 	public string pattern = "common";
 	public Memory memory = new Memory();
 	public Unit unit;
+	public Animator animator;
 
 	private AINode[] aiArray;
 	protected Action curr_action;

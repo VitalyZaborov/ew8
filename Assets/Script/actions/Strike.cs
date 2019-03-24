@@ -15,19 +15,9 @@ public class Strike : Action {
 	override public float range {
 		get { return RANGE; }
 	}
-	override public Action performPrepareAction(GameObject trg) {
-		Action act;
-		Rotator rotator = caster.GetComponent<Rotator>();
-		if (Quaternion.Angle(caster.transform.rotation, Quaternion.LookRotation(trg.transform.position - caster.transform.position)) > ANGLE) {
-			act = new TurnTo(ANGLE);
-			act.init(caster);
-			return makePrepareAction(act, trg, trg);
-		}
-		return base.performPrepareAction(trg);
-	}
 	override public void perform(GameObject trg) {
 		base.perform(trg);
-		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.STRIKE);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.ATTACK_1);
 	}
 
 	override public bool canPerform(GameObject target) {
@@ -37,15 +27,11 @@ public class Strike : Action {
 		Health th = target.GetComponent<Health>();
 		Unit cu = caster.GetComponentInParent<Unit>();
 		Unit tu = target.GetComponentInParent<Unit>();
-		Rotator rotator = caster.GetComponent<Rotator>();
-		return (th.value > 0) && rotator != null && rotator.canTurnTo(target.transform.position) && ((cu.team & tu.team) == 0) && base.canPerform(target);  //Мертвых не бить! Своих тоже не бить
+		return (th.value > 0) && ((cu.team & tu.team) == 0) && base.canPerform(target);  //Мертвых не бить! Своих тоже не бить
 	}
 
 	override public void update(float dt) {
-		if(target != null) {
-			Rotator rotator = caster.GetComponent<Rotator>();
-			rotator.turn(target.transform.position);
-		}
+		caster.transform.LookAt(target.transform.position);
 	}
 
 	override public void onAnimation(int param = 0) {
@@ -53,8 +39,7 @@ public class Strike : Action {
 		if (animState != info.shortNameHash)
 			return;
 		if(param == 1) {
-			Soldier soldier = caster.GetComponent<Soldier>();
-			Weapon.WeaponData wdata = soldier.melee;
+			/*Weapon.WeaponData wdata = soldier.melee;
 			Collider[] hitColliders = Physics.OverlapSphere(caster.transform.position, RANGE*10, 1, QueryTriggerInteraction.Ignore);
 			foreach (Collider collider in hitColliders) {
 				GameObject other = collider.gameObject;
@@ -64,7 +49,7 @@ public class Strike : Action {
 					Damage damage = wdata.getDamage(caster);
 					health.receiveDamage(damage.getDamageValue(0, 0));
 				}
-			}
+			}*/
 		} else {
 			complete();
 		}
@@ -72,6 +57,6 @@ public class Strike : Action {
 
 	override protected void complete() {
 		base.complete();
-		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.IDLE);
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.STAY);
 	}
 }

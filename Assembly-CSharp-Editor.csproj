@@ -17,10 +17,10 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{17397A8A-BFC5-BC10-839C-D642A8924ACC}</ProjectGuid>
+    <ProjectGuid>{B943C115-4257-6385-A9FD-9F33CB420FD1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -65,139 +65,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\3rdParty\MiniJSON.cs" />
-    <Compile Include="Assets\Script\actions\Attack.cs" />
-    <Compile Include="Assets\Script\actions\Follow.cs" />
-    <Compile Include="Assets\Script\actions\GoTo.cs" />
-    <Compile Include="Assets\Script\actions\LookAt.cs" />
-    <Compile Include="Assets\Script\actions\MoveAction.cs" />
-    <Compile Include="Assets\Script\actions\PlayerControl.cs" />
-    <Compile Include="Assets\Script\actions\Rest.cs" />
-    <Compile Include="Assets\Script\actions\Shoot.cs" />
-    <Compile Include="Assets\Script\actions\Stay.cs" />
-    <Compile Include="Assets\Script\actions\Strike.cs" />
-    <Compile Include="Assets\Script\AI.cs" />
-    <Compile Include="Assets\Script\ai\Action.cs" />
-    <Compile Include="Assets\Script\ai\ActionNode.cs" />
-    <Compile Include="Assets\Script\ai\AINode.cs" />
-    <Compile Include="Assets\Script\ai\Brain.cs" />
-    <Compile Include="Assets\Script\ai\Caster.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Ally.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Ammo.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Anyone.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Clip.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Condition.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Distance.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Enemy.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Furthest.cs" />
-    <Compile Include="Assets\Script\ai\conditions\GroupCondition.cs" />
-    <Compile Include="Assets\Script\ai\conditions\HP.cs" />
-    <Compile Include="Assets\Script\ai\conditions\MaxHP.cs" />
-    <Compile Include="Assets\Script\ai\conditions\MinHP.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Nearest.cs" />
-    <Compile Include="Assets\Script\ai\conditions\NumericCondition.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Player.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Recoil.cs" />
-    <Compile Include="Assets\Script\ai\conditions\Self.cs" />
-    <Compile Include="Assets\Script\ai\conditions\StaticCondition.cs" />
-    <Compile Include="Assets\Script\ai\conditions\TerminalCondition.cs" />
-    <Compile Include="Assets\Script\ai\Vision.cs" />
-    <Compile Include="Assets\Script\animation\Animation.cs" />
-    <Compile Include="Assets\Script\animation\AnimationState.cs" />
-    <Compile Include="Assets\Script\animation\BaseTimelineState.cs" />
-    <Compile Include="Assets\Script\animation\IAnimatable.cs" />
-    <Compile Include="Assets\Script\animation\TimelineState.cs" />
-    <Compile Include="Assets\Script\animation\WorldClock.cs" />
-    <Compile Include="Assets\Script\armature\Armature.cs" />
-    <Compile Include="Assets\Script\armature\Bone.cs" />
-    <Compile Include="Assets\Script\armature\Constraint.cs" />
-    <Compile Include="Assets\Script\armature\DeformVertices.cs" />
-    <Compile Include="Assets\Script\armature\IArmatureProxy.cs" />
-    <Compile Include="Assets\Script\armature\Slot.cs" />
-    <Compile Include="Assets\Script\armature\TransformObject.cs" />
-    <Compile Include="Assets\Script\Attachment.cs" />
-    <Compile Include="Assets\Script\CharacterAnimation.cs" />
-    <Compile Include="Assets\Script\core\BaseObject.cs" />
-    <Compile Include="Assets\Script\core\DragonBones.cs" />
-    <Compile Include="Assets\Script\Damage.cs" />
-    <Compile Include="Assets\Script\DamageModifier.cs" />
-    <Compile Include="Assets\Script\Delegate.cs" />
-    <Compile Include="Assets\Script\DragonBonesAnimator.cs" />
-    <Compile Include="Assets\Script\event\EventObject.cs" />
-    <Compile Include="Assets\Script\event\IEventDispatcher.cs" />
-    <Compile Include="Assets\Script\factory\BaseFactory.cs" />
-    <Compile Include="Assets\Script\GameArea.cs" />
-    <Compile Include="Assets\Script\GameParams.cs" />
-    <Compile Include="Assets\Script\geom\ColorTransform.cs" />
-    <Compile Include="Assets\Script\geom\Matrix.cs" />
-    <Compile Include="Assets\Script\geom\Point.cs" />
-    <Compile Include="Assets\Script\geom\Rectangle.cs" />
-    <Compile Include="Assets\Script\geom\Transform.cs" />
-    <Compile Include="Assets\Script\Health.cs" />
-    <Compile Include="Assets\Script\model\AnimationConfig.cs" />
-    <Compile Include="Assets\Script\model\AnimationData.cs" />
-    <Compile Include="Assets\Script\model\ArmatureData.cs" />
-    <Compile Include="Assets\Script\model\BoundingBoxData.cs" />
-    <Compile Include="Assets\Script\model\CanvasData.cs" />
-    <Compile Include="Assets\Script\model\ConstraintData.cs" />
-    <Compile Include="Assets\Script\model\DisplayData.cs" />
-    <Compile Include="Assets\Script\model\DragonBonesData.cs" />
-    <Compile Include="Assets\Script\model\SkinData.cs" />
-    <Compile Include="Assets\Script\model\TextureAtlasData.cs" />
-    <Compile Include="Assets\Script\model\UserData.cs" />
-    <Compile Include="Assets\Script\parser\BinaryDataParser.cs" />
-    <Compile Include="Assets\Script\parser\BinaryDataReader.cs" />
-    <Compile Include="Assets\Script\parser\BinaryDataWriter.cs" />
-    <Compile Include="Assets\Script\parser\DataParser.cs" />
-    <Compile Include="Assets\Script\parser\ObjectDataParser.cs" />
-    <Compile Include="Assets\Script\Projectile.cs" />
-    <Compile Include="Assets\Script\RotateHuman.cs" />
-    <Compile Include="Assets\Script\statuses\DurationStatus.cs" />
-    <Compile Include="Assets\Script\statuses\HeroOperative.cs" />
-    <Compile Include="Assets\Script\statuses\IAttackEffect.cs" />
-    <Compile Include="Assets\Script\statuses\IDefenseEffect.cs" />
-    <Compile Include="Assets\Script\statuses\IDurationEffect.cs" />
-    <Compile Include="Assets\Script\statuses\IHealEffect.cs" />
-    <Compile Include="Assets\Script\statuses\IHitEffect.cs" />
-    <Compile Include="Assets\Script\statuses\Reflect.cs" />
-    <Compile Include="Assets\Script\statuses\Status.cs" />
-    <Compile Include="Assets\Script\statuses\Statuses.cs" />
-    <Compile Include="Assets\Script\statuses\Stealth.cs" />
-    <Compile Include="Assets\Script\struct\LevelData.cs" />
-    <Compile Include="Assets\Script\ui\Crosshair.cs" />
-    <Compile Include="Assets\Script\ui\CustomGunView.cs" />
-    <Compile Include="Assets\Script\ui\Elements\AimIndicator.cs" />
-    <Compile Include="Assets\Script\ui\Elements\AmmoCounter.cs" />
-    <Compile Include="Assets\Script\ui\Elements\GunCustomizer.cs" />
-    <Compile Include="Assets\Script\ui\Elements\Healthbar.cs" />
-    <Compile Include="Assets\Script\ui\Elements\RecoilIndicator.cs" />
-    <Compile Include="Assets\Script\ui\Elements\WeaponIndicator.cs" />
-    <Compile Include="Assets\Script\ui\HUD.cs" />
-    <Compile Include="Assets\Script\ui\HUDElement.cs" />
-    <Compile Include="Assets\Script\ui\LevelLoader.cs" />
-    <Compile Include="Assets\Script\ui\Progressbar.cs" />
-    <Compile Include="Assets\Script\ui\Window.cs" />
-    <Compile Include="Assets\Script\ui\windows\Battle.cs" />
-    <Compile Include="Assets\Script\ui\windows\BattleLoading.cs" />
-    <Compile Include="Assets\Script\ui\windows\Customize.cs" />
-    <Compile Include="Assets\Script\ui\windows\MainMenu.cs" />
-    <Compile Include="Assets\Script\ui\WindowsManager.cs" />
-    <Compile Include="Assets\Script\Unit.cs" />
-    <Compile Include="Assets\Script\unity\MeshBuffer.cs" />
-    <Compile Include="Assets\Script\unity\UnityArmatureComponent.cs" />
-    <Compile Include="Assets\Script\unity\UnityCombineMeshs.cs" />
-    <Compile Include="Assets\Script\unity\UnityDragonBonesData.cs" />
-    <Compile Include="Assets\Script\unity\UnityEventDispatcher.cs" />
-    <Compile Include="Assets\Script\unity\UnityFactory.cs" />
-    <Compile Include="Assets\Script\unity\UnitySlot.cs" />
-    <Compile Include="Assets\Script\unity\UnityTextureAtlasData.cs" />
-    <Compile Include="Assets\Script\unity\UnityUGUIDisplay.cs" />
-    <Compile Include="Assets\Script\util\Exit.cs" />
-    <Compile Include="Assets\Script\util\Lifetime.cs" />
-    <Compile Include="Assets\Script\util\SamePosition.cs" />
-    <Compile Include="Assets\Script\Weapon.cs" />
-    <None Include="Assets\Resources\Shaders\DB_BlendMode_UIGrab.shader" />
-    <None Include="Assets\Resources\Shaders\DB_BlendMode_Grab.shader" />
+    <Compile Include="Assets\Editor\AssetProcess.cs" />
+    <Compile Include="Assets\Editor\DragonBonesIcons.cs" />
+    <Compile Include="Assets\Editor\PickJsonDataWindow.cs" />
+    <Compile Include="Assets\Editor\ShowSlotsWindow.cs" />
+    <Compile Include="Assets\Editor\UnityArmatureEditor.cs" />
+    <Compile Include="Assets\Editor\UnityEditor.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>G:/Unity/Feudalism IV/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -384,60 +257,138 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Timeline">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Timeline">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UIAutomation">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UIAutomation">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/UIAutomation/Editor/UnityEditor.UIAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.GoogleAudioSpatializer">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GoogleAudioSpatializer">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.HoloLens">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Facebook.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/PlaybackEngines/Facebook/UnityEditor.Facebook.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
+      <HintPath>G:/Unity/Feudalism IV/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>C:/Users/Vitaly/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.7/Editor/UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/Vitaly/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Analytics">
+      <HintPath>C:/Users/Vitaly/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/Editor/UnityEditor.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>C:/Users/Vitaly/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>C:/Users/Vitaly/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/Editor/UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/Vitaly/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Core.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/System.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Runtime.Serialization.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/System.Runtime.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Xml.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/System.Xml.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Xml.Linq.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/System.Xml.Linq.dll</HintPath>
     </Reference>
     <Reference Include="UnityScript">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/UnityScript.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/UnityScript.dll</HintPath>
     </Reference>
     <Reference Include="UnityScript.Lang">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/UnityScript.Lang.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/UnityScript.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{17397A8A-BFC5-BC10-839C-D642A8924ACC}</Project>
+      <Name>Assembly-CSharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
