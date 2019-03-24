@@ -27,16 +27,4 @@ public class GameArea : MonoBehaviour{
 	//	Debug.Log("GameArea remove " + unit.ToString() + " from " + units.Count.ToString());
 		units.Remove (unit);
 	}
-
-	public List<GameObject> getVisibleUnits(GameObject target){
-		Unit unit = target.GetComponent<Unit>();
-		List<GameObject> result = new List<GameObject>();
-		for(int i = 0; i < units.Count; i++){
-			GameObject obj = units[i];
-			if (unit.canSee(obj)) {
-				result.Add(obj);
-			}
-		}
-		return result;
-	}
 }

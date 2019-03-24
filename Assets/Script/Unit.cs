@@ -59,31 +59,9 @@ public class Unit : MonoBehaviour{
 		}
 	}
 
-	public List<GameObject> visibleUnits{
-		get{
-			return ga.getVisibleUnits(gameObject);
-		}
-	}
+	
 
-	public bool canSee(GameObject other) {
-		if (other == gameObject)
-			return true;
-
-		Unit unit = other.GetComponent<Unit>();
-		float distance = Vector3.Distance(transform.position, other.transform.position);
-		if (distance > Mathf.Min(GameArea.VISION_RANGE, unit.visibilityRange)) {
-		//	Debug.Log("Can't see: too far " + distance.ToString());
-			return false;
-		}
-		//	Debug.DrawRay(transform.Find("MEyes").position, transform.Find("MEyes").transform.forward * ViewDistance);
-
-		if (!Physics.Raycast(transform.position, other.transform.position - transform.position, distance, 1 << 8)) {
-			return true;
-		}
-		
-	//	Debug.Log("Can't see:" + (hit.transform != null && hit.transform.gameObject == gameObject).ToString());
-		return false;
-	}
+	
 
 	public float getSpeed() {
 		return speed;

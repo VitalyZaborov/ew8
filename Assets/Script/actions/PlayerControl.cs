@@ -41,10 +41,6 @@ public class PlayerControl : Action{
 		if (Input.GetButtonDown("Strike") && addChildAction(new Strike())) {
 			return;
 		}
-
-		if (Input.GetButtonDown("Reload") && addChildAction(new Reload())) {
-			return;
-		}
 	}
 
 	public override bool intercept() {

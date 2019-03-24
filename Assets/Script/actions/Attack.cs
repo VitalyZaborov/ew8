@@ -21,15 +21,6 @@ public class Attack : Action{
 /*	protected Damage getDamage(){
 		return Config.instance.damageFactory.getDamage(weapon, caster);
 	}*/
-	override public Action performPrepareAction(GameObject trg){
-		Action act;
-		if(weapon.clip == 0){
-			act = new Reload();
-			act.init(caster);
-			return makePrepareAction(act,trg,trg);
-		}
-		return base.performPrepareAction(trg);
-	}
 	override public bool canPerform(GameObject target){
 		Health th = target.GetComponent<Health> ();
 		Unit cu = caster.GetComponentInParent<Unit> ();

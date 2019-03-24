@@ -44,7 +44,7 @@ public class Shoot : Action{
 		return (th.value > 0) && ((unit.team & tu.team) == 0) && (weapon != null) && (weapon.clip > 0) && (weapon.recoil <= accuracy) && base.canPerform(target);	//Мертвых не бить! Своих тоже не бить
 	}
 	override public void update(float dt) {
-		Unit cu = caster.GetComponentInParent<Unit> ();
+		Vision vision = caster.GetComponentInParent<Vision>();
 
 		// Stop shooting on empty clip, exceed recoil or burst size
 
@@ -56,7 +56,7 @@ public class Shoot : Action{
 		// Spotting check
 		if(Time.time - sightCheckAt > SIGHT_CHECK_PERIOD) {
 			sightCheckAt = Time.time;
-			if (cu.canSee(target)){
+			if (vision.canSee(target)){
 				brain.memory.write("enemyPos", target.transform.position);
 			} else {
 				complete();

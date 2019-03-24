@@ -38,7 +38,7 @@ public class Brain : MonoBehaviour {
 
 	public string pattern = "common";
 	public Memory memory = new Memory();
-	public Unit unit;
+	public Vision vision;
 	public Animator animator;
 
 	private AINode[] aiArray;
@@ -128,7 +128,7 @@ public class Brain : MonoBehaviour {
 	//	Staff
 	protected void think(){
 	//	Debug.Log("Brain think " + pattern);
-		List<GameObject> targets = unit.visibleUnits;
+		List<GameObject> targets = vision.visibleUnits;
 		Action action;
 		ActionContext cnxt = new ActionContext() {caster = gameObject, memory = memory };
 		for(int i = 0;i < aiArray.Length;i++){

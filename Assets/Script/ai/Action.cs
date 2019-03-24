@@ -21,7 +21,7 @@ public class Action{
 	public event Delegate.ActionComplete evComplete;
 
 	public string id;	//Присваивается в getAction
-	public int lv;
+	protected int lv;
 
 	public Action(){
 	}
@@ -58,7 +58,7 @@ public class Action{
 		brain = caster.GetComponent<Brain> ();
 		animator = brain.animator;
 		Caster casterComponent = caster.GetComponent<Caster> ();
-		lv = DEFAULT_LEVEL != 0 ? DEFAULT_LEVEL : casterComponent != null && casterComponent.skills != null && casterComponent.skills[id] != 0 ? casterComponent.skills[id] : 0;
+		lv = casterComponent == null ? DEFAULT_LEVEL : casterComponent.skills.ContainsKey(id) ? casterComponent.skills[id] : 0;
 	}
 	public virtual void update(float dt){
 	}
