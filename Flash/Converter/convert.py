@@ -69,25 +69,6 @@ class Animation(object):
 			prevPose = pose
 			prevFrame = frame
 
-
-		# if p is None:
-		# 	return
-		#
-		# if len(self.poses) == 0:
-		# 	self.poses.append(p)
-		# 	self.__start = self.__finish = p
-		# 	return
-		#
-		# samePose = self.__isSamePose(p)
-		# if (self.__isStatic != samePose) or (not self.__isStatic and not self.__isSameLine(p)):
-		# 	self.__isStatic = samePose
-		# 	self.__start = self.__finish
-		# 	self.poses.append(p)
-		#
-		# self.__start.duration += 1
-		# self.__finish = p
-		# self.__direction = None if self.__isStatic else (self.__start.position - self.__finish.position).normalize()
-
 	def __isSamePose(self, p):
 		return all(self.__finish.position == p.position)# and all(self.__finish.scale == p.scale)
 
@@ -211,12 +192,16 @@ def parseAnimation(animationId, data, skeleton):
 	symbols = data['SYMBOL_DICTIONARY']
 	layers = data['ANIMATION']['TIMELINE']['LAYERS']
 	animations = {}
+	events = []
 
 	for layer in layers:
 		layerName = layer['Layer_name']
+		frames = layer['Frames']
+		if layerName == ACTIONS_LAYER:
+			events = [(LABEL_TO_EVENT.get(frame['name'], frame['name']), frameIndex, ) for frameIndex, frame in enumerate(frames) if frame.get('name') is not None]
+			continue
 		if layerName not in SKELETON:
 			continue
-		frames = layer['Frames']
 	#	print '--------------- layer',layerName,'---------------'
 		frames.sort(key= lambda f: f['index'])
 		animation = Animation()
@@ -230,6 +215,7 @@ def parseAnimation(animationId, data, skeleton):
 			boneName = getName(instance)
 			decomposedMatrix = instance['DecomposedMatrix']
 			animation.append(Params(decomposedMatrix))
+
 		animation.make(KEYFRAMES.get(animationId[2:]))
 		animations[boneName] = animation
 
@@ -258,7 +244,7 @@ def parseAnimation(animationId, data, skeleton):
 
 			frameIndex += params.duration
 
-	return animations
+	return animations, events
 
 def convert(gender, weapon, textures):
 	skeletonId = gender + 'f' + weapon
@@ -298,7 +284,7 @@ def convert(gender, weapon, textures):
 		}
 		bone.append({'name': boneName, 'parent': (SKELETON[boneName] or 'root'), 'transform': transform})
 
-	for animationName, anim in animations.iteritems():
+	for animationName, (anim, events) in animations.iteritems():
 		boneArray = []
 		for boneName, boneAnim in anim.iteritems():
 			rotateFrame = []
@@ -318,8 +304,19 @@ def convert(gender, weapon, textures):
 				'scaleFrame': scaleFrame,
 			}
 			boneArray.append(boneData)
+		frames = []
+		prevEvent = None
+		totalDuration = 0
+		for (eventName, frameIndex) in events:
+			if prevEvent is None:
+				prevEvent = {'duration': 0}
+				frames.append(prevEvent)
+			prevEvent['duration'] = frameIndex - totalDuration
+			prevEvent = {'duration': 0, 'events': [{'name': eventName}]}
+			frames.append(prevEvent)
+			totalDuration = frameIndex
 		data = {
-			'frame': [],
+			'frame': frames,
 			'slot': [],
 			'duration': len(anim['body'].frames),
 			'fadeInTime': 0.3,

@@ -222,3 +222,8 @@ PIVOTS = {
 
 
 }
+ACTIONS_LAYER = 'actions'
+LABEL_TO_EVENT = {
+	'2': 'hit',
+	'3': 'chain',
+}
