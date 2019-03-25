@@ -22,8 +22,9 @@ public class Caster : MonoBehaviour {
 	}
 
 	private void Update(){
-		foreach(KeyValuePair<string, float> entry in cooldowns){
-			cooldowns[entry.Key] = Mathf.Max(0, entry.Value - Time.deltaTime);
+		foreach(string key in new List<string>(cooldowns.Keys))
+		{
+			cooldowns[key] = Mathf.Max(0, cooldowns[key] - Time.deltaTime);
 		}
 	}
 }

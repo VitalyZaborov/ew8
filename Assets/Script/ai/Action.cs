@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,10 +21,11 @@ public class Action{
 	protected Brain brain;
 	public event Delegate.ActionComplete evComplete;
 
-	public string id;	//Присваивается в getAction
+	public readonly string id;
 	protected int lv;
 
 	public Action(){
+		id = GetType().Name;
 	}
 	public virtual float range {
 		get{ return 0; }
@@ -57,8 +59,7 @@ public class Action{
 		caster = cst;
 		brain = caster.GetComponent<Brain> ();
 		animator = brain.animator;
-		Caster casterComponent = caster.GetComponent<Caster> ();
-		lv = casterComponent == null ? DEFAULT_LEVEL : casterComponent.skills.ContainsKey(id) ? casterComponent.skills[id] : 0;
+		lv = DEFAULT_LEVEL;
 	}
 	public virtual void update(float dt){
 	}

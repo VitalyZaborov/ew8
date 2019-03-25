@@ -17,12 +17,15 @@ public class Stay : Action{
 	override public void perform(GameObject trg){
 		base.perform(trg);
 		routine = brain.StartCoroutine(onRoutine());
+		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.STAY);
+		Debug.Log("perform");
 	}
 	private IEnumerator onRoutine() {
 		yield return new WaitForSeconds(duration);
 		complete();
 	}
 	protected override void complete() {
+		Debug.Log("Complete");
 		brain.StopCoroutine(routine);
 		base.complete();
 	}
