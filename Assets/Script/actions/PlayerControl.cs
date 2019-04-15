@@ -17,37 +17,53 @@ public class PlayerControl : Action{
 
 	override public void update(float dt) {
 		
-		// Aim
-
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		float distance = 0;
-		if (hPlane.Raycast(ray, out distance)) {
-			Vector3 worldPos = ray.GetPoint(distance);
-		}
-
-		// Child action
+		// Moving
+        
+        if (Input.GetButtonDown("ActionA")) {
+        	Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            float distance = 0;
+            if (hPlane.Raycast(ray, out distance)) {
+                Vector3 worldPos = ray.GetPoint(distance);
+                if (addChildAction(new GoTo(worldPos))){
+	                return;
+                }
+            }
+        }
+        
+        // Child action
 
 		if (child != null) {
 			child.update(dt);
-			return;
+		}else{
+			Debug.Log("Start stay");
+			addChildAction(new Stay());
 		}
 		
-		// Shooting
-
-		if (Input.GetButtonDown("Fire1")) {
-			
-		}
-
-		if (Input.GetButtonDown("Strike") && addChildAction(new Strike())) {
-			return;
-		}
+//		if (Input.GetButtonDown("Strike") && addChildAction(new Strike())) {
+//			return;
+//		}
 	}
 
 	public override bool intercept() {
 		return true;
 	}
 
+	private bool interceptChild(){
+		if (child == null)
+			return true;
+		
+		if (child.intercept()){
+			child.evComplete -= onActionComplete;
+			child = null;
+			return true;
+		}
+		return false;
+	}
+
 	private bool addChildAction(Action action) {
+		if (!interceptChild()){
+			return false;
+		}
 		action.init(caster);
 		if (!action.canPerform(null)) {
 			return false;
@@ -59,6 +75,7 @@ public class PlayerControl : Action{
 	}
 
 	private void onActionComplete(Action action) {
+		Debug.Log("onActionComplete:" + action.ToString());
 		Debug.Assert(action == child, "Incorrect CHILD action completed! Current: " + (child != null ? child.id : "None") + " completed: " + action.id);
 		child.evComplete -= onActionComplete;
 		child = null;

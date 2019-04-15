@@ -5,29 +5,23 @@ using UnityEngine;
 public class Follow : MoveAction {
 	private bool always_follow;
 
-	public Follow(bool af = true, float follow_range = 0) : base(follow_range) {
+	public Follow(float fr = 0, bool af = true) : base(fr) {
 		always_follow = af;
 	}
-	override public bool canPerform(GameObject target) {
+	
+	public override bool canPerform(GameObject target) {
 		return target != null && base.canPerform(target);
 	}
-	override public void update(float dt){
-		caster.transform.LookAt(target.transform.position);
-		float range = follow_range != 0 ? follow_range : nma.speed * dt;
-		if(range != 0){
-			if(Vector3.Distance(target.transform.position, caster.transform.position) <= (range + caster.GetComponent<UnityEngine.AI.NavMeshAgent>().radius + target.GetComponent<UnityEngine.AI.NavMeshAgent>().radius)){
-				if(always_follow){
-					if (animator != null)
-						animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.STAY);
-				} else{
-					complete();
-				}
-			}else{
-				if(animator != null)
-					animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.RUN);
-				nma.destination = target.transform.position;
-			}
-		}
+
+	public override void perform(GameObject trg){
+		follow_range += getRadius(trg);
+		base.perform(trg);
+	}
+
+	public override void update(float dt){
+		Vector3 targetPosition = target.transform.position;
+		caster.transform.LookAt(targetPosition);
+		nma.destination = targetPosition;
 		base.update(dt);
 	}
 }

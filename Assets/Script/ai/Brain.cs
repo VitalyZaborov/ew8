@@ -36,15 +36,19 @@ public class Brain : MonoBehaviour {
 		public Memory memory;
 	}
 
+	private const float DEFAULT_DURATION = 0.5f;
+	
 	public string pattern = "common";
 	public Memory memory = new Memory();
 	public Vision vision;
 	public Animator animator;
+	public float updateTime = DEFAULT_DURATION;
 
 	private AINode[] aiArray;
 	protected Action curr_action;
 	protected Queue<Order> orders = new Queue<Order>();
-	//	Add actions history?
+	
+	private Coroutine routine;
 
 	Brain(){
 	}
@@ -52,7 +56,7 @@ public class Brain : MonoBehaviour {
 	void OnDisable(){
 		if (curr_action != null) {
 			curr_action.intercept ();
-			curr_action = null;
+			clearAction();
 		}
 	}
 	private void Start() {
@@ -70,7 +74,7 @@ public class Brain : MonoBehaviour {
 		this.pattern = pattern;
 		aiArray = AI.ai[pattern];
 		if(curr_action != null && curr_action.intercept()) {
-			curr_action = null;
+			clearAction();
 		}
 	}
 	public Action currentAction{
@@ -88,6 +92,9 @@ public class Brain : MonoBehaviour {
 			}
 			curr_action = action;
 			curr_action.evComplete += onActionComplete;
+			if (curr_action.continious){
+				routine = StartCoroutine(onRoutine());
+			}
 			return true;
 		}
 		return false;
@@ -97,7 +104,7 @@ public class Brain : MonoBehaviour {
 		curr_action.evComplete -= onActionComplete;
 		//	Debug.Log("onActionComplete" + curr_action);
 		Action prev_action = curr_action;
-		curr_action = null;	//Чтобы избежать конфликта с непрерываемыми действиями, вроде падения
+		clearAction();	//Чтобы избежать конфликта с непрерываемыми действиями, вроде падения
 	//	history.push(prev_action.id);	// Push completed action id to history here
 		while(orders.Count > 0){
 			Order order = orders.Dequeue();
@@ -178,5 +185,22 @@ public class Brain : MonoBehaviour {
 
 	protected bool canDo(GameObject target, Action action) {
 		return action.canPerform(target) && action.shouldPerform(target);
+	}
+	
+	private void clearAction() {
+		if (routine != null){
+			StopCoroutine(routine);
+			routine = null;
+		}
+			
+		curr_action = null;
+	}
+	
+	// Routine checks
+	private IEnumerator onRoutine() {
+		yield return new WaitForSeconds(updateTime);
+		if (curr_action.intercept()){
+			clearAction();
+		}
 	}
 }

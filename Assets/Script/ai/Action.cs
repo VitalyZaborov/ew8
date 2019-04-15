@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Action{
+	public const uint EVENT_END = 1;
+	public const uint EVENT_HIT = 2;
+	public const uint EVENT_CHAIN = 3;
+	
 	public const uint SELFCAST = 1;
 	public const uint ANOTHER_ALLY = 2;
 	public const uint ANY_ENEMY = 4;
@@ -48,6 +52,9 @@ public class Action{
 	public virtual bool enabled{	// Is it possible to perform the action at all (all weapon compatibility checks go here)
 		get { return true; }
 	}
+	public virtual bool continious{	// Is it a long lasting action, which can be intercepted for AI checks
+		get { return false; }
+	}
 	public virtual bool intercept(){
 		return false;
 	}
@@ -55,7 +62,7 @@ public class Action{
 	public Action master{
 		get{ return master_action; }
 	}
-	public virtual void init(GameObject cst, object param = null){
+	public virtual void init(GameObject cst){
 		caster = cst;
 		brain = caster.GetComponent<Brain> ();
 		animator = brain.animator;
@@ -69,13 +76,13 @@ public class Action{
 			float rng = range;
 			float dist = Vector3.Distance(caster.transform.position, trg.transform.position);
 			if(rng<dist){
-				act = new Follow(false);
+				act = new Follow();
 				act.init(caster,rng);
 				return makePrepareAction(act,trg,trg);
 			}
 			Vision vision = caster.GetComponent<Vision> ();
 			if(vision && !vision.canSee(trg)){
-				act = new Follow(false);
+				act = new Follow();
 				act.init(caster,0.5);
 				return makePrepareAction(act,trg,trg);
 			}

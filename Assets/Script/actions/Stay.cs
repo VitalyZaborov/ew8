@@ -3,30 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Stay : Action{
-	private const float DEFAULT_DURATION = 0.5f;
-	private Coroutine routine;
-	private float duration;
 
-	public Stay(float duration = DEFAULT_DURATION) {
-		this.duration = duration;
-	}
-	override public bool intercept(){
-		brain.StopCoroutine(routine);
+	public override bool intercept(){
 		return true;
+	}
+	public override bool continious{	// Is it a long lasting action, which can be intercepted for AI checks
+		get { return true; }
 	}
 	override public void perform(GameObject trg){
 		base.perform(trg);
-		routine = brain.StartCoroutine(onRoutine());
 		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.STAY);
-		Debug.Log("perform");
-	}
-	private IEnumerator onRoutine() {
-		yield return new WaitForSeconds(duration);
-		complete();
-	}
-	protected override void complete() {
-		Debug.Log("Complete");
-		brain.StopCoroutine(routine);
-		base.complete();
 	}
 }
