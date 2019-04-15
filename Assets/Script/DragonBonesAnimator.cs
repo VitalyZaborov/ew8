@@ -9,6 +9,6 @@ public class DragonBonesAnimator : StateMachineBehaviour{
 	
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex){
 		UnityArmatureComponent armature = animator.gameObject.GetComponent<UnityArmatureComponent>();
-		armature.animation.FadeIn(animation, stateInfo.length);
+		armature.animation.FadeIn(animation, stateInfo.length, 0);
 	}
 }
