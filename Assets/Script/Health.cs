@@ -6,6 +6,8 @@ public class Health : MonoBehaviour {
 
 	public uint value;
 	public uint max;
+	public DamageModifier resist = new DamageModifier();
+	public int defense;
 
 	//	public event Delegate.ComponentEvent evKilled = new Delegate.ComponentEvent();
 

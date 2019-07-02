@@ -82,25 +82,56 @@ public class Statuses : MonoBehaviour {
 					return false;
 				}
 			}
-			
 		}
 
 		return processHit(damage, attacker, target);
 	}
 
 	public static bool processHit(Damage damage, GameObject attacker, GameObject target) {
+				
+		// Can't deal damage to an object with no health
+		Health targetHealth = target.GetComponent<Health>();
+		if (targetHealth == null){
+			return false;
+		}
+		
+		// Attack Effects
 		Statuses attackerStatuses = attacker.GetComponent<Statuses>();
-		if (attackerStatuses != null) {
+		if (damage.useAtk && attackerStatuses != null) {
 			foreach (IAttackEffect effect in attackerStatuses.attackEffects) {
 				effect.onAttack(damage, attacker, target);
 			}
 		}
+		
+		// Defense Effects
 		Statuses targetStatuses = target.GetComponent<Statuses>();
 		if (targetStatuses != null) {
 			foreach (IDefenseEffect effect in targetStatuses.defenseEffects) {
 				effect.onDefense(damage, attacker, target);
 			}
 		}
+		
+		// Damage calculation
+		bool crit = Util.percent(damage.crit);
+		int totalDamage = damage.calculate(targetHealth, crit);
+		targetHealth.receiveDamage(totalDamage);
+		
+		// Apply damage statuses
+		if(targetHealth.isAlive){
+			if(damage.statusEffects != null){
+				foreach (Status st in damage.statusEffects) {
+					st.apply(target);
+				}
+			}
+		}
+		
+		//After Effects
+		if (damage.useAtk && attackerStatuses != null) {
+			foreach (IAttackEffect effect in attackerStatuses.attackEffects) {
+				effect.afterAttack(damage, attacker, target, totalDamage, crit);
+			}
+		}
+		
 		return true;
 	}
 }

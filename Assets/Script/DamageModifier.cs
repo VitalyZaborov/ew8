@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageModifier {
+public struct DamageModifier {
 
-	private float[] v;
+	private readonly float[] v;
 
 	/*	Damage mods sequence:
 	Slashing, Piercing, Blunt, Fire, Frost, Lightning, Poison, Dark, Holy
@@ -12,31 +12,75 @@ public class DamageModifier {
 	*/
 
 	public DamageModifier(float sl = 0, float pi = 0, float bl = 0, float fr = 0, float ft = 0, float li = 0, float po = 0, float da = 0, float ho = 0) {
-		v = new float[] { sl, pi, bl, fr, ft, li, po, da, ho };
+		v = new[] { sl, pi, bl, fr, ft, li, po, da, ho };
 	}
-	public DamageModifier getCopy(){
-		return new DamageModifier(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8]);
+	
+	public DamageModifier(DamageModifier copy){
+		v = copy.v.Clone() as float[];
 	}
-	public void add(DamageModifier mod) {
-		for(int i = 0; i < v.Length; i++){
-			v[i] += mod.v[i];
+	
+	public static DamageModifier operator +(DamageModifier first, DamageModifier second){
+		DamageModifier result = new DamageModifier(first);
+		for(int i = 0; i < result.v.Length; i++){
+			result.v[i] += second.v[i];
 		}
+
+		return result;
 	}
-	public void sub(DamageModifier mod) {
-		for (int i = 0; i < v.Length; i++) {
-			v[i] -= mod.v[i];
+	
+	public static DamageModifier operator -(DamageModifier first, DamageModifier second) {
+		DamageModifier result = new DamageModifier(first);
+		for(int i = 0; i < result.v.Length; i++){
+			result.v[i] -= second.v[i];
 		}
+
+		return result;
 	}
-	public void multiply(float mod){
-		for (int i = 0; i < v.Length; i++) {
-			v[i] *= mod;
+	
+	public static DamageModifier operator *(DamageModifier first, DamageModifier second) {
+		DamageModifier result = new DamageModifier(first);
+		for(int i = 0; i < result.v.Length; i++){
+			result.v[i] *= 1 + second.v[i];
 		}
+
+		return result;
 	}
-	public void decrease(DamageModifier mod) {
-		for (int i = 0; i < v.Length; i++) {
-			v[i] *= 1  -mod.v[i];
+	
+	public static DamageModifier operator /(DamageModifier first, DamageModifier second) {
+		DamageModifier result = new DamageModifier(first);
+		for(int i = 0; i < result.v.Length; i++){
+			result.v[i] /= 1 + second.v[i];
 		}
+
+		return result;
 	}
+	
+	public static DamageModifier operator *(DamageModifier first, float second) {
+		DamageModifier result = new DamageModifier(first);
+		for(int i = 0; i < result.v.Length; i++){
+			result.v[i] *= second;
+		}
+
+		return result;
+	}
+	
+	public static DamageModifier operator /(DamageModifier first, float second) {
+		DamageModifier result = new DamageModifier(first);
+		for(int i = 0; i < result.v.Length; i++){
+			result.v[i] /= second;
+		}
+
+		return result;
+	}
+	
+	public static DamageModifier operator *(DamageModifier first, int second) {
+		return first * (float)second;
+	}
+	
+	public static DamageModifier operator /(DamageModifier first, int second) {
+		return first / (float)second;
+	}
+	
 	public void ignore(DamageModifier resist, float mod = 1) {  //Игнорирование защиты
 		for (int i = 0; i < v.Length; i++) {
 			v[i] /= (1-resist.v[i]* mod);

@@ -6,16 +6,15 @@ public class Projectile : MonoBehaviour {
 
 	public bool explosive = false;
 	public GameObject hitEffect;
-	public float crit = 0;
+	public float velocity = 10;
 	public GameObject owner;
 
 	private Vector3 startPosition;
 	private Damage damage;
 
-	public void init(GameObject owner, Damage damage, float velocity, float crit = 0) {
+	public void init(GameObject owner, Damage damage) {
 		this.owner = owner;
 		this.damage = damage;
-		this.crit = crit;
 		startPosition = transform.position;
 		Rigidbody rb = GetComponent<Rigidbody>();
 		rb.velocity = transform.rotation * Vector3.forward * velocity;
@@ -43,23 +42,23 @@ public class Projectile : MonoBehaviour {
 			Instantiate(hitEffect, transform.position, transform.rotation);
 		}
 		
-		if (explosive) {
-			Collider[] objectsInRange = Physics.OverlapSphere(transform.position, damage.distMax);
-			foreach (Collider col in objectsInRange) {
-				GameObject target = col.gameObject;
-				Health health = target.GetComponent<Health>();
-				if (health != null) {
-					float proximity = (transform.position - target.transform.position).magnitude;
-					damage.value = (int)(damage.value * damage.decrease * proximity);
-					health.receiveDamage(damage.getDamageValue(crit, proximity));
-				}
-			}
-		} else {
-			Health health = o != null ? o.GetComponent<Health>() : null;
-			if (health != null) {
-				health.receiveDamage(damage.getDamageValue(crit, distance));
-			}
-		}
+//		if (explosive) {
+//			Collider[] objectsInRange = Physics.OverlapSphere(transform.position, damage.distMax);
+//			foreach (Collider col in objectsInRange) {
+//				GameObject target = col.gameObject;
+//				Health health = target.GetComponent<Health>();
+//				if (health != null) {
+//					float proximity = (transform.position - target.transform.position).magnitude;
+//					damage.value = (int)(damage.value * damage.decrease * proximity);
+//					health.receiveDamage(damage.getDamageValue(crit, proximity));
+//				}
+//			}
+//		} else {
+//			Health health = o != null ? o.GetComponent<Health>() : null;
+//			if (health != null) {
+//				health.receiveDamage(damage.getDamageValue(crit, distance));
+//			}
+//		}
 		Destroy(gameObject);
 	}
 }

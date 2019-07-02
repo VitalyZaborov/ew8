@@ -3,23 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : Action{
-	private Weapon weapon;
-	private int weaponId;
+	private Unit unit;
 
-	public Attack(int weaponId = 0) : base(){
-		this.weaponId = weaponId;
+	public Attack(){
 	}
 	
 	override public void init(GameObject cst){
 		base.init(cst);
-		weapon = caster.GetComponent<Unit> ().getWeapon(weaponId);
+		unit = caster.GetComponent<Unit> ();
 	}
 	override public float range {
-		get{ return weapon.range; }
+		get{ return unit.getRange(); }
 	}
 	override public void perform(GameObject trg){
 		base.perform(trg);
 		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.ATTACK_1 + Random.Range(0, 3));
+		Debug.Log("Attack.perform " + this + " " + target);
 		//	weapon.startAttack();
 	}
 	// Any damage boosts go here
@@ -35,7 +34,10 @@ public class Attack : Action{
 	override public void onAnimation(int param = 0){
 		switch(param){
 			case Label.ATTACK:
-			//	weapon.attack(target, getDamage());
+				Damage damage = unit.getDamage();
+				DamageDealer damager = unit.getDamageDealer();
+				Debug.Log("Attack.onAnimation " + damager + " " + damage);
+				damager.deal(damage, target);
 				break;
 //			case Label.BURST:
 //				if(weapon.onBurst()){

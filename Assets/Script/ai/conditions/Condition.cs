@@ -67,9 +67,9 @@ public abstract class Condition{
 	//	case "att": return new Attackers(sign, param);
 		case "ally": return new Ally();
 		case "enemy": return new Enemy();
-		case "clip": return new Clip(sign, param);
-		case "ammo":return new Ammo(sign, param);
-		case "recoil":return new Recoil(sign, param);
+//		case "clip": return new Clip(sign, param);
+//		case "ammo":return new Ammo(sign, param);
+//		case "recoil":return new Recoil(sign, param);
 	//	case "attacks_me": return owner.attackedBy(un);
 	//	case "prs": return Condition.compare(un.resist.physical*100,cnd.value,cnd.sign);
 	//	case "mrs": return Condition.compare(un.resist.magical*100,cnd.value,cnd.sign);

@@ -10,10 +10,9 @@ public class AI{
 		}},
 		{"common", new AINode[]{
 			new AINode(){
-				target = Condition.getConditions("enemy,nearest"),
-				character = Condition.getConditions("self,recoil<5"),
+				character = Condition.getConditions("enemy,nearest"),
 				extra = delegate(Brain.ActionContext cnxt) {cnxt.memory.write("enemyPos", cnxt.target.transform.position);},
-				action = cnxt => new Shoot(){accuracy = 5}
+				action = cnxt => new Attack()
 			},
 			new AINode(){
 				extra = delegate(Brain.ActionContext cnxt) {cnxt.memory.erase("enemyPos");},

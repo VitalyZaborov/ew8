@@ -14,14 +14,15 @@ public class MoveAction : Action {
 	}
 
 	override public bool intercept(){
-		nma.isStopped = true;
+		if(nma.enabled)
+			nma.isStopped = true;
 		return true;
 	}
 	public override bool continious{	// Is it a long lasting action, which can be intercepted for AI checks
 		get { return true; }
 	}
-	override public void init(GameObject cst, object param = null) {
-		base.init(cst, param);
+	override public void init(GameObject cst) {
+		base.init(cst);
 		unit = caster.GetComponent<Unit>();
 		nma = caster.GetComponent<UnityEngine.AI.NavMeshAgent>();
 		prevPosition = caster.transform.position;
@@ -31,7 +32,7 @@ public class MoveAction : Action {
 		follow_range += getRadius(caster);
 		nma.isStopped = false;
 		nma.speed = unit.getSpeed();
-		nma.stoppingDistance = follow_range;
+	//	nma.stoppingDistance = follow_range;
 		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.RUN);
 		update(0);
 	}
@@ -54,10 +55,5 @@ public class MoveAction : Action {
 	override protected void complete(){
 		intercept();
 		base.complete();
-	}
-
-	protected static float getRadius(GameObject obj){
-		NavMeshAgent nma = obj.GetComponent<NavMeshAgent>();
-		return nma != null ? nma.radius : 0;
 	}
 }

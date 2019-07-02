@@ -128,6 +128,7 @@ public class Brain : MonoBehaviour {
 		orders.Clear ();
 	}
 	public void onAnimation(int param = 0){
+		Debug.Log("Brain.onAnimation:" + param + " " +curr_action);
 		if(curr_action != null){
 			curr_action.onAnimation (param);
 		}

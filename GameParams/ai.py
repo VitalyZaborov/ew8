@@ -17,9 +17,8 @@ AI = {
 
 	'common': [
 		{
-			a: 'Shoot(){accuracy = 5}',
-			c: 'self,recoil<5',
-			t: 'enemy,nearest',
+			a: 'Attack',
+			c: 'enemy,nearest',
 		#	t: 'enemy,hp>50%,nearest',
 			e: 'cnxt.memory.write("enemyPos", cnxt.target.transform.position);',
 		},

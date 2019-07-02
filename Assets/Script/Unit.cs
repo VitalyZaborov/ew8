@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DragonBones;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Unit : MonoBehaviour{
 	
+	public static readonly Weapon DEFAULT_WEAPON = new Weapon("DEFAULT_WEAPON");
 	public enum Animation {
 		STAY,
 		SHOOT,
@@ -19,6 +21,15 @@ public class Unit : MonoBehaviour{
 		ATTACK_6
 	}
 	
+	public enum Nation {
+		NONE,
+		SUN_EMPIRE,
+		FOREST_LANDS,
+		ELLADA,
+		STORMGARD,
+		IRON_KINGDOM
+	};
+	
 	public static int ANIMATION = Animator.StringToHash("animation");
 	public static int FORWARD = Animator.StringToHash("forward");
 	public static int STRAFE = Animator.StringToHash("strafe");
@@ -26,7 +37,12 @@ public class Unit : MonoBehaviour{
 	public uint team;
 	public float speed = 3.5f;
 	public float visibilityRange = float.MaxValue;
+	public string characterId;
+	public UnityArmatureComponent armature;
+	
+	public Character character;
 
+	private Weapon weapon;
 	private bool frozen = false;
 	private Brain brain;
 	private GameArea ga;
@@ -35,9 +51,13 @@ public class Unit : MonoBehaviour{
 	}
 
 	public void Awake(){
+		character = new Character(characterId);
+		weapon = DEFAULT_WEAPON;
 		//	health = GetComponent<Health> ();
 		brain = GetComponent<Brain> ();
 		freeze = false;
+		
+	//	armature.armature
 	}
 
 	public void OnEnable (){
@@ -59,12 +79,33 @@ public class Unit : MonoBehaviour{
 		}
 	}
 
-	
-
-	
-
 	public float getSpeed() {
 		return speed;
+	}
+
+	public void setWeapon(Weapon wpn){
+		weapon = wpn ?? DEFAULT_WEAPON;
+	}
+	
+	public Damage getDamage(){
+		GameParams.StatParam stats = character.getStats();
+		Damage damage = new Damage{
+			min = stats.dmgMin,
+			max = stats.dmgMax,
+			mod = weapon.weaponParam.mod,
+			attacker = gameObject,
+			crit = stats.crit,
+			crit_mod = stats.critMod
+		};
+		return damage;
+	}
+
+	public float getRange(){
+		return weapon.weaponParam.range;
+	}
+
+	public DamageDealer getDamageDealer(){
+		return weapon.weaponParam.damager;
 	}
 
 	//	==========================================================================================================
@@ -90,9 +131,7 @@ public class Unit : MonoBehaviour{
 	/*	private ArrayList<Weapon> weapons = new ArrayList<Weapon>();
 		public Dictionary<string, Status> status = new Dictionary<string, Status>();
 		public Dictionary<string, float> cooldowns = new Dictionary<string, float>();
-		public ArrayList<IAttackEffect> atk_eff = new ArrayList<IAttackEffect>();
-		public ArrayList<IDefenseEffect> def_eff = new ArrayList<IDefenseEffect>();
-		public ArrayList<IHealEffect> heal_eff = new ArrayList<IHealEffect>();*/
+		
 
 	//	Invokers
 	/*	public var onHealthChange:Invoker = new Invoker();

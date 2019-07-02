@@ -16,40 +16,25 @@ public class Damage {
 	};
 
 	public DamageModifier mod;
-	public int value;
-	public float decrease;
-	public float distMin;
-	public float distMax;
-	public List<Status> status_effects;
+	public int min;
+	public int max;
+	public bool useAtk = true;
+	public List<Status> statusEffects;
 	public GameObject attacker;
-	public float crit;	//Critical strike chance, precent, 0-100++
-	public float crit_mod;
-
-	/*public Damage(GameObject attacker, Weapon.WeaponData wdata, float crit, DamageModifier mod, float crit_mod) {
-		value = wdata.param.dmgMin;
-		valueMax = wdata.param.dmgMax;
-		distMin = wdata.param.distMin;
-		distMax = wdata.param.distMax;
-		this.mod = mod;
-		this.crit = crit;
-		this.crit_mod = crit_mod;
-		this.attacker = attacker;
-	}*/
+	public float crit = 0;	//Critical strike chance, precent, 0-100++
+	public float crit_mod = 1;
+	
 	public void addStatus(Status st){
-		if(status_effects == null){
-			status_effects = new List<Status>();
+		if(statusEffects == null){
+			statusEffects = new List<Status>();
 		}
-		status_effects.Add(st); //Нет проверки на добавление двух одинаковых статусов, так как они сложатся при наложении их на цель
+		statusEffects.Add(st); //Нет проверки на добавление двух одинаковых статусов, так как они сложатся при наложении их на цель
 	}
 
-	public int getDamageValue(float crit = 0, float dist = 0) {
-		float delta = (dist - distMin) / (distMax - distMin);
-		delta = 1 - Mathf.Clamp(delta, 0, 1);
-
-		float total = value * (decrease + delta * (1 - decrease));
-
-		if (Random.value <= crit)
-			total *= crit_mod;
-		return (int)Mathf.Round(total);
+	public int getDamageValue() {
+		return Random.Range(min, max + 1);
+	}
+	public int calculate(Health health, bool crit){
+		return (int) Mathf.Max(0, getDamageValue() * mod.getModifier(health.resist) * (crit ? crit_mod : 1) - (crit || health.defense <= 0 ? 0 : health.defense));
 	}
 }

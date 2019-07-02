@@ -9,7 +9,7 @@ public class Distance : NumericCondition{
 
 	override protected bool check(GameObject owner, GameObject player, GameObject unit){
 		float distance = Vector3.Distance (owner.transform.position, unit.transform.position);
-		Weapon weapon = unit.GetComponent<Weapon> ();
-		return percent ? compare (distance / weapon.range * 100) : compare (distance);
+		Unit u = unit.GetComponent<Unit> ();
+		return percent ? compare (distance / u.getRange() * 100) : compare (distance);
 	}
 }

@@ -9,8 +9,8 @@ public class PlayerControl : Action{
 	private Plane hPlane;
 	private Action child;
 
-	override public void init(GameObject cst,object param = null){
-		base.init(cst, param);
+	override public void init(GameObject cst){
+		base.init(cst);
 		unit = caster.GetComponent<Unit>();
 		hPlane = new Plane(Vector3.up, Vector3.zero);
 	}
@@ -35,7 +35,6 @@ public class PlayerControl : Action{
 		if (child != null) {
 			child.update(dt);
 		}else{
-			Debug.Log("Start stay");
 			addChildAction(new Stay());
 		}
 		

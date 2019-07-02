@@ -10,7 +10,8 @@ public class GoTo : MoveAction {
 	}
 	
 	override public bool canPerform(GameObject target) {
-		return position != caster.transform.position && base.canPerform(target);
+		// TODO: Fix sqrMagnitude hack!
+		return position.sqrMagnitude != 0 && position != caster.transform.position && base.canPerform(target);
 	}
 	
 	public override void perform(GameObject trg){

@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class RotateHuman : MonoBehaviour {
 
-	private Rigidbody rb;
-	private Weapon weapon;
 	private Plane hPlane;
 
 	// Use this for initialization
 	void Start () {
-		rb = GetComponent<Rigidbody> ();
-		weapon = GetComponent<Weapon> ();
 		hPlane = new Plane(Vector3.up, Vector3.zero);
 	}
 	
@@ -22,14 +18,6 @@ public class RotateHuman : MonoBehaviour {
 		if (hPlane.Raycast (ray, out distance)) {
 			Vector3 worldPos = ray.GetPoint (distance);
 			transform.LookAt(worldPos);
-		}
-
-		if (Input.GetButtonDown ("Fire1")) {
-			weapon.shooting = true;
-		}
-
-		if (Input.GetButtonUp ("Fire1")) {
-			weapon.shooting = false;
 		}
 	}
 }

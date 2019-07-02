@@ -4,5 +4,4 @@ using UnityEngine;
 
 class LevelData {
 	public string levelId;
-	public Weapon.WeaponData wdata;
 }

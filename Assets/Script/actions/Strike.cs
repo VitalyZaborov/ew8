@@ -8,8 +8,8 @@ public class Strike : Action {
 	private const float ANGLE = 30.0f;
 	private Weapon weapon;
 
-	override public void init(GameObject cst, object param = null) {
-		base.init(cst, param);
+	override public void init(GameObject cst) {
+		base.init(cst);
 		weapon = caster.GetComponent<Weapon>();
 	}
 	override public float range {
