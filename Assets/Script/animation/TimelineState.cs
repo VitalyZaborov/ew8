@@ -32,20 +32,17 @@ namespace DragonBones
         private void _OnCrossFrame(int frameIndex)
         {
             var eventDispatcher = this._armature.proxy;
-            UnityEngine.Debug.Log("_OnCrossFrame:" + frameIndex + "|" + this._animationState.actionEnabled);
             if (this._animationState.actionEnabled)
             {
                 var frameOffset = this._animationData.frameOffset + this._timelineArray[(this._timelineData as TimelineData).offset + (int)BinaryOffset.TimelineFrameOffset + frameIndex];
                 var actionCount = this._frameArray[frameOffset + 1];
                 var actions = this._animationData.parent.actions; // May be the animaton data not belong to this armature data.
 
-                UnityEngine.Debug.Log("-actionCount:" + actionCount);
                 for (var i = 0; i < actionCount; ++i)
                 {
                     var actionIndex = this._frameArray[frameOffset + 2 + i];
                     var action = actions[actionIndex];
 
-                    UnityEngine.Debug.Log("--" + i +":" + action.type);
                     if (action.type == ActionType.Play)
                     {
                         var eventObject = BaseObject.BorrowObject<EventObject>();

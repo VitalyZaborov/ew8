@@ -334,14 +334,12 @@ namespace DragonBones
                 this._objects.Clear();
             }
 
-            UnityEngine.Debug.Log("AdvanceTime:" + this._events.Count);
             if (this._events.Count > 0)
             {
                 for (int i = 0; i < this._events.Count; ++i)
                 {
                     var eventObject = this._events[i];
                     var armature = eventObject.armature;
-                    UnityEngine.Debug.Log("--" + i + ":" + eventObject.type + "|" + armature._armatureData);
                     if (armature._armatureData != null)
                     {
                         // May be armature disposed before advanceTime.
@@ -365,7 +363,6 @@ namespace DragonBones
         {
             if (!this._events.Contains(value))
             {
-                UnityEngine.Debug.Log("BufferEvent:" +value.type);
                 this._events.Add(value);
             }
         }
