@@ -59,7 +59,7 @@ public class Unit : MonoBehaviour{
 		if (collider != null){
 			collider.radius = character.characterStats.radius;
 			collider.height = character.characterStats.height;
-			collider.transform.position = new Vector3(0, collider.height / 2, 0);
+			collider.center = new Vector3(0, collider.height / 2, 0);
 		}
 		weapon = DEFAULT_WEAPON;
 		//	health = GetComponent<Health> ();
