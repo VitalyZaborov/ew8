@@ -29,17 +29,15 @@ public class MoveAction : Action {
 	}
 	override public void perform(GameObject trg) {
 		base.perform(trg);
-		follow_range += getRadius(caster);
 		nma.isStopped = false;
-		nma.speed = unit.getSpeed();
+		nma.speed = unit.speed;
 	//	nma.stoppingDistance = follow_range;
 		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.RUN);
-		update(0);
 	}
 	override public bool canPerform(GameObject target) {
-		return unit.getSpeed() > 0;
+		return unit.speed > 0;
 	}
-	override public void update(float dt) {
+	override public void update(float dt){
 		if (nma.pathStatus == NavMeshPathStatus.PathComplete && nma.remainingDistance <= follow_range){
 			complete();
 		}

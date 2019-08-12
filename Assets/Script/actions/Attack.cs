@@ -2,23 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack : Action{
-	private Unit unit;
-
-	public Attack(){
-	}
+public class Attack : UnitAction{
 	
-	override public void init(GameObject cst){
-		base.init(cst);
-		unit = caster.GetComponent<Unit> ();
-	}
-	override public float range {
-		get{ return unit.getRange(); }
-	}
 	override public void perform(GameObject trg){
 		base.perform(trg);
 		animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.ATTACK_1 + Random.Range(0, 3));
-		Debug.Log("Attack.perform " + this + " " + target);
 		//	weapon.startAttack();
 	}
 	// Any damage boosts go here
@@ -35,9 +23,8 @@ public class Attack : Action{
 		switch(param){
 			case Label.ATTACK:
 				Damage damage = unit.getDamage();
-				DamageDealer damager = unit.getDamageDealer();
-				Debug.Log("Attack.onAnimation " + damager + " " + damage);
-				damager.deal(damage, target);
+				DamageDealer damager = unit.damageDealer;
+				damager.deal(damage, range, target, unit.team);
 				break;
 //			case Label.BURST:
 //				if(weapon.onBurst()){

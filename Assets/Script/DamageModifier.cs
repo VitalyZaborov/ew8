@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct DamageModifier {
+public class DamageModifier {
 
 	private readonly float[] v;
 
@@ -11,6 +12,10 @@ public struct DamageModifier {
 	e.g. 3 Physical, 3 Elemental, 3 Spirit
 	*/
 
+	public DamageModifier() {
+		v  = new float[Enum.GetNames(typeof(Damage.Type)).Length];
+	}
+	
 	public DamageModifier(float sl = 0, float pi = 0, float bl = 0, float fr = 0, float ft = 0, float li = 0, float po = 0, float da = 0, float ho = 0) {
 		v = new[] { sl, pi, bl, fr, ft, li, po, da, ho };
 	}

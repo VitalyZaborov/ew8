@@ -35,7 +35,6 @@ public class Unit : MonoBehaviour{
 	public static int STRAFE = Animator.StringToHash("strafe");
 
 	public uint team;
-	public float speed = 3.5f;
 	public float visibilityRange = float.MaxValue;
 	public string characterId;
 	public UnityArmatureComponent armature;
@@ -52,6 +51,16 @@ public class Unit : MonoBehaviour{
 
 	public void Awake(){
 		character = new Character(characterId);
+		NavMeshAgent nma = GetComponent<NavMeshAgent>();
+		if (nma != null){
+			nma.radius  = character.characterStats.radius;
+		}
+		CapsuleCollider collider = GetComponent<CapsuleCollider>();
+		if (collider != null){
+			collider.radius = character.characterStats.radius;
+			collider.height = character.characterStats.height;
+			collider.transform.position = new Vector3(0, collider.height / 2, 0);
+		}
 		weapon = DEFAULT_WEAPON;
 		//	health = GetComponent<Health> ();
 		brain = GetComponent<Brain> ();
@@ -79,10 +88,6 @@ public class Unit : MonoBehaviour{
 		}
 	}
 
-	public float getSpeed() {
-		return speed;
-	}
-
 	public void setWeapon(Weapon wpn){
 		weapon = wpn ?? DEFAULT_WEAPON;
 	}
@@ -100,13 +105,15 @@ public class Unit : MonoBehaviour{
 		return damage;
 	}
 
-	public float getRange(){
-		return weapon.weaponParam.range;
-	}
-
-	public DamageDealer getDamageDealer(){
-		return weapon.weaponParam.damager;
-	}
+	// ------------------------------------------------------------
+	// Accessors
+	
+	// ------------------------------------------------------------
+	public float range => weapon.weaponParam.range;
+	public DamageDealer damageDealer => weapon.weaponParam.damager;
+	public float speed => character.getStats().speed;
+	public float radius => character.characterStats.radius;
+	public float height => character.characterStats.height;
 
 	//	==========================================================================================================
 

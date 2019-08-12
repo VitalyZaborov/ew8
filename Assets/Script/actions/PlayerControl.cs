@@ -74,7 +74,6 @@ public class PlayerControl : Action{
 	}
 
 	private void onActionComplete(Action action) {
-		Debug.Log("onActionComplete:" + action.ToString());
 		Debug.Assert(action == child, "Incorrect CHILD action completed! Current: " + (child != null ? child.id : "None") + " completed: " + action.id);
 		child.evComplete -= onActionComplete;
 		child = null;

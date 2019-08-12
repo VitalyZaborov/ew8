@@ -16,24 +16,19 @@ public class DragonBonesBrain : MonoBehaviour{
 	
 	void OnEnable () {
 		armature.AddDBEventListener(EventObject.LOOP_COMPLETE, onAnimation);
-		armature.AddDBEventListener("hit", onAnimation);
-		armature.AddDBEventListener("chain", onAnimation);
 		armature.AddDBEventListener(EventObject.FRAME_EVENT, onFrameEvent);
 	}
 	
 	void OnDisable () {
 		armature.RemoveDBEventListener(EventObject.COMPLETE, onAnimation);
-		armature.RemoveDBEventListener("hit", onAnimation);
-		armature.RemoveDBEventListener("chain", onAnimation);
+		armature.RemoveDBEventListener(EventObject.FRAME_EVENT, onFrameEvent);
 	}
 	
 	private void onAnimation (string type, EventObject e) {
-		Debug.Log("DragonBonesBrain.onAnimation:" + type);
 		brain.onAnimation(eventMap[type]);
 	}
 	
 	private void onFrameEvent (string type, EventObject e) {
-		Debug.Log("DragonBonesBrain.onFrameEvent:" + type);
-	//	brain.onAnimation(eventMap[type]);
+		brain.onAnimation(eventMap[e.name]);
 	}
 }

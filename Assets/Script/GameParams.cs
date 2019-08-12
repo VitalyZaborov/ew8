@@ -218,6 +218,24 @@ public class GameParams{
 			Nation = Unit.Nation.ELLADA,
 			Level = 4,
 			price = 100
+		}},
+		{"Hood", new ItemParam{
+			id = "Hood",
+			type = Item.Type.ARMOR,
+			name = "Hood",
+			sprite = 1,
+			Nation = Unit.Nation.ELLADA,
+			Level = 1,
+			price = 101
+		}},
+		{"Plate", new ItemParam{
+			id = "Plate",
+			type = Item.Type.ARMOR,
+			name = "Hood",
+			sprite = 1,
+			Nation = Unit.Nation.ELLADA,
+			Level = 1,
+			price = 101
 		}}
 	};
 
@@ -229,8 +247,9 @@ public class GameParams{
 		public int HP;
 		public int SP;
 		public int crit;
-		public float aspd;
 		public float critMod;
+		public float aspd;
+		public float speed;
 		public int STR;
 		public int DEX;
 		public int INT;
@@ -245,8 +264,9 @@ public class GameParams{
 				HP = HP,
 				SP = SP,
 				crit = crit,
-				aspd = aspd,
 				critMod = critMod,
+				aspd = aspd,
+				speed = speed,
 				STR = STR,
 				DEX = DEX,
 				INT = INT,
@@ -261,8 +281,9 @@ public class GameParams{
 				HP = first.HP + second.HP,
 				SP = first.SP + second.SP,
 				crit = first.crit + second.crit,
-				aspd = first.aspd + second.aspd,
 				critMod = first.critMod + second.critMod,
+				aspd = first.aspd + second.aspd,
+				speed = first.speed + second.speed,
 				STR = first.STR + second.STR,
 				DEX = first.DEX + second.DEX,
 				INT = first.INT + second.INT,
@@ -277,8 +298,9 @@ public class GameParams{
 				HP = first.HP - second.HP,
 				SP = first.SP - second.SP,
 				crit = first.crit - second.crit,
-				aspd = first.aspd - second.aspd,
 				critMod = first.critMod - second.critMod,
+				aspd = first.aspd - second.aspd,
+				speed = first.speed - second.speed,
 				STR = first.STR - second.STR,
 				DEX = first.DEX - second.DEX,
 				INT = first.INT - second.INT,
@@ -288,6 +310,22 @@ public class GameParams{
 	}
 
 	public static Dictionary<string, StatParam> statParam = new Dictionary<string, StatParam>{
+		{"DEFAULT_WEAPON", new StatParam{
+			id = "DEFAULT_WEAPON",
+			dmgMin = 5,
+			dmgMax = 10,
+			DEF = 0,
+			HP = 0,
+			SP = 0,
+			crit = 0,
+			critMod = 1f,
+			aspd = 0f,
+			speed = 0f,
+			STR = 0,
+			DEX = 0,
+			INT = 0,
+			VIT = 0
+		}},
 		{"Redeemer", new StatParam{
 			id = "Redeemer",
 			dmgMin = 19,
@@ -296,8 +334,9 @@ public class GameParams{
 			HP = 0,
 			SP = 0,
 			crit = 5,
-			aspd = 0f,
 			critMod = 2f,
+			aspd = 0f,
+			speed = 0f,
 			STR = 0,
 			DEX = 0,
 			INT = 0,
@@ -311,8 +350,9 @@ public class GameParams{
 			HP = 0,
 			SP = 0,
 			crit = 5,
-			aspd = 0f,
 			critMod = 2f,
+			aspd = 0f,
+			speed = 0f,
 			STR = 0,
 			DEX = 0,
 			INT = 0,
@@ -326,8 +366,9 @@ public class GameParams{
 			HP = 0,
 			SP = 0,
 			crit = 5,
-			aspd = 0f,
 			critMod = 2f,
+			aspd = 0f,
+			speed = 0f,
 			STR = 0,
 			DEX = 0,
 			INT = 0,
@@ -341,8 +382,9 @@ public class GameParams{
 			HP = 0,
 			SP = 0,
 			crit = 10,
-			aspd = 0f,
 			critMod = 1f,
+			aspd = 0f,
+			speed = 0f,
 			STR = 0,
 			DEX = 0,
 			INT = 0,
@@ -356,8 +398,9 @@ public class GameParams{
 			HP = 0,
 			SP = 0,
 			crit = 20,
-			aspd = 0f,
 			critMod = 1.5f,
+			aspd = 0f,
+			speed = 0f,
 			STR = 0,
 			DEX = 0,
 			INT = 0,
@@ -371,8 +414,9 @@ public class GameParams{
 			HP = 0,
 			SP = 0,
 			crit = 25,
-			aspd = 0f,
 			critMod = 1.5f,
+			aspd = 0f,
+			speed = 0f,
 			STR = 0,
 			DEX = 0,
 			INT = 0,
@@ -386,8 +430,9 @@ public class GameParams{
 			HP = 0,
 			SP = 0,
 			crit = 5,
-			aspd = 0f,
 			critMod = 2f,
+			aspd = 0f,
+			speed = 0f,
 			STR = 0,
 			DEX = 0,
 			INT = 0,
@@ -401,8 +446,9 @@ public class GameParams{
 			HP = 0,
 			SP = 0,
 			crit = 1,
-			aspd = 0f,
 			critMod = 1f,
+			aspd = 0f,
+			speed = 0f,
 			STR = 0,
 			DEX = 0,
 			INT = 0,
@@ -416,8 +462,9 @@ public class GameParams{
 			HP = 0,
 			SP = 0,
 			crit = 0,
-			aspd = 0f,
 			critMod = 0f,
+			aspd = 0f,
+			speed = 0f,
 			STR = 0,
 			DEX = 0,
 			INT = 0,
@@ -431,12 +478,41 @@ public class GameParams{
 			HP = 100,
 			SP = 20,
 			crit = 0,
-			aspd = 0f,
 			critMod = 1f,
+			aspd = 0f,
+			speed = 3.5f,
 			STR = 16,
 			DEX = 12,
 			INT = 6,
 			VIT = 14
+		}}
+	};
+
+	public class CharacterParam : GameParam{
+		public string id;
+		public float radius;
+		public float height;
+		public int skin;
+		public Unit.Nation Nation;
+
+		public CharacterParam clone(){
+			return new CharacterParam(){
+				id = id,
+				radius = radius,
+				height = height,
+				skin = skin,
+				Nation = Nation
+			};
+		}
+	}
+
+	public static Dictionary<string, CharacterParam> characterParam = new Dictionary<string, CharacterParam>{
+		{"Barbarian", new CharacterParam{
+			id = "Barbarian",
+			radius = 2f,
+			height = 8f,
+			skin = 0,
+			Nation = Unit.Nation.ELLADA
 		}}
 	};
 }

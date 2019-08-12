@@ -106,7 +106,7 @@ def makeSlots(drawOrder):
 				slots.append((bone + '.' + item, bone))
 		else:
 			slots.append((bone, bone))
-	return [{"z": index, "name": name, "parent": parent, "color": {}} for index, (name, parent) in enumerate(slots)]
+	return [{"name": name, "parent": parent} for index, (name, parent) in enumerate(slots)]
 
 def makeSkin(slots, side, gender, weapon, textures):
 	result = [{'name': slot["name"], 'display': textures[getDisplay(slot["name"], side, gender, weapon)]} for slot in slots]
@@ -317,10 +317,8 @@ def convert(gender, weapon, textures):
 			totalDuration = frameIndex
 		data = {
 			'frame': frames,
-			'slot': [],
 			'duration': len(anim['body'].frames),
 			'fadeInTime': 0.3,
-			'ffd': [],
 			'name': animationName,
 			'bone': boneArray,
 		}
@@ -335,7 +333,6 @@ def convert(gender, weapon, textures):
 			'aabb': {'x':0, 'y': 0, 'width':0, 'height':0},
 			'defaultActions': [{'gotoAndPlay': 'stay'}],
 			'frameRate': 30,
-			'ik': [],
 			'name': gender + side + weapon,
 			'type': "Armature",
 			'skin': skin,
@@ -378,9 +375,9 @@ def convertTextures():
 		frameHeight = float(child.attrib.get('frameHeight', height))
 
 		if 'pivotX' in child.attrib:
-			pivotX = float(child.attrib['pivotX']) + frameX
+			pivotX = float(child.attrib['pivotX'])
 		if 'pivotY' in child.attrib:
-			pivotY = float(child.attrib['pivotY']) + frameY
+			pivotY = float(child.attrib['pivotY'])
 		rect = {
 			"frameX": frameX,
 			"frameY": frameY,
@@ -397,7 +394,7 @@ def convertTextures():
 			"path": name,
 			"type": "image",
 			"name": name,
-			"transform": {"y": -pivotY +frameY + frameHeight / 2, "x": -pivotX +frameX + frameWidth / 2}
+			"transform": {"y": -pivotY + frameHeight / 2, "x": -pivotX + frameWidth / 2}
 		}
 		display.append(slot)
 		sprites.append(rect)
@@ -425,19 +422,19 @@ def convertTextures():
 
 def convertAll():
 	textures = convertTextures()
-	armatures = {}
+	armatures = []
 	for gender in ['m', 'f']:
 		for weapon in ['a', 'b', 'c', 'd', 'g', 's', ]:
 			front, back = convert(gender, weapon, textures)
-			armatures[gender + 'f' + weapon] = front
-			armatures[gender + 'b' + weapon] = back
+			armatures.append(front)
+			armatures.append(back)
 		# 	break
 		# break
 
 	dragon = {
 		"frameRate":30,
 		"isGlobal":0,
-		"name":"ffaa1",
+		"name":"heroes",
 		"version":"5.5",
 		"armature": armatures,
 	}

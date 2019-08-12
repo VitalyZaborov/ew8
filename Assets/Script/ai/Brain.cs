@@ -102,7 +102,7 @@ public class Brain : MonoBehaviour {
 	private void onActionComplete(Action action){
 		Debug.Assert(action == curr_action, "Incorrect action completed! Current: " + curr_action.id + " completed: " + action.id);
 		curr_action.evComplete -= onActionComplete;
-		//	Debug.Log("onActionComplete" + curr_action);
+		//	Debug.Log("onActionComplete:" + curr_action);
 		Action prev_action = curr_action;
 		clearAction();	//Чтобы избежать конфликта с непрерываемыми действиями, вроде падения
 	//	history.push(prev_action.id);	// Push completed action id to history here
@@ -128,7 +128,7 @@ public class Brain : MonoBehaviour {
 		orders.Clear ();
 	}
 	public void onAnimation(int param = 0){
-		Debug.Log("Brain.onAnimation:" + param + " " +curr_action);
+		//Debug.Log("Brain.onAnimation:" + param + " " +curr_action);
 		if(curr_action != null){
 			curr_action.onAnimation (param);
 		}

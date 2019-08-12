@@ -75,7 +75,7 @@ public class Action{
 		if(trg){
 			Action act;
 			float rng = range;
-			float dist = Vector3.Distance(caster.transform.position, trg.transform.position) -  getRadius(caster) - getRadius(trg);
+			float dist = Vector3.Distance(caster.transform.position, trg.transform.position) -  Util.getRadius(caster) - Util.getRadius(trg);
 			if(rng<dist){
 				act = new Follow(rng);
 				act.init(caster);
@@ -159,9 +159,5 @@ public class Action{
 	protected uint getTeam(GameObject obj){
 		Unit unit = obj.GetComponent<Unit>();
 		return unit ? unit.team : 0;
-	}
-	protected static float getRadius(GameObject obj){
-		NavMeshAgent nma = obj.GetComponent<NavMeshAgent>();
-		return nma != null ? nma.radius : 0;
 	}
 }

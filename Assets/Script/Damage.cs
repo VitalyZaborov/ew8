@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damage {
+public class Damage{
 	public enum Type {
 		SLASHING,
 		PIERCING,
@@ -15,7 +15,7 @@ public class Damage {
 		HOLY
 	};
 
-	public DamageModifier mod;
+	public DamageModifier mod = new DamageModifier();
 	public int min;
 	public int max;
 	public bool useAtk = true;

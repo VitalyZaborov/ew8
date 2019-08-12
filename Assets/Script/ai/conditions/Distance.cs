@@ -10,6 +10,6 @@ public class Distance : NumericCondition{
 	override protected bool check(GameObject owner, GameObject player, GameObject unit){
 		float distance = Vector3.Distance (owner.transform.position, unit.transform.position);
 		Unit u = unit.GetComponent<Unit> ();
-		return percent ? compare (distance / u.getRange() * 100) : compare (distance);
+		return percent ? compare (distance / u.range * 100) : compare (distance);
 	}
 }

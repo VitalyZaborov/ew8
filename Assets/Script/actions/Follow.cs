@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Follow : MoveAction {
-	private bool always_follow;
 
-	public Follow(float fr = 0, bool af = true) : base(fr) {
-		always_follow = af;
+	public Follow(float fr = 0) : base(fr) {
 	}
 	
 	public override bool canPerform(GameObject target) {
@@ -14,14 +12,14 @@ public class Follow : MoveAction {
 	}
 
 	public override void perform(GameObject trg){
-		follow_range += getRadius(trg);
+		follow_range += Util.getRadius(trg);
 		base.perform(trg);
 	}
 
 	public override void update(float dt){
+		base.update(dt);
 		Vector3 targetPosition = target.transform.position;
 		caster.transform.LookAt(targetPosition);
 		nma.destination = targetPosition;
-		base.update(dt);
 	}
 }

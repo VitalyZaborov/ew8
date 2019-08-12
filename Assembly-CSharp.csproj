@@ -75,6 +75,7 @@
     <Compile Include="Assets\Script\actions\Skill.cs" />
     <Compile Include="Assets\Script\actions\Stay.cs" />
     <Compile Include="Assets\Script\actions\Strike.cs" />
+    <Compile Include="Assets\Script\actions\UnitAction.cs" />
     <Compile Include="Assets\Script\AI.cs" />
     <Compile Include="Assets\Script\ai\Action.cs" />
     <Compile Include="Assets\Script\ai\ActionNode.cs" />
@@ -195,7 +196,6 @@
     <Compile Include="Assets\Script\util\Util.cs" />
     <None Include="Assets\Resources\Shaders\DB_BlendMode_UIGrab.shader" />
     <None Include="Assets\Resources\Shaders\DB_BlendMode_Grab.shader" />
-    <None Include="Assets\Script\character\Inventory.cs.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>G:/Unity/Feudalism IV/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

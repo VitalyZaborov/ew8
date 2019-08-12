@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class DamageCone : DamageDealer{
 	private float arc;
-	private float range;
 	
-	public DamageCone(float arc, float range){
+	public DamageCone(float arc){
 		this.arc = arc;
-		this.range = range;
 	}
 	
-	public virtual void deal(Damage damage, GameObject target = null){
+	public override void deal(Damage damage, float range, GameObject target = null, uint team = 0){
 		GameObject attacker = damage.attacker;
-		Collider[] collisions = Physics.OverlapSphere(attacker.transform.position, range);
+		Vector3 position = getPosition(attacker);
+		Collider[] collisions = Physics.OverlapSphere(position, range + Util.getRadius(attacker));
 		for (int i = 0; i < collisions.Length; i++){
 			GameObject o = collisions[i].gameObject;
-			if(o == attacker)
+			if(o == attacker || (Util.getTeam(o) & team) != 0)
 				continue;
 			Vector3 direction = o.transform.position - attacker.transform.position;
 			float angle = Vector3.Angle(attacker.transform.rotation * Vector3.forward, direction);
