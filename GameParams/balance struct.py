@@ -29,6 +29,13 @@ def getData(cell, field, sheet, type):
 		return res
 	if type == 'DamageModifier':
 		return 'new DamageModifier(' + str(value) + ')'
+	if '[]' in type:
+		singleType = type[:-2]
+		if singleType not in BASIC_TYPES:
+			valuesList = value.split(',')
+			return 'new []{' + ', '.join(singleType + '.' + v.strip() for v in valuesList) + '}'
+		else:
+			return 'new []{' + value + '}'
 	if type not in BASIC_TYPES:
 		return type + '.' + value
 
