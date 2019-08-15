@@ -11,4 +11,10 @@ public class Armor : Item {
 	public Armor(string id):base(id){
 		
 	}
+	
+	// ------------------------------------------------------------
+	// Override
+	
+	// ------------------------------------------------------------
+	public override bool stackable => false;
 }

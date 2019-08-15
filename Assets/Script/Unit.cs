@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DragonBones;
 using UnityEngine;
@@ -46,9 +47,17 @@ public class Unit : MonoBehaviour{
 	private Brain brain;
 	private GameArea ga;
 
+	private Item[] slots = new Item[Enum.GetNames(typeof(Item.Slot)).Length];
+	private HashSet<Item> equipment = new HashSet<Item>();
+	private Inventory inventory = new Inventory();
+
 	Unit(){
 	}
 
+	// ------------------------------------------------------------
+	// Unity
+	
+	// ------------------------------------------------------------
 	public void Awake(){
 		character = new Character(characterId);
 		NavMeshAgent nma = GetComponent<NavMeshAgent>();
@@ -69,15 +78,21 @@ public class Unit : MonoBehaviour{
 	//	armature.armature
 	}
 
+	// ------------------------------------------------------------
 	public void OnEnable (){
 		ga = GameObject.FindGameObjectWithTag("GameArea").GetComponent<GameArea>();
 		ga.addUnit(gameObject);
 	}
 
+	// ------------------------------------------------------------
 	public void OnDisable (){
 		ga.removeUnit(gameObject);
 	}
 
+	// ------------------------------------------------------------
+	// Battle
+	
+	// ------------------------------------------------------------
 	public bool freeze{	//Без сознания, герой замер, действие не происходит, но статусы действуют
 		get{
 			return frozen;
@@ -88,10 +103,12 @@ public class Unit : MonoBehaviour{
 		}
 	}
 
+	// ------------------------------------------------------------
 	public void setWeapon(Weapon wpn){
 		weapon = wpn ?? DEFAULT_WEAPON;
 	}
 	
+	// ------------------------------------------------------------
 	public Damage getDamage(){
 		GameParams.StatParam stats = character.getStats();
 		Damage damage = new Damage{
@@ -106,7 +123,7 @@ public class Unit : MonoBehaviour{
 	}
 
 	// ------------------------------------------------------------
-	// Accessors
+	// Getters
 	
 	// ------------------------------------------------------------
 	public float range => weapon.weaponParam.range;
@@ -115,6 +132,53 @@ public class Unit : MonoBehaviour{
 	public float radius => character.characterStats.radius;
 	public float height => character.characterStats.height;
 
+	// ------------------------------------------------------------
+	// Equipment
+	
+	// ------------------------------------------------------------
+	public Item.EquipResult equip(Item item, bool replace = true){
+		if (!item.canEquip(character)){
+			return Item.EquipResult.WRONG_STATS;
+		}
+		
+		if (item.itemParam.slots.Length == 0){
+			return Item.EquipResult.NOT_EQUIPPABLE;
+		}
+		
+		if (!equipment.Add(item)){
+			return Item.EquipResult.ALREADY_DONE;
+		}
+
+		foreach (Item.Slot slot in item.itemParam.slots){
+			Item itemInSlot = slots[(uint) slot];
+			if (itemInSlot != null){
+				if (replace){
+					unequip(itemInSlot);
+					inventory.add(itemInSlot);
+					slots[(uint) slot] = item;
+				}else{
+					return Item.EquipResult.SLOT_OCCUPIED;
+				}
+			}
+		}
+		item.onEquipped(this);
+		return Item.EquipResult.OK;
+	}
+	
+	// ------------------------------------------------------------
+	public Item.EquipResult unequip(Item item){
+		if (!equipment.Remove(item)){
+			return Item.EquipResult.ALREADY_DONE;
+		}
+		
+		foreach (Item.Slot slot in item.itemParam.slots){
+			Item itemInSlot = slots[(uint) slot];
+			slots[(uint) slot] = null;
+		}
+		item.onUnequipped();
+		return Item.EquipResult.OK;
+	}
+	
 	//	==========================================================================================================
 
 	//private var anim:CharacterAnimation;

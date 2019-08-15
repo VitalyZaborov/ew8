@@ -115,6 +115,7 @@ public class GameParams{
 		public Unit.Nation Nation;
 		public int Level;
 		public int price;
+		public Item.Slot[] slots;
 
 		public ItemParam clone(){
 			return new ItemParam(){
@@ -124,7 +125,8 @@ public class GameParams{
 				sprite = sprite,
 				Nation = Nation,
 				Level = Level,
-				price = price
+				price = price,
+				slots = slots
 			};
 		}
 	}
@@ -136,7 +138,8 @@ public class GameParams{
 			sprite = -1,
 			Nation = Unit.Nation.NONE,
 			Level = 0,
-			price = 0
+			price = 0,
+			slots = new []{Item.Slot.WEAPON, Item.Slot.SHIELD}
 		}},
 		{"Redeemer", new ItemParam{
 			id = "Redeemer",
@@ -145,7 +148,8 @@ public class GameParams{
 			sprite = 0,
 			Nation = Unit.Nation.ELLADA,
 			Level = 2,
-			price = 100
+			price = 100,
+			slots = new []{Item.Slot.WEAPON, Item.Slot.SHIELD}
 		}},
 		{"Avenger", new ItemParam{
 			id = "Avenger",
@@ -154,7 +158,8 @@ public class GameParams{
 			sprite = 1,
 			Nation = Unit.Nation.ELLADA,
 			Level = 3,
-			price = 100
+			price = 100,
+			slots = new []{Item.Slot.WEAPON, Item.Slot.SHIELD}
 		}},
 		{"Bloodbath", new ItemParam{
 			id = "Bloodbath",
@@ -163,7 +168,8 @@ public class GameParams{
 			sprite = 2,
 			Nation = Unit.Nation.ELLADA,
 			Level = 4,
-			price = 100
+			price = 100,
+			slots = new []{Item.Slot.WEAPON}
 		}},
 		{"Eagle", new ItemParam{
 			id = "Eagle",
@@ -172,7 +178,8 @@ public class GameParams{
 			sprite = 1,
 			Nation = Unit.Nation.ELLADA,
 			Level = 5,
-			price = 100
+			price = 100,
+			slots = new []{Item.Slot.WEAPON}
 		}},
 		{"Coward", new ItemParam{
 			id = "Coward",
@@ -181,7 +188,8 @@ public class GameParams{
 			sprite = 1,
 			Nation = Unit.Nation.ELLADA,
 			Level = 6,
-			price = 100
+			price = 100,
+			slots = new []{Item.Slot.WEAPON}
 		}},
 		{"Xena", new ItemParam{
 			id = "Xena",
@@ -190,7 +198,8 @@ public class GameParams{
 			sprite = 2,
 			Nation = Unit.Nation.ELLADA,
 			Level = 1,
-			price = 100
+			price = 100,
+			slots = new []{Item.Slot.WEAPON}
 		}},
 		{"Claws", new ItemParam{
 			id = "Claws",
@@ -199,7 +208,8 @@ public class GameParams{
 			sprite = 1,
 			Nation = Unit.Nation.ELLADA,
 			Level = 2,
-			price = 100
+			price = 100,
+			slots = new []{Item.Slot.WEAPON, Item.Slot.SHIELD}
 		}},
 		{"Sorrow", new ItemParam{
 			id = "Sorrow",
@@ -208,7 +218,8 @@ public class GameParams{
 			sprite = 1,
 			Nation = Unit.Nation.ELLADA,
 			Level = 3,
-			price = 100
+			price = 100,
+			slots = new []{Item.Slot.WEAPON, Item.Slot.SHIELD}
 		}},
 		{"Bear", new ItemParam{
 			id = "Bear",
@@ -217,7 +228,8 @@ public class GameParams{
 			sprite = 1,
 			Nation = Unit.Nation.ELLADA,
 			Level = 4,
-			price = 100
+			price = 100,
+			slots = new []{Item.Slot.WEAPON, Item.Slot.SHIELD}
 		}},
 		{"Hood", new ItemParam{
 			id = "Hood",
@@ -226,7 +238,8 @@ public class GameParams{
 			sprite = 1,
 			Nation = Unit.Nation.ELLADA,
 			Level = 1,
-			price = 101
+			price = 101,
+			slots = new []{Item.Slot.ARMOR}
 		}},
 		{"Plate", new ItemParam{
 			id = "Plate",
@@ -235,7 +248,8 @@ public class GameParams{
 			sprite = 1,
 			Nation = Unit.Nation.ELLADA,
 			Level = 1,
-			price = 101
+			price = 101,
+			slots = new []{Item.Slot.ARMOR}
 		}}
 	};
 

@@ -5,20 +5,37 @@ using UnityEngine;
 public class Item {
 
 	public enum Type {
+		OTHER,
 		WEAPON,
 		ARMOR,
 		RING,
 		SHIELD
 	};
+	
+	public enum Slot {
+		WEAPON,
+		ARMOR,
+		RING_1,
+		RING_2,
+		SHIELD
+	};
+	
+	public enum EquipResult {
+		OK,
+		ALREADY_DONE,
+		SLOT_OCCUPIED,
+		NOT_EQUIPPABLE,
+		WRONG_STATS
+	};
 
 
 	public int amount = 1;
 	public readonly string id = "";
+	public readonly GameParams.StatParam statParam;
+	public readonly GameParams.ItemParam itemParam;
 	public readonly Status[] statuses;
 	
 	protected Unit owner;
-	protected GameParams.StatParam statParam;
-	protected GameParams.ItemParam itemParam;
 
 	public Item (string id){
 		this.id = id;
@@ -26,6 +43,10 @@ public class Item {
 		GameParams.itemParam.TryGetValue(id, out itemParam);
 	}
 	
+	// ------------------------------------------------------------
+	// Equip / Unequip
+	
+	// ------------------------------------------------------------
 	public virtual void onEquipped(Unit target){
 		owner = target;
 		owner.character.bonusStats += statParam;
@@ -34,6 +55,7 @@ public class Item {
 		}
 	}
 
+	// ------------------------------------------------------------
 	public virtual void onUnequipped() {
 		for (int i = 0; i < statuses.Length; i++){
 			statuses[i].remove();
@@ -42,11 +64,20 @@ public class Item {
 		owner = null;
 	}
 
-	public Type type{
-		get{ return itemParam.type; }
-	}
+	// ------------------------------------------------------------
+	// Getters
+	
+	// ------------------------------------------------------------
+	public Type type => itemParam.type;
 
-	public bool stackable{
-		get{ return true; }
+	// ------------------------------------------------------------
+	// Virtual
+	
+	// ------------------------------------------------------------
+	public virtual bool stackable => true;
+
+	// ------------------------------------------------------------
+	public virtual bool canEquip(Character character){
+		return true;
 	}
 }

@@ -137,6 +137,7 @@
     <Compile Include="Assets\Script\geom\Transform.cs" />
     <Compile Include="Assets\Script\Health.cs" />
     <Compile Include="Assets\Script\items\Armor.cs" />
+    <Compile Include="Assets\Script\items\Inventory.cs" />
     <Compile Include="Assets\Script\items\Item.cs" />
     <Compile Include="Assets\Script\items\Weapon.cs" />
     <Compile Include="Assets\Script\model\AnimationConfig.cs" />

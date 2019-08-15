@@ -22,17 +22,27 @@ public class Weapon : Item {
 		GameParams.weaponParam.TryGetValue(id, out weaponParam);
 	}
 	
+	// ------------------------------------------------------------
+	// Override
+	
+	// ------------------------------------------------------------
 	public override void onEquipped(Unit target){
 		base.onEquipped(target);
 		owner.setWeapon(this);
 	}
 
+	// ------------------------------------------------------------
 	public override void onUnequipped() {
 		owner.setWeapon(null);
 		base.onUnequipped();
 	}
+	
+	// ------------------------------------------------------------
+	public override bool stackable => false;
 
-	public float range{
-		get{ return weaponParam.range; }
-	}
+	// ------------------------------------------------------------
+	// Getters
+	
+	// ------------------------------------------------------------
+	public float range => weaponParam.range;
 }
