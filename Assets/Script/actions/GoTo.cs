@@ -13,12 +13,12 @@ public class GoTo : MoveAction {
 	}
 	override public void update(float dt) {
 		caster.GetComponent<Rotator>().turn(position);
-		float range = follow_range != 0 ? follow_range : nma.speed * dt;
-		if (range != 0) {
-			if (Vector3.Distance(position, caster.transform.position) <= range) {
+		float rangeRemained = follow_range != 0 ? follow_range : nma.speed * dt;
+		if (rangeRemained != 0) {
+			if (Vector3.Distance(position, caster.transform.position) <= rangeRemained) {
 				complete();
 			} else {
-				animator.Play("run");
+				animator.SetInteger(Unit.ANIMATION, (int)Unit.Animation.SPRINT);
 				nma.destination = position;
 			}
 		}
