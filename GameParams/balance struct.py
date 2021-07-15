@@ -4,10 +4,10 @@ INPUT = './Balance.xlsm'
 OUTPUT = '../Assets/Script/GameParams.cs'
 BASIC_TYPES = ('bool', 'int', 'uint', 'float', 'double', 'string', )
 
-def getData(cell, field, sheet, type):
+def getData(cell, field, sheet, fieldType):
 	value = cell.value
 	if value is None:
-		return None
+		return 'null'
 	if field in ('skills', 'chants'):
 		array = value.split(',')
 		res = 'new {'
@@ -19,13 +19,13 @@ def getData(cell, field, sheet, type):
 			res += skill + ' = ' + level
 		res += '}'
 		return res
-	if type == 'DamageModifier':
+	if fieldType == 'DamageModifier':
 		return 'new DamageModifier(' + str(value) + ')'
-	if type not in BASIC_TYPES:
-		return type + '.' + value
-	if isinstance(value, str):
+	if fieldType not in BASIC_TYPES:
+		return fieldType + '.' + value
+	if fieldType == 'string':
 		return '"' + value + '"'
-	return str(value) + ('f' if type == 'float' else '')
+	return str(value) + ('f' if fieldType == 'float' else '')
 
 
 def getRow(row):
@@ -55,7 +55,7 @@ def getParam(row, structName, fields, types):
 		value = getData(worksheet.cell(row=row, column=i + 1), field, structName, types[i])
 		if i == 0:
 			key = value
-		values.append('\n			' + field + ' = ' + str(value));
+		values.append('\n			' + field + ' = ' + str(value))
 
 	return '\n		{' + str(key) + ', new ' + structName + '{' + ','.join(values) + '\n		}}'
 
@@ -69,8 +69,9 @@ for worksheet in workbook.worksheets:
 	if worksheet.title.startswith('_'):
 		continue
 
-	fields = getRow(worksheet.rows[0])
-	types = getRow(worksheet.rows[1])
+	rows = [r for r in worksheet.rows]
+	fields = getRow(rows[0])
+	types = getRow(rows[1])
 	structName = worksheet.title[0].upper() + worksheet.title[1:]
 
 	output.write(getStruct(structName, fields, types))

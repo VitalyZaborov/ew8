@@ -1,166 +1,474 @@
 fileFormatVersion: 2
 guid: 5ac4b879699d45b458cf8395f62ce8f5
-timeCreated: 1525613916
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: guns_0
-    21300002: guns_1
-    21300004: guns_2
-    21300006: guns_3
-    21300008: guns_4
-    21300010: guns_5
-    21300012: guns_6
-    21300014: guns_7
-    21300016: guns_8
-    21300018: guns_9
-    21300020: guns_10
-    21300022: guns_11
-    21300024: guns_12
-    21300026: guns_13
-    21300028: guns_14
-    21300030: guns_15
-    21300032: guns_16
-    21300034: guns_17
-    21300036: guns_18
-    21300038: guns_19
-    21300040: guns_20
-    21300042: guns_21
-    21300044: guns_22
-    21300046: guns_23
-    21300048: guns_24
-    21300050: guns_25
-    21300052: guns_26
-    21300054: guns_27
-    21300056: guns_28
-    21300058: guns_29
-    21300060: guns_30
-    21300062: guns_31
-    21300064: guns_32
-    21300066: guns_33
-    21300068: guns_34
-    21300070: guns_35
-    21300072: guns_36
-    21300074: guns_37
-    21300076: guns_38
-    21300078: guns_39
-    21300080: guns_40
-    21300082: guns_41
-    21300084: guns_42
-    21300086: guns_43
-    21300088: guns_44
-    21300090: guns_45
-    21300092: guns_46
-    21300094: guns_47
-    21300096: guns_48
-    21300098: guns_49
-    21300100: guns_50
-    21300102: guns_51
-    21300104: guns_52
-    21300106: guns_53
-    21300108: guns_54
-    21300110: guns_55
-    21300112: guns_56
-    21300114: guns_57
-    21300116: guns_58
-    21300118: guns_59
-    21300120: guns_60
-    21300122: guns_61
-    21300124: guns_62
-    21300126: guns_63
-    21300128: guns_64
-    21300130: guns_65
-    21300132: guns_66
-    21300134: guns_67
-    21300136: guns_68
-    21300138: guns_69
-    21300140: guns_70
-    21300142: guns_71
-    21300144: guns_72
-    21300146: guns_73
-    21300148: guns_74
-    21300150: guns_75
-    21300152: guns_76
-    21300154: guns_77
-    21300156: guns_78
-    21300158: guns_79
-    21300160: guns_80
-    21300162: guns_81
-    21300164: guns_82
-    21300166: guns_83
-    21300168: guns_84
-    21300170: guns_85
-    21300172: guns_86
-    21300174: guns_87
-    21300176: guns_88
-    21300178: guns_89
-    21300180: guns_90
-    21300182: guns_91
-    21300184: guns_92
-    21300186: guns_93
-    21300188: guns_94
-    21300190: guns_95
-    21300192: guns_96
-    21300194: guns_97
-    21300196: guns_98
-    21300198: guns_99
-    21300200: guns_100
-    21300202: guns_101
-    21300204: guns_102
-    21300206: guns_103
-    21300208: guns_104
-    21300210: guns_105
-    21300212: guns_106
-    21300214: guns_107
-    21300216: guns_108
-    21300218: guns_109
-    21300220: guns_110
-    21300222: guns_111
-    21300224: guns_112
-    21300226: guns_113
-    21300228: guns_114
-    21300230: guns_115
-    21300232: guns_116
-    21300234: guns_117
-    21300236: guns_118
-    21300238: guns_119
-    21300240: guns_120
-    21300242: guns_121
-    21300244: guns_122
-    21300246: guns_123
-    21300248: guns_124
-    21300250: guns_125
-    21300252: guns_126
-    21300254: guns_127
-    21300256: guns_128
-    21300258: guns_129
-    21300260: guns_130
-    21300262: guns_131
-    21300264: guns_132
-    21300266: guns_133
-    21300268: guns_134
-    21300270: guns_135
-    21300272: guns_136
-    21300274: guns_137
-    21300276: guns_138
-    21300278: guns_139
-    21300280: guns_140
-    21300282: guns_141
-    21300284: guns_142
-    21300286: guns_143
-    21300288: guns_144
-    21300290: guns_145
-    21300292: guns_146
-    21300294: guns_147
-    21300296: guns_148
-    21300298: guns_149
-    21300300: guns_150
-    21300302: guns_151
-    21300304: guns_152
-    21300306: guns_153
-    21300308: guns_154
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: guns_0
+  - first:
+      213: 21300002
+    second: guns_1
+  - first:
+      213: 21300004
+    second: guns_2
+  - first:
+      213: 21300006
+    second: guns_3
+  - first:
+      213: 21300008
+    second: guns_4
+  - first:
+      213: 21300010
+    second: guns_5
+  - first:
+      213: 21300012
+    second: guns_6
+  - first:
+      213: 21300014
+    second: guns_7
+  - first:
+      213: 21300016
+    second: guns_8
+  - first:
+      213: 21300018
+    second: guns_9
+  - first:
+      213: 21300020
+    second: guns_10
+  - first:
+      213: 21300022
+    second: guns_11
+  - first:
+      213: 21300024
+    second: guns_12
+  - first:
+      213: 21300026
+    second: guns_13
+  - first:
+      213: 21300028
+    second: guns_14
+  - first:
+      213: 21300030
+    second: guns_15
+  - first:
+      213: 21300032
+    second: guns_16
+  - first:
+      213: 21300034
+    second: guns_17
+  - first:
+      213: 21300036
+    second: guns_18
+  - first:
+      213: 21300038
+    second: guns_19
+  - first:
+      213: 21300040
+    second: guns_20
+  - first:
+      213: 21300042
+    second: guns_21
+  - first:
+      213: 21300044
+    second: guns_22
+  - first:
+      213: 21300046
+    second: guns_23
+  - first:
+      213: 21300048
+    second: guns_24
+  - first:
+      213: 21300050
+    second: guns_25
+  - first:
+      213: 21300052
+    second: guns_26
+  - first:
+      213: 21300054
+    second: guns_27
+  - first:
+      213: 21300056
+    second: guns_28
+  - first:
+      213: 21300058
+    second: guns_29
+  - first:
+      213: 21300060
+    second: guns_30
+  - first:
+      213: 21300062
+    second: guns_31
+  - first:
+      213: 21300064
+    second: guns_32
+  - first:
+      213: 21300066
+    second: guns_33
+  - first:
+      213: 21300068
+    second: guns_34
+  - first:
+      213: 21300070
+    second: guns_35
+  - first:
+      213: 21300072
+    second: guns_36
+  - first:
+      213: 21300074
+    second: guns_37
+  - first:
+      213: 21300076
+    second: guns_38
+  - first:
+      213: 21300078
+    second: guns_39
+  - first:
+      213: 21300080
+    second: guns_40
+  - first:
+      213: 21300082
+    second: guns_41
+  - first:
+      213: 21300084
+    second: guns_42
+  - first:
+      213: 21300086
+    second: guns_43
+  - first:
+      213: 21300088
+    second: guns_44
+  - first:
+      213: 21300090
+    second: guns_45
+  - first:
+      213: 21300092
+    second: guns_46
+  - first:
+      213: 21300094
+    second: guns_47
+  - first:
+      213: 21300096
+    second: guns_48
+  - first:
+      213: 21300098
+    second: guns_49
+  - first:
+      213: 21300100
+    second: guns_50
+  - first:
+      213: 21300102
+    second: guns_51
+  - first:
+      213: 21300104
+    second: guns_52
+  - first:
+      213: 21300106
+    second: guns_53
+  - first:
+      213: 21300108
+    second: guns_54
+  - first:
+      213: 21300110
+    second: guns_55
+  - first:
+      213: 21300112
+    second: guns_56
+  - first:
+      213: 21300114
+    second: guns_57
+  - first:
+      213: 21300116
+    second: guns_58
+  - first:
+      213: 21300118
+    second: guns_59
+  - first:
+      213: 21300120
+    second: guns_60
+  - first:
+      213: 21300122
+    second: guns_61
+  - first:
+      213: 21300124
+    second: guns_62
+  - first:
+      213: 21300126
+    second: guns_63
+  - first:
+      213: 21300128
+    second: guns_64
+  - first:
+      213: 21300130
+    second: guns_65
+  - first:
+      213: 21300132
+    second: guns_66
+  - first:
+      213: 21300134
+    second: guns_67
+  - first:
+      213: 21300136
+    second: guns_68
+  - first:
+      213: 21300138
+    second: guns_69
+  - first:
+      213: 21300140
+    second: guns_70
+  - first:
+      213: 21300142
+    second: guns_71
+  - first:
+      213: 21300144
+    second: guns_72
+  - first:
+      213: 21300146
+    second: guns_73
+  - first:
+      213: 21300148
+    second: guns_74
+  - first:
+      213: 21300150
+    second: guns_75
+  - first:
+      213: 21300152
+    second: guns_76
+  - first:
+      213: 21300154
+    second: guns_77
+  - first:
+      213: 21300156
+    second: guns_78
+  - first:
+      213: 21300158
+    second: guns_79
+  - first:
+      213: 21300160
+    second: guns_80
+  - first:
+      213: 21300162
+    second: guns_81
+  - first:
+      213: 21300164
+    second: guns_82
+  - first:
+      213: 21300166
+    second: guns_83
+  - first:
+      213: 21300168
+    second: guns_84
+  - first:
+      213: 21300170
+    second: guns_85
+  - first:
+      213: 21300172
+    second: guns_86
+  - first:
+      213: 21300174
+    second: guns_87
+  - first:
+      213: 21300176
+    second: guns_88
+  - first:
+      213: 21300178
+    second: guns_89
+  - first:
+      213: 21300180
+    second: guns_90
+  - first:
+      213: 21300182
+    second: guns_91
+  - first:
+      213: 21300184
+    second: guns_92
+  - first:
+      213: 21300186
+    second: guns_93
+  - first:
+      213: 21300188
+    second: guns_94
+  - first:
+      213: 21300190
+    second: guns_95
+  - first:
+      213: 21300192
+    second: guns_96
+  - first:
+      213: 21300194
+    second: guns_97
+  - first:
+      213: 21300196
+    second: guns_98
+  - first:
+      213: 21300198
+    second: guns_99
+  - first:
+      213: 21300200
+    second: guns_100
+  - first:
+      213: 21300202
+    second: guns_101
+  - first:
+      213: 21300204
+    second: guns_102
+  - first:
+      213: 21300206
+    second: guns_103
+  - first:
+      213: 21300208
+    second: guns_104
+  - first:
+      213: 21300210
+    second: guns_105
+  - first:
+      213: 21300212
+    second: guns_106
+  - first:
+      213: 21300214
+    second: guns_107
+  - first:
+      213: 21300216
+    second: guns_108
+  - first:
+      213: 21300218
+    second: guns_109
+  - first:
+      213: 21300220
+    second: guns_110
+  - first:
+      213: 21300222
+    second: guns_111
+  - first:
+      213: 21300224
+    second: guns_112
+  - first:
+      213: 21300226
+    second: guns_113
+  - first:
+      213: 21300228
+    second: guns_114
+  - first:
+      213: 21300230
+    second: guns_115
+  - first:
+      213: 21300232
+    second: guns_116
+  - first:
+      213: 21300234
+    second: guns_117
+  - first:
+      213: 21300236
+    second: guns_118
+  - first:
+      213: 21300238
+    second: guns_119
+  - first:
+      213: 21300240
+    second: guns_120
+  - first:
+      213: 21300242
+    second: guns_121
+  - first:
+      213: 21300244
+    second: guns_122
+  - first:
+      213: 21300246
+    second: guns_123
+  - first:
+      213: 21300248
+    second: guns_124
+  - first:
+      213: 21300250
+    second: guns_125
+  - first:
+      213: 21300252
+    second: guns_126
+  - first:
+      213: 21300254
+    second: guns_127
+  - first:
+      213: 21300256
+    second: guns_128
+  - first:
+      213: 21300258
+    second: guns_129
+  - first:
+      213: 21300260
+    second: guns_130
+  - first:
+      213: 21300262
+    second: guns_131
+  - first:
+      213: 21300264
+    second: guns_132
+  - first:
+      213: 21300266
+    second: guns_133
+  - first:
+      213: 21300268
+    second: guns_134
+  - first:
+      213: 21300270
+    second: guns_135
+  - first:
+      213: 21300272
+    second: guns_136
+  - first:
+      213: 21300274
+    second: guns_137
+  - first:
+      213: 21300276
+    second: guns_138
+  - first:
+      213: 21300278
+    second: guns_139
+  - first:
+      213: 21300280
+    second: guns_140
+  - first:
+      213: 21300282
+    second: guns_141
+  - first:
+      213: 21300284
+    second: guns_142
+  - first:
+      213: 21300286
+    second: guns_143
+  - first:
+      213: 21300288
+    second: guns_144
+  - first:
+      213: 21300290
+    second: guns_145
+  - first:
+      213: 21300292
+    second: guns_146
+  - first:
+      213: 21300294
+    second: guns_147
+  - first:
+      213: 21300296
+    second: guns_148
+  - first:
+      213: 21300298
+    second: guns_149
+  - first:
+      213: 21300300
+    second: guns_150
+  - first:
+      213: 21300302
+    second: guns_151
+  - first:
+      213: 21300304
+    second: guns_152
+  - first:
+      213: 21300306
+    second: guns_153
+  - first:
+      213: 21300308
+    second: guns_154
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -178,6 +486,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -188,7 +498,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: -1
     aniso: -1
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: -1
@@ -200,18 +510,21 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -221,7 +534,9 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: Standalone
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -231,7 +546,9 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: iPhone
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -241,7 +558,9 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: Android
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -251,7 +570,9 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: WebGL
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -261,6 +582,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -278,6 +600,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_1
       rect:
@@ -292,6 +621,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_2
       rect:
@@ -306,6 +642,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_3
       rect:
@@ -320,6 +663,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_4
       rect:
@@ -334,6 +684,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_5
       rect:
@@ -348,6 +705,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_6
       rect:
@@ -362,6 +726,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_7
       rect:
@@ -376,6 +747,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_8
       rect:
@@ -390,6 +768,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_9
       rect:
@@ -404,6 +789,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_10
       rect:
@@ -418,6 +810,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_11
       rect:
@@ -432,6 +831,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_12
       rect:
@@ -446,6 +852,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_13
       rect:
@@ -460,6 +873,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_14
       rect:
@@ -474,6 +894,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_15
       rect:
@@ -488,6 +915,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_16
       rect:
@@ -502,6 +936,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_17
       rect:
@@ -516,6 +957,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_18
       rect:
@@ -530,6 +978,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_19
       rect:
@@ -544,6 +999,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_20
       rect:
@@ -558,6 +1020,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_21
       rect:
@@ -572,6 +1041,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_22
       rect:
@@ -586,6 +1062,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_23
       rect:
@@ -600,6 +1083,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_24
       rect:
@@ -614,6 +1104,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_25
       rect:
@@ -628,6 +1125,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_26
       rect:
@@ -642,6 +1146,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_27
       rect:
@@ -656,6 +1167,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_28
       rect:
@@ -670,6 +1188,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_29
       rect:
@@ -684,6 +1209,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_30
       rect:
@@ -698,6 +1230,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_31
       rect:
@@ -712,6 +1251,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_32
       rect:
@@ -726,6 +1272,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_33
       rect:
@@ -740,6 +1293,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_34
       rect:
@@ -754,6 +1314,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_35
       rect:
@@ -768,6 +1335,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_36
       rect:
@@ -782,6 +1356,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_37
       rect:
@@ -796,6 +1377,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_38
       rect:
@@ -810,6 +1398,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_39
       rect:
@@ -824,6 +1419,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_40
       rect:
@@ -838,6 +1440,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_41
       rect:
@@ -852,6 +1461,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_42
       rect:
@@ -866,6 +1482,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_43
       rect:
@@ -880,6 +1503,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_44
       rect:
@@ -894,6 +1524,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_45
       rect:
@@ -908,6 +1545,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_46
       rect:
@@ -922,6 +1566,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_47
       rect:
@@ -936,6 +1587,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_48
       rect:
@@ -950,6 +1608,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 08305410000000000800000000000000
+      internalID: 21300096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_49
       rect:
@@ -964,6 +1629,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 28305410000000000800000000000000
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_50
       rect:
@@ -978,6 +1650,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 48305410000000000800000000000000
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_51
       rect:
@@ -992,6 +1671,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 68305410000000000800000000000000
+      internalID: 21300102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_52
       rect:
@@ -1006,6 +1692,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 88305410000000000800000000000000
+      internalID: 21300104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_53
       rect:
@@ -1020,6 +1713,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a8305410000000000800000000000000
+      internalID: 21300106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_54
       rect:
@@ -1034,6 +1734,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c8305410000000000800000000000000
+      internalID: 21300108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_55
       rect:
@@ -1048,6 +1755,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e8305410000000000800000000000000
+      internalID: 21300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_56
       rect:
@@ -1062,6 +1776,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 09305410000000000800000000000000
+      internalID: 21300112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_57
       rect:
@@ -1076,6 +1797,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 29305410000000000800000000000000
+      internalID: 21300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_58
       rect:
@@ -1090,6 +1818,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 49305410000000000800000000000000
+      internalID: 21300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_59
       rect:
@@ -1104,6 +1839,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 69305410000000000800000000000000
+      internalID: 21300118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_60
       rect:
@@ -1118,6 +1860,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 89305410000000000800000000000000
+      internalID: 21300120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_61
       rect:
@@ -1132,6 +1881,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a9305410000000000800000000000000
+      internalID: 21300122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_62
       rect:
@@ -1146,6 +1902,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c9305410000000000800000000000000
+      internalID: 21300124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_63
       rect:
@@ -1160,6 +1923,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e9305410000000000800000000000000
+      internalID: 21300126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_64
       rect:
@@ -1174,6 +1944,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0a305410000000000800000000000000
+      internalID: 21300128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_65
       rect:
@@ -1188,6 +1965,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2a305410000000000800000000000000
+      internalID: 21300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_66
       rect:
@@ -1202,6 +1986,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4a305410000000000800000000000000
+      internalID: 21300132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_67
       rect:
@@ -1216,6 +2007,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6a305410000000000800000000000000
+      internalID: 21300134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_68
       rect:
@@ -1230,6 +2028,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8a305410000000000800000000000000
+      internalID: 21300136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_69
       rect:
@@ -1244,6 +2049,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: aa305410000000000800000000000000
+      internalID: 21300138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_70
       rect:
@@ -1258,6 +2070,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ca305410000000000800000000000000
+      internalID: 21300140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_71
       rect:
@@ -1272,6 +2091,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ea305410000000000800000000000000
+      internalID: 21300142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_72
       rect:
@@ -1286,6 +2112,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0b305410000000000800000000000000
+      internalID: 21300144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_73
       rect:
@@ -1300,6 +2133,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2b305410000000000800000000000000
+      internalID: 21300146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_74
       rect:
@@ -1314,6 +2154,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4b305410000000000800000000000000
+      internalID: 21300148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_75
       rect:
@@ -1328,6 +2175,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6b305410000000000800000000000000
+      internalID: 21300150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_76
       rect:
@@ -1342,6 +2196,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8b305410000000000800000000000000
+      internalID: 21300152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_77
       rect:
@@ -1356,6 +2217,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ab305410000000000800000000000000
+      internalID: 21300154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_78
       rect:
@@ -1370,6 +2238,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cb305410000000000800000000000000
+      internalID: 21300156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_79
       rect:
@@ -1384,6 +2259,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: eb305410000000000800000000000000
+      internalID: 21300158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_80
       rect:
@@ -1398,6 +2280,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0c305410000000000800000000000000
+      internalID: 21300160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_81
       rect:
@@ -1412,6 +2301,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2c305410000000000800000000000000
+      internalID: 21300162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_82
       rect:
@@ -1426,6 +2322,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4c305410000000000800000000000000
+      internalID: 21300164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_83
       rect:
@@ -1440,6 +2343,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6c305410000000000800000000000000
+      internalID: 21300166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_84
       rect:
@@ -1454,6 +2364,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8c305410000000000800000000000000
+      internalID: 21300168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_85
       rect:
@@ -1468,6 +2385,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ac305410000000000800000000000000
+      internalID: 21300170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_86
       rect:
@@ -1482,6 +2406,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cc305410000000000800000000000000
+      internalID: 21300172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_87
       rect:
@@ -1496,6 +2427,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ec305410000000000800000000000000
+      internalID: 21300174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_88
       rect:
@@ -1510,6 +2448,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0d305410000000000800000000000000
+      internalID: 21300176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_89
       rect:
@@ -1524,6 +2469,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2d305410000000000800000000000000
+      internalID: 21300178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_90
       rect:
@@ -1538,6 +2490,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4d305410000000000800000000000000
+      internalID: 21300180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_91
       rect:
@@ -1552,6 +2511,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6d305410000000000800000000000000
+      internalID: 21300182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_92
       rect:
@@ -1566,6 +2532,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8d305410000000000800000000000000
+      internalID: 21300184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_93
       rect:
@@ -1580,6 +2553,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ad305410000000000800000000000000
+      internalID: 21300186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_94
       rect:
@@ -1594,6 +2574,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cd305410000000000800000000000000
+      internalID: 21300188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_95
       rect:
@@ -1608,6 +2595,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ed305410000000000800000000000000
+      internalID: 21300190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_96
       rect:
@@ -1622,6 +2616,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0e305410000000000800000000000000
+      internalID: 21300192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_97
       rect:
@@ -1636,6 +2637,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2e305410000000000800000000000000
+      internalID: 21300194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_98
       rect:
@@ -1650,6 +2658,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4e305410000000000800000000000000
+      internalID: 21300196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_99
       rect:
@@ -1664,6 +2679,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6e305410000000000800000000000000
+      internalID: 21300198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_100
       rect:
@@ -1678,6 +2700,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8e305410000000000800000000000000
+      internalID: 21300200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_101
       rect:
@@ -1692,6 +2721,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ae305410000000000800000000000000
+      internalID: 21300202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_102
       rect:
@@ -1706,6 +2742,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ce305410000000000800000000000000
+      internalID: 21300204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_103
       rect:
@@ -1720,6 +2763,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ee305410000000000800000000000000
+      internalID: 21300206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_104
       rect:
@@ -1734,6 +2784,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0f305410000000000800000000000000
+      internalID: 21300208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_105
       rect:
@@ -1748,6 +2805,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2f305410000000000800000000000000
+      internalID: 21300210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_106
       rect:
@@ -1762,6 +2826,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4f305410000000000800000000000000
+      internalID: 21300212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_107
       rect:
@@ -1776,6 +2847,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6f305410000000000800000000000000
+      internalID: 21300214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_108
       rect:
@@ -1790,6 +2868,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8f305410000000000800000000000000
+      internalID: 21300216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_109
       rect:
@@ -1804,6 +2889,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: af305410000000000800000000000000
+      internalID: 21300218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_110
       rect:
@@ -1818,6 +2910,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cf305410000000000800000000000000
+      internalID: 21300220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_111
       rect:
@@ -1832,6 +2931,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ef305410000000000800000000000000
+      internalID: 21300222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_112
       rect:
@@ -1846,6 +2952,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 00405410000000000800000000000000
+      internalID: 21300224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_113
       rect:
@@ -1860,6 +2973,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 20405410000000000800000000000000
+      internalID: 21300226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_114
       rect:
@@ -1874,6 +2994,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 40405410000000000800000000000000
+      internalID: 21300228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_115
       rect:
@@ -1888,6 +3015,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 60405410000000000800000000000000
+      internalID: 21300230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_116
       rect:
@@ -1902,6 +3036,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 80405410000000000800000000000000
+      internalID: 21300232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_117
       rect:
@@ -1916,6 +3057,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a0405410000000000800000000000000
+      internalID: 21300234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_118
       rect:
@@ -1930,6 +3078,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c0405410000000000800000000000000
+      internalID: 21300236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_119
       rect:
@@ -1944,6 +3099,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e0405410000000000800000000000000
+      internalID: 21300238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_120
       rect:
@@ -1958,6 +3120,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 01405410000000000800000000000000
+      internalID: 21300240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_121
       rect:
@@ -1972,6 +3141,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 21405410000000000800000000000000
+      internalID: 21300242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_122
       rect:
@@ -1986,6 +3162,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 41405410000000000800000000000000
+      internalID: 21300244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_123
       rect:
@@ -2000,6 +3183,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 61405410000000000800000000000000
+      internalID: 21300246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_124
       rect:
@@ -2014,6 +3204,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 81405410000000000800000000000000
+      internalID: 21300248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_125
       rect:
@@ -2028,6 +3225,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a1405410000000000800000000000000
+      internalID: 21300250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_126
       rect:
@@ -2042,6 +3246,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c1405410000000000800000000000000
+      internalID: 21300252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_127
       rect:
@@ -2056,6 +3267,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e1405410000000000800000000000000
+      internalID: 21300254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_128
       rect:
@@ -2070,6 +3288,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 02405410000000000800000000000000
+      internalID: 21300256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_129
       rect:
@@ -2084,6 +3309,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 22405410000000000800000000000000
+      internalID: 21300258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_130
       rect:
@@ -2098,6 +3330,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 42405410000000000800000000000000
+      internalID: 21300260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_131
       rect:
@@ -2112,6 +3351,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 62405410000000000800000000000000
+      internalID: 21300262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_132
       rect:
@@ -2126,6 +3372,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 82405410000000000800000000000000
+      internalID: 21300264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_133
       rect:
@@ -2140,6 +3393,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a2405410000000000800000000000000
+      internalID: 21300266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_134
       rect:
@@ -2154,6 +3414,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c2405410000000000800000000000000
+      internalID: 21300268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_135
       rect:
@@ -2168,6 +3435,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e2405410000000000800000000000000
+      internalID: 21300270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_136
       rect:
@@ -2182,6 +3456,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 03405410000000000800000000000000
+      internalID: 21300272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_137
       rect:
@@ -2196,6 +3477,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 23405410000000000800000000000000
+      internalID: 21300274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_138
       rect:
@@ -2210,6 +3498,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 43405410000000000800000000000000
+      internalID: 21300276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_139
       rect:
@@ -2224,6 +3519,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 63405410000000000800000000000000
+      internalID: 21300278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_140
       rect:
@@ -2238,6 +3540,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 83405410000000000800000000000000
+      internalID: 21300280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_141
       rect:
@@ -2252,6 +3561,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a3405410000000000800000000000000
+      internalID: 21300282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_142
       rect:
@@ -2266,6 +3582,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c3405410000000000800000000000000
+      internalID: 21300284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_143
       rect:
@@ -2280,6 +3603,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e3405410000000000800000000000000
+      internalID: 21300286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_144
       rect:
@@ -2294,6 +3624,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 04405410000000000800000000000000
+      internalID: 21300288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_145
       rect:
@@ -2308,6 +3645,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 24405410000000000800000000000000
+      internalID: 21300290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_146
       rect:
@@ -2322,6 +3666,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 44405410000000000800000000000000
+      internalID: 21300292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_147
       rect:
@@ -2336,6 +3687,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 64405410000000000800000000000000
+      internalID: 21300294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_148
       rect:
@@ -2350,6 +3708,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 84405410000000000800000000000000
+      internalID: 21300296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_149
       rect:
@@ -2364,6 +3729,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a4405410000000000800000000000000
+      internalID: 21300298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_150
       rect:
@@ -2378,6 +3750,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c4405410000000000800000000000000
+      internalID: 21300300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_151
       rect:
@@ -2392,6 +3771,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e4405410000000000800000000000000
+      internalID: 21300302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_152
       rect:
@@ -2406,6 +3792,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 05405410000000000800000000000000
+      internalID: 21300304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_153
       rect:
@@ -2420,6 +3813,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 25405410000000000800000000000000
+      internalID: 21300306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: guns_154
       rect:
@@ -2434,9 +3834,26 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 45405410000000000800000000000000
+      internalID: 21300308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

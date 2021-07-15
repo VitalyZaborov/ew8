@@ -290,7 +290,7 @@ public class GameParams{
 		{"Knife", new GunParam{
 			id = "Knife",
 			type = Weapon.Type.MELEE,
-			caliber = "",
+			caliber = null,
 			name = "Knife",
 			category = -1,
 			sprite = 1,
@@ -308,7 +308,7 @@ public class GameParams{
 			burst = 0,
 			burstDelay = 0f,
 			range = 2f,
-			prj = "",
+			prj = null,
 			crit = 0f,
 			aim = 0f,
 			aimFallWalk = 0f,
@@ -321,7 +321,7 @@ public class GameParams{
 		{"Grenade", new GunParam{
 			id = "Grenade",
 			type = Weapon.Type.GRENADE,
-			caliber = "",
+			caliber = null,
 			name = "Grenade",
 			category = -1,
 			sprite = 1,
